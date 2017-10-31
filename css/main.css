@@ -1,0 +1,33 @@
+
+#header {
+	background-color: yellow;
+}
+
+.menu-list-item {
+	display: inline-block;
+}
+
+#slider {
+	background-color: lightblue;
+}
+
+#aboutUs {
+	background-color: #efefef;
+}
+
+#saleProducts {
+	background-color: lightblue;
+	padding: 10px;
+}
+
+.product-list-item {
+	padding: 0px;
+}
+
+.product-list-item img {
+	margin: 5px 15px;
+}
+
+#footer {
+	background-color: yellow;
+}
