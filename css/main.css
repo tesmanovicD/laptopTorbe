@@ -1,33 +1,204 @@
-
-#header {
-	background-color: yellow;
+body {
+	padding-top:4%;
 }
 
-.menu-list-item {
+
+ul#itemscentered a{
+	font-family: 'Amatic SC', cursive;
+	font-size: 20pt;
+
+
+}
+
+a.navbar-brand{
+	font-family: 'Reenie Beanie', cursive;
+	font-size: 20pt;
+}
+.navbar .navbar-nav {
 	display: inline-block;
+	float: none;
+	vertical-align: top;
 }
 
-#slider {
-	background-color: lightblue;
+.navbar .navbar-collapse {
+	text-align: center;
+
 }
 
-#aboutUs {
-	background-color: #efefef;
+
+
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+	display: block;
+	width: 100%;
+	height: auto;
 }
 
-#saleProducts {
-	background-color: lightblue;
-	padding: 10px;
+/* ------------------- Carousel Styling ------------------- */
+
+.carousel-inner {
+	border-radius: 15px;
 }
 
-.product-list-item {
-	padding: 0px;
+.carousel-caption {
+	background-color: rgba(0,0,0,.5);
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 10;
+	padding: 0 0 10px 25px;
+	color: #fff;
+	text-align: center;
 }
 
-.product-list-item img {
-	margin: 5px 15px;
+.carousel-indicators {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	width: 100%;
+	z-index: 15;
+	margin: 0;
+	padding: 0 25px 25px 0;
+	text-align: right;
 }
 
-#footer {
-	background-color: yellow;
+.carousel-control.left,
+.carousel-control.right {
+	background-image: none;
+}
+
+.sliderdescription{
+	font-family: 'Schoolbell', cursive;
+	font-size: 35pt;
+}
+
+/* ------------------- Section Carousel Styling ------------------- */
+
+.section-white {
+	padding: 10px 0;
+}
+
+.section-white {
+	background-color: #fff;
+	color: #555;
+}
+
+@media screen and (min-width: 768px) {
+
+	.section-white {
+		padding: 1.5em 0;
+	}
+
+}
+
+@media screen and (min-width: 992px) {
+
+	.container {
+		max-width: 930px;
+	}
+
+}
+/* ------------------- about us---------------------- */
+#aboutUs
+{
+	width: 90%;
+	margin-left: 5%;
+	border: 3px solid #007373;
+	background-color: #f6f6f6;
+	border-radius: 15px/15px;
+}
+
+#aboutUsTitle{
+	text-align: center;
+	font-family: 'Reenie Beanie', cursive;
+	font-size: 40pt;
+}
+.aboutUsText {
+	font-family: 'Imprima', sans-serif;
+	margin-left: 5%;
+	font-size:12pt;
+}
+#aboutUsLink {
+	font-family: 'Imprima', sans-serif;
+	margin-left: 5%;
+	font-size:13pt;
+	text-align: center;
+}
+
+
+
+/*----------------------------------product carousel------------------------------------*/
+
+
+#custom_carousel .item {
+
+	color:#fff;
+	background-color: #f7f7f7;
+	padding:20px ;
+	border: 1px solid #007373;
+	border-radius: 15px/15px;
+}
+#custom_carousel .controls{
+	overflow-x: auto;
+	overflow-y: hidden;
+	padding:0;
+	margin:0;
+	white-space: nowrap;
+	text-align: center;
+	position: relative;
+	background: #fff;
+	border: 1px solid #007373;
+	border-radius: 15px/15px;
+}
+#custom_carousel .controls li {
+	display: table-cell;
+	width: 1%;
+	max-width:90px
+}
+
+#custom_carousel .controls a small {
+	overflow:hidden;
+	display:block;
+	font-size:10px;
+	margin-top:5px;
+	font-weight:bold
+}
+
+.ProductCarouselTitles{
+	text-align: center;
+	font-family: 'Schoolbell', cursive;
+	font-size: 35pt;
+	color: black;
+}
+
+.ProductCarouselDescription{
+	font-family: 'Imprima', sans-serif;
+	font-size: 13pt;
+	text-align: center;
+	color: black;
+}
+
+
+.ProductCarouselLink {
+	text-align: center;
+	font-size: 12pt;
+	font-family: 'Imprima', sans-serif;
+}
+.ProductCarouselPrice{
+	font-family: 'Imprima', sans-serif;
+	font-size: 15pt;
+	text-align: center;
+	background-color: #e8e8e8;
+	color: #000;
+}
+
+#footer{
+	background-color: #000;
+	color: white;
+	margin-top: 2%;
 }
