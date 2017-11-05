@@ -1,0 +1,65 @@
+<html>
+  <head>
+  	<title></title>
+  	<!-- 	BOOTSTRAP CSS -->
+  		<!-- LOCAL BOOTSTRAP FOR OFFLINE CONNECTION -->
+  		<link rel="stylesheet" href="css/bootstrap.min.css">
+  		<!-- ONLINE BOOTSTRAP, NEWEST VERSION -->
+  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  	<!-- NORMALIZE.CSS GLITCH FIX -->
+  	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+  	<!-- PERSONAL - LOCAL CSS -->
+  	<link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- JQUERY SCRIPT-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- LOCAL DATABASE OF LAPTOPS -->
+    <script src="database.js"></script>
+    <!-- SCRIPT FOR LOADING FROM DATABASE-->
+    <script src="js/loadBags.js"></script>
+  </head>
+</html>
+
+  <body>
+    <div id="header">
+  		<div class="container">
+  			<ul class="menu-list">
+  				<a href="#">
+  					<li class="menu-list-item">Menu1</li>
+  				</a>
+  				<a href="#">
+  					<li class="menu-list-item">Menu2</li>
+  				</a>
+  				<a href="#">
+  					<li class="menu-list-item">Menu3</li>
+  				</a>
+  				<a href="#">
+  					<li class="menu-list-item">Menu4</li>
+  				</a>
+  			</ul><!--end of menu-list-->
+  		</div><!--end of container-->
+  	</div><!--end of header-->
+
+    <div class="row main">
+      <div class="col-md-2 main-left">
+        <ul class="list-group">
+          <li class="list-group-item"><a href="?brend=asus">Asus</a></li>
+          <li class="list-group-item"><a href="?brend=acer">Acer</a></li>
+          <li class="list-group-item"><a href="?brend=lenovo">Lenovo</a></li>
+          <li class="list-group-item"><a href="?brend=toshiba">Toshiba</a></li>
+        </ul><!--end of list-group-->
+      </div><!--end of main-left-->
+
+      <div class="col-md-9 offset-1 main-right row">
+        <!-- Dinamicki ispis iz lokalne "baze" podataka -->
+      </div><!--end of main-right-->
+    </div><!--end of main-->
+
+    <div id="footer">
+    	<div class="text-center center-block">
+    		<h4 style="font-family: Reenie Beanie;font-size:20px;"> Laptop-Torbe.rs </h4>
+    		<a href="https://www.facebook.com"><i class="fa fa-facebook-square fa-3x social"></i></a>
+    		<a href="https://twitter.com"><i class="fa fa-twitter-square fa-3x social"></i></a>
+    		<a href="https://instagram.com"><i class="fa fa-instagram fa-3x social"></i></a>
+    	</div><!--end of center-block-->
+    </div><!--end of footer-->
+  </body>

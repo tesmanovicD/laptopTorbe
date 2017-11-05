@@ -202,3 +202,22 @@ a.navbar-brand{
 	color: white;
 	margin-top: 2%;
 }
+
+/* LAPTOP-TORBE CSS */
+.row {
+	margin: 0px;
+}
+
+.main {
+	padding: 0px 20px;
+}
+
+.main-left {
+
+	padding: 10px;
+}
+
+.main-right {
+
+	padding: 10px 10px;
+}
