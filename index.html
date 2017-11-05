@@ -3,25 +3,27 @@
 <head>
 	<title></title>
 	<meta charset="utf-8">
-
-
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
+	<!-- FONT SCHOOLBELL-->
+	<link href="https://fonts.googleapis.com/css?family=Amatic+SC|Reenie+Beanie|Imprima|Schoolbell" rel="stylesheet">
+	<!-- BOOTSTRAP CSS-->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	<!-- FONT AWESOME FOR ICONS -->
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-	<script src="javascriptfile.js"></script>
 	<!-- NORMALIZE.CSS GLITCH FIX -->
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<!-- PERSONAL - LOCAL CSS -->
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 
-	<link href="https://fonts.googleapis.com/css?family=Amatic+SC|Reenie+Beanie|Imprima|Schoolbell" rel="stylesheet">
+	<!-- JQUERY SCRIPT-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<!-- JQUERY SLIM-->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<!-- POOPER JS FOR IMG SLIDER-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+	<!-- BOOTSTRAP SCRIPT-->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<!-- PERSONAL SCRIPT FILE-->
+	<script src="javascriptfile.js"></script>
 </head>
 <body>
 
@@ -34,22 +36,22 @@
 				<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="#">Laptop-Torbe.rs</a>
-		</div>
+		</div><!--end of navbar-header-->
+
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav" id="itemscentered">
 				<li><a href="#">Početna stranica &nbsp;&nbsp;<span class=" glyphicon glyphicon-home"></span></a></li>
 				<li><a href="#">Naši proizvodi &nbsp;&nbsp;<span class=" glyphicon glyphicon-briefcase"></span></a></li>
 				<li><a href="#">Kontakt &nbsp;&nbsp;<span class="  glyphicon glyphicon-phone-alt"></span></a></li>
-			</ul>
-		</div>
-	</div>
-</nav>
+			</ul><!--end of navbar items-->
+		</div><!--end of myNavbar-->
+	</div><!--end of container-fluid-->
+</nav><!--end of navbar-->
 
 <section class="section-white">
 	<div class="container">
-
 		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-			<!-- Indicators -->
+			<!--Indicators -->
 			<ol class="carousel-indicators">
 				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
@@ -57,33 +59,33 @@
 				<li data-target="#carousel-example-generic" data-slide-to="3"></li>
 			</ol>
 
-			<!-- Wrapper for slides -->
+			<!--Wrapper for slides -->
 			<div class="carousel-inner">
 				<div class="item active">
 					<img src="img/prva.jpg" alt="laptop torba">
 					<div class="carousel-caption">
 						<p class="sliderdescription">Laptop-ranac 12''</p>
 					</div>
-				</div>
+				</div><!--end of item-->
 				<div class="item">
 					<img src="img/druga.jpg" alt="laptop torba">
 					<div class="carousel-caption">
 						<p class="sliderdescription">Laptop-torba 13''<p/>
 					</div>
-				</div>
+				</div><!--end of item-->
 				<div class="item">
 					<img src="img/treca.jpg" alt="laptop torba">
 					<div class="carousel-caption">
 						<p class="sliderdescription">Laptop-ranac 15''<p/>
 					</div>
-				</div>
+				</div><!--end of item-->
 				<div class="item">
 					<img src="img/cetvrta.jpg" alt="laptop torba">
 					<div class="carousel-caption">
 						<p class="sliderdescription">Laptop-ranac 17''<p/>
 					</div>
-				</div>
-			</div>
+				</div><!--end of item-->
+			</div><!--end of carousel-inner item group-->
 
 			<!-- Controls -->
 			<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -92,10 +94,9 @@
 			<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
 				<span class="glyphicon glyphicon-chevron-right"></span>
 			</a>
-		</div>
-
-	</div>
-</section>
+		</div><!--end of carousel-example-generic-->
+	</div><!--end of container-->
+</section><!--end of section-white-->
 
 
 	<div id="aboutUs">
@@ -139,9 +140,9 @@
 							<p class="ProductCarouselLink"><a href="#">Detaljnije o proizvodu</a> </p>
 							<p class="ProductCarouselPrice">15,000 RSD</p>
 						</div>
-					</div>
-				</div>
-			</div>
+					</div><!--end of row-->
+				</div><!--end of container-fluid-->
+			</div><!--end of item-->
 			<div class="item">
 				<div class="container-fluid">
 					<div class="row">
@@ -153,9 +154,9 @@
 							<p class="ProductCarouselLink"><a href="#">Detaljnije o proizvodu</a> </p>
 							<p class="ProductCarouselPrice">9,000 RSD</p>
 						</div>
-					</div>
-				</div>
-			</div>
+					</div><!--end of row-->
+				</div><!--end of container-fluid-->
+			</div><!--end of item-->
 			<div class="item">
 				<div class="container-fluid">
 					<div class="row">
@@ -166,11 +167,10 @@
 							<p class="ProductCarouselDescription">Izrađen od vodootpornog materijala</p>
 							<p class="ProductCarouselLink"><a href="#">Detaljnije o proizvodu</a> </p>
 							<p class="ProductCarouselPrice">6,500 RSD</p>
-
 						</div>
-					</div>
-				</div>
-			</div>
+					</div><!--end of row-->
+				</div><!--end of container-fluid-->
+			</div><!--end of item-->
 			<div class="item">
 				<div class="container-fluid">
 					<div class="row">
@@ -181,11 +181,10 @@
 							<p class="ProductCarouselDescription">Materijal: Poliester</p>
 							<p class="ProductCarouselLink"><a href="#">Detaljnije o proizvodu</a> </p>
 							<p class="ProductCarouselPrice">15,000 RSD</p>
-
 						</div>
-					</div>
-				</div>
-			</div>
+					</div><!--end of row-->
+				</div><!--end of container-fluid-->
+			</div><!--end of item-->
 
 			<div class="item">
 				<div class="container-fluid">
@@ -198,9 +197,9 @@
 							<p class="ProductCarouselLink"><a href="#">Detaljnije o proizvodu</a> </p>
 							<p class="ProductCarouselPrice">12,350 RSD</p>
 						</div>
-					</div>
-				</div>
-			</div>
+					</div><!--end of row-->
+				</div><!--end of container-fluid-->
+			</div><!--end of item-->
 			<div class="item">
 				<div class="container-fluid">
 					<div class="row">
@@ -211,14 +210,12 @@
 							<p class="ProductCarouselDescription">Izrađen od vodootpornog materijala</p>
 							<p class="ProductCarouselLink"><a href="#">Detaljnije o proizvodu</a> </p>
 							<p class="ProductCarouselPrice">11,000 RSD</p>
-
 						</div>
-					</div>
-				</div>
-			</div>
-			<!-- End Item -->
-		</div>
-		<!-- End Carousel Inner -->
+					</div><!--end of row-->
+				</div><!--end of container-fluid-->
+			</div><!--end of item-->
+		</div><!--end of carousel-inner item group-->
+
 		<div class="controls">
 			<ul class="nav">
 				<li data-target="#custom_carousel" data-slide-to="0" class="active"><a href="#"><img src="img/acer-torba.png" height="50px"><small>Acer ranac</small></a></li>
@@ -228,25 +225,21 @@
 				<li data-target="#custom_carousel" data-slide-to="4"><a href="#"><img src="img/hp-torba.jpg"  height="50px"><small>HP torba</small></a></li>
 				<li data-target="#custom_carousel" data-slide-to="5"><a href="#"><img src="img/targus-torba.jpg"  height="50px"><small>Targus ranac</small></a></li>
 			</ul>
-		</div>
-	</div>
-	<!-- End Carousel -->
-</div>
+		</div><!--end of controls-->
+	</div><!--end of custom_carousel-->
+</div><!--end of container-fluid-->
 
 <!-- Product carousel end-->
 
 
 <div id="footer">
-
 	<div class="text-center center-block">
 		<h4 style="font-family: Reenie Beanie;font-size:20px;"> Laptop-Torbe.rs </h4>
 		<a href="https://www.facebook.com"><i class="fa fa-facebook-square fa-3x social"></i></a>
 		<a href="https://twitter.com"><i class="fa fa-twitter-square fa-3x social"></i></a>
 		<a href="https://instagram.com"><i class="fa fa-instagram fa-3x social"></i></a>
 	</div>
-
-</div>
-
+</div><!--end of footer-->
 
 </body>
 </html>
