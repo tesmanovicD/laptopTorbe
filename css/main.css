@@ -1,5 +1,5 @@
 body {
-	padding-top:4%;
+
 }
 
 
@@ -74,7 +74,7 @@ a.navbar-brand{
 
 .sliderdescription{
 	font-family: 'Schoolbell', cursive;
-	font-size: 35pt;
+	font-size: 30pt;
 }
 
 /* ------------------- Section Carousel Styling ------------------- */
@@ -200,16 +200,18 @@ a.navbar-brand{
 #footer{
 	background-color: #000;
 	color: white;
-	margin-top: 2%;
+
 }
 
 /* LAPTOP-TORBE CSS */
 .row {
 	margin: 0px;
+
 }
 
 .main {
 	padding: 0px 20px;
+
 }
 
 .main-left {
@@ -220,4 +222,26 @@ a.navbar-brand{
 .main-right {
 
 	padding: 10px 10px;
+}
+
+.list-group-item{
+	text-align: center;
+
+
+}
+#list-group-item-title{
+	font-size: 27pt;
+	font-weight: bolder;
+	font-family: 'Amatic SC', cursive;
+}
+
+#animatedText{
+	font-size: 65px;
+	font-family: 'Amatic SC', cursive;
+	text-align: center;
+	font-weight: bolder;
+	color: #008484;
+	background-color: #e8e8e8;
+	margin-bottom: -1.2%;
+
 }

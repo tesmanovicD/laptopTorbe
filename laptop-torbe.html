@@ -1,51 +1,73 @@
 <html>
   <head>
-  	<title></title>
+	  <title></title>
+	  <meta charset="utf-8">
   	<!-- 	BOOTSTRAP CSS -->
-  		<!-- LOCAL BOOTSTRAP FOR OFFLINE CONNECTION -->
-  		<link rel="stylesheet" href="css/bootstrap.min.css">
-  		<!-- ONLINE BOOTSTRAP, NEWEST VERSION -->
-  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-  	<!-- NORMALIZE.CSS GLITCH FIX -->
-  	<link rel="stylesheet" type="text/css" href="css/normalize.css">
-  	<!-- PERSONAL - LOCAL CSS -->
-  	<link rel="stylesheet" type="text/css" href="css/main.css">
+
+
     <!-- JQUERY SCRIPT-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- LOCAL DATABASE OF LAPTOPS -->
     <script src="database.js"></script>
     <!-- SCRIPT FOR LOADING FROM DATABASE-->
     <script src="js/loadBags.js"></script>
+	  <!-- JQUERY SLIM-->
+	  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	  <!-- POOPER JS FOR IMG SLIDER-->
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+	  <!-- BOOTSTRAP SCRIPT-->
+	  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	  <!-- PERSONAL SCRIPT FILE-->
+	  <script src="javascriptfile.js"></script>
+	  <!-- FONT SCHOOLBELL-->
+	  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Reenie+Beanie|Imprima|Schoolbell" rel="stylesheet">
+	  <!-- BOOTSTRAP CSS-->
+	  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	  <!-- FONT AWESOME FOR ICONS -->
+	  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	  <!-- NORMALIZE.CSS GLITCH FIX -->
+	  <link rel="stylesheet" type="text/css" href="css/normalize.css">
+	  <!-- PERSONAL - LOCAL CSS -->
+	  <link rel="stylesheet" type="text/css" href="css/main.css">
+
+
   </head>
 </html>
 
-  <body>
-    <div id="header">
-  		<div class="container">
-  			<ul class="menu-list">
-  				<a href="#">
-  					<li class="menu-list-item">Menu1</li>
-  				</a>
-  				<a href="#">
-  					<li class="menu-list-item">Menu2</li>
-  				</a>
-  				<a href="#">
-  					<li class="menu-list-item">Menu3</li>
-  				</a>
-  				<a href="#">
-  					<li class="menu-list-item">Menu4</li>
-  				</a>
-  			</ul><!--end of menu-list-->
-  		</div><!--end of container-->
-  	</div><!--end of header-->
 
-    <div class="row main">
+<nav class="navbar navbar-inverse navbar-static-top" >
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="index.html">Laptop-Torbe.rs</a>
+		</div><!--end of navbar-header-->
+
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav" id="itemscentered">
+				<li><a href="index.html">Početna stranica &nbsp;&nbsp;<span class=" glyphicon glyphicon-home"></span></a></li>
+				<li><a href="laptop-torbe.html">Naši proizvodi &nbsp;&nbsp;<span class=" glyphicon glyphicon-briefcase"></span></a></li>
+				<li><a href="#">Kontakt &nbsp;&nbsp;<span class="  glyphicon glyphicon-phone-alt"></span></a></li>
+			</ul><!--end of navbar items-->
+		</div><!--end of myNavbar-->
+	</div><!--end of container-fluid-->
+</nav><!--end of navbar-->
+
+
+<div class="row main">
       <div class="col-md-2 main-left">
         <ul class="list-group">
+			<li class="list-group-item"  id="list-group-item-title">Izaberite marku</li>
           <li class="list-group-item"><a href="?brend=asus">Asus</a></li>
           <li class="list-group-item"><a href="?brend=acer">Acer</a></li>
           <li class="list-group-item"><a href="?brend=lenovo">Lenovo</a></li>
           <li class="list-group-item"><a href="?brend=toshiba">Toshiba</a></li>
+			<li class="list-group-item"><a href="?brend=dell">Dell</a></li>
+			<li class="list-group-item"><a href="?brend=hp">HP</a></li>
+			<li class="list-group-item"><a href="?brend=targus">Targus</a></li>
         </ul><!--end of list-group-->
       </div><!--end of main-left-->
 
@@ -53,6 +75,13 @@
         <!-- Dinamicki ispis iz lokalne "baze" podataka -->
       </div><!--end of main-right-->
     </div><!--end of main-->
+
+<h1>
+	<p class="typewrite" id="animatedText" data-period="2000" data-type='[ "Nudimo veliki izbor, odličan kvalitet i svetski poznate brendove!" ]'>
+		<span class="wrap"></span>
+	</p>
+</h1>
+
 
     <div id="footer">
     	<div class="text-center center-block">

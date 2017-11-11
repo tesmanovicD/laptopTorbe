@@ -26,7 +26,14 @@ $(document).ready( function() {
       brendNiz = lenovoNiz;
     } else if (brend === "toshiba") {
       brendNiz = toshibaNiz;
-    } else {
+    }else if (brend === "dell") {
+        brendNiz = dellNiz;
+    }else if (brend === "hp") {
+        brendNiz = hpNiz;
+    }else if (brend === "targus") {
+        brendNiz = targusNiz;
+    }
+    else {
       brendNiz = brendoviNiz;
     }
   } else {
