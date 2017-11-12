@@ -1,6 +1,6 @@
 $(document).ready( function() {
   brendNiz = [];
-  brendoviNiz = asusNiz.concat(acerNiz,lenovoNiz,toshibaNiz);
+  // brendoviNiz = asusNiz.concat(acerNiz,lenovoNiz,toshibaNiz);
 
   function GetURLParameter(sParam) {
     var sPageURL = window.location.search.substring(1);
@@ -10,7 +10,7 @@ $(document).ready( function() {
       if (sParameterName[0] == sParam) {
         return sParameterName[1];
       } else {
-        return "all";
+        return "asus";
       }
     }
   }
@@ -27,22 +27,22 @@ $(document).ready( function() {
     } else if (brend === "toshiba") {
       brendNiz = toshibaNiz;
     }else if (brend === "dell") {
-        brendNiz = dellNiz;
+      brendNiz = dellNiz;
     }else if (brend === "hp") {
-        brendNiz = hpNiz;
+      brendNiz = hpNiz;
     }else if (brend === "targus") {
-        brendNiz = targusNiz;
+      brendNiz = targusNiz;
     }
     else {
-      brendNiz = brendoviNiz;
+      brendNiz =asusNiz;
     }
   } else {
-    brendNiz = brendoviNiz;
+    brendNiz = asusNiz;
   }
 
-
   $.each(brendNiz, function (index, value) {
-  let brend = "<div class='card col-md-3'><img src='"+value.slika+"' alt='Card image1' class='card-img-top'><div class='card-block'><h4 class='card-title'>"+value.naziv+"</h4><p class='card-text'>"+value.opis+"</p></div><div class='card-footer'><p class='card-text'>"+value.cena+"</p></div></div>"
+    if (value.opis.length > 29) value.opis = value.opis.substring(0,29)+"...";
+  let brend = "<div class='card col-md-3'><img src='"+value.slika+"' alt='Card image1' class='card-img-top'><div class='card-block'><h4 class='card-title'>"+value.naziv+"</h4><p class='card-text'>"+value.opis+"</p></div><div class='card-footer'><p class='card-text'>Cena: "+value.cena+" RSD</p></div></div>"
   $('.main-right').append(brend);
   });
 

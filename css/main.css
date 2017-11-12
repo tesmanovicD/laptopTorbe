@@ -1,13 +1,6 @@
-body {
-
-}
-
-
 ul#itemscentered a{
 	font-family: 'Amatic SC', cursive;
 	font-size: 20pt;
-
-
 }
 
 a.navbar-brand{
@@ -22,10 +15,7 @@ a.navbar-brand{
 
 .navbar .navbar-collapse {
 	text-align: center;
-
 }
-
-
 
 .img-responsive,
 .thumbnail > img,
@@ -129,8 +119,6 @@ a.navbar-brand{
 	font-size:13pt;
 	text-align: center;
 }
-
-
 
 /*----------------------------------product carousel------------------------------------*/
 
@@ -243,5 +231,14 @@ a.navbar-brand{
 	color: #008484;
 	background-color: #e8e8e8;
 	margin-bottom: -1.2%;
+}
 
+.card-img-top {
+	max-width: 100%;
+}
+
+.card {
+	border: 1px solid red;
+	margin-right: 25px;
+	margin-bottom: 20px;
 }
