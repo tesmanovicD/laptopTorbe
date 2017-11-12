@@ -235,10 +235,22 @@ a.navbar-brand{
 
 .card-img-top {
 	max-width: 100%;
+	padding: 4%;
+
+
 }
 
 .card {
-	border: 1px solid red;
+	border: 1px solid #777777;
 	margin-right: 25px;
 	margin-bottom: 20px;
+	border-radius: 2%;
+}
+
+.card-title{
+	border-bottom: 1px solid #9d9d9d;
+}
+.card-text{
+	border-bottom: 1px solid #9d9d9d;
+
 }
