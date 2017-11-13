@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+<url>
+  <loc>https://laptop-torbe.000webhostapp.com/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.9</priority>
+</url>
+<url>
+  <loc>https://laptop-torbe.000webhostapp.com/index.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.9</priority>
+</url>
+<url>
+  <loc>https://laptop-torbe.000webhostapp.com/laptop-torbe.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://laptop-torbe.000webhostapp.com/laptop-torbe.html?brend=asus</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
+<url>
+  <loc>https://laptop-torbe.000webhostapp.com/laptop-torbe.html?brend=acer</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
+<url>
+  <loc>https://laptop-torbe.000webhostapp.com/laptop-torbe.html?brend=lenovo</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
+<url>
+  <loc>https://laptop-torbe.000webhostapp.com/laptop-torbe.html?brend=toshiba</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
+<url>
+  <loc>https://laptop-torbe.000webhostapp.com/laptop-torbe.html?brend=dell</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
+<url>
+  <loc>https://laptop-torbe.000webhostapp.com/laptop-torbe.html?brend=hp</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
+<url>
+  <loc>https://laptop-torbe.000webhostapp.com/laptop-torbe.html?brend=targus</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
+</urlset>

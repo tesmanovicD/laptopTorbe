@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://laptop-torbe.000webhostapp.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://laptop-torbe.000webhostapp.com/img/acer-ranac-15inc-vodootporna.png</image:loc>
+      <image:caption>Laptop ranac Acer vodootporan 15inca</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://laptop-torbe.000webhostapp.com/img/laptop-torbe-asortiman-brendova.png</image:loc>
+      <image:caption>Laptop torbe asortiman dostupnih brendova</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://laptop-torbe.000webhostapp.com/img/laptop-ranac-toshiba-17inca.jpg</image:loc>
+      <image:caption>Laptop Ranac Toshiba 17inca</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://laptop-torbe.000webhostapp.com/img/laptop-ranac-target-12inca.jpg</image:loc>
+      <image:caption>Laptop ranac Target 12inca</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://laptop-torbe.000webhostapp.com/img/laptop-ranac-target-15inca.jpg</image:loc>
+      <image:caption>Laptop ranac Target 15inca</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://laptop-torbe.000webhostapp.com/img/lenovo-torba-14inc-vodootporna.png</image:loc>
+      <image:caption>Laptop torba Lenovo vodootporan 14inca</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://laptop-torbe.000webhostapp.com/img/laptop-torba-acer-13inca.jpg</image:loc>
+      <image:caption>Laptop torba Acer 13inca</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://laptop-torbe.000webhostapp.com/img/targus-ranac-13inc-vodootporna.jpg</image:loc>
+      <image:caption>Laptop ranac Targus vodootporan 13inca</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://laptop-torbe.000webhostapp.com/img/asus-torba-12inc-poliester.png</image:loc>
+      <image:caption>Laptop torba Asus od poliestera 12inca</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://laptop-torbe.000webhostapp.com/img/dell-torba-15inc-poliester.jpg</image:loc>
+      <image:caption>Laptop torba Dell od poliestera 15inca</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://laptop-torbe.000webhostapp.com/img/hp-torba-17inc-poliester.jpg</image:loc>
+      <image:caption>Laptop torba HP od poliestera 17inca</image:caption>
+    </image:image>
+  </url>
+</urlset>
