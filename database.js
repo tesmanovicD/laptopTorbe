@@ -160,7 +160,7 @@ lenovoNiz = [
     link: "http://www.google.rs"
   },
   {
-    naziv: "Ranac za laptopove velicine 14''",
+    naziv: "Ranac za laptop velicine 14''",
     opis: "Kruta koža",
     cena: 3450,
     slika: "img/lenovo-ranac-14inc-koza.jpg",
