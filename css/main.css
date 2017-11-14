@@ -458,3 +458,46 @@ a.navbar-brand{
 	}
 
 }
+
+.button {
+	display: inline-block;
+	border-radius: 7px;
+	background-color: rgba(0, 129, 129, 0.71);
+	border: none;
+	color: #FFFFFF;
+	text-align: center;
+	padding: 2%;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+	margin-left: 25%;
+	border: 1px solid black;
+	font-weight: bolder;
+	
+}
+
+.button span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+.button span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+}
+
+.button:hover span {
+	padding-right: 25px;
+	color: #ebebeb;
+}
+
+.button:hover span:after {
+	opacity: 1;
+	right: 0;
+}

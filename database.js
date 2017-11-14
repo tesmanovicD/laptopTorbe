@@ -6,7 +6,7 @@ asusNiz = [
     cena: 24000,
     slika: "img/asus-torba-12inc-poliester.png",
     alt: "Asus torba 12inc od poliestera",
-    link: "http://www.google.rs"
+    link: "http://www.facebook.com"
   },
   {
     naziv: "Torba za laptopove velicine 12''",
@@ -14,7 +14,7 @@ asusNiz = [
     cena: 6000,
     slika: "img/asus-torba-12inc-vodootporna.jpg",
     alt: "Asus torba 12inc vodootporna",
-    link: "http://www.google.rs"
+    link: "http://www.youtube.rs"
   },
   {
     naziv: "Torba za laptopove velicine 13''",
