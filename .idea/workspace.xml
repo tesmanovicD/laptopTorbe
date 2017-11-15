@@ -2,67 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f86588ab-90d0-4177-956f-331a11b1d1b2" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/acer-ranac-15inc-vodootporan.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/acer-torba-11inc-koznikais.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/acer-torba-12inc-vodootporna.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/acer-torba-13inc-koza.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/acer-torba-13inc-koznikais.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/acer-torba-13inc-poliester.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/acer-torba-13inc-vodootporna.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/asus-ranac-15inc-poliester.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/asus-torba-11inc-koznikais.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/asus-torba-12inc-poliester.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/asus-torba-12inc-vodootporna.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/asus-torba-13inc-koza.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/asus-torba-13inc-koznikais.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/asus-torba-14inc-poliester.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/asus-torba-17inc-vodootporna.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/dell-ranac-11inc-poliester.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/dell-ranac-15inc-poliester.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/dell-torba-12inc-vodootporna.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/dell-torba-13inc-koznikais.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/dell-torba-14inc-koza.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/dell-torba-14inc-poliester.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/dell-torba-15inc-poliester.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/dell-torba-17inc-vodootporna.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/hp-torba-12inc-vodootporna.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/hp-torba-13inc-poliester.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/hp-torba-13inc-vodootporna.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/hp-torba-14inc-koza.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/hp-torba-17inc-poliester.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/hp-torba-17inc-vodootporna.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/hp-torba-18inc-koza.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/lenovo-ranac-13inc-koznikais.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/lenovo-ranac-14inc-koza.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/lenovo-torba-11inc-koznikais.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/lenovo-torba-12inc-poliester.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/lenovo-torba-13inc-koznikais.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/lenovo-torba-13inc-vodootporna.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/lenovo-torba-14inc-vodootporna.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/lenovo-torba-17inc-vodootporna.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/lenovo-torba-17inc-vodootporna.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/targus-ranac-13inc-vodootporna.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/targus-rusak-12inc-vodootporan.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/targus-torba-11inc-koza.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/targus-torba-11inc-koznikais.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/targus-torba-11inc-koznikais.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/targus-torba-12inc-poliester.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/targus-torba-12inc-vodootporna.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/targus-torba-13inc-koznikais.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/targus-torba-14inc-koza.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/targus-torba-14inc-poliester.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/targus-torba-15inc-vodootporna.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/targus-torba-17inc-vodootporna.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/toshiba-ranac-15inc-poliester.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/toshiba-torba-11inc-vodootporna.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/toshiba-torba-13inc-koznikais.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/toshiba-torba-13inc-vodootporna.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/toshiba-torba-14inc-koznikais.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/toshiba-torba-17inc-vodootporna.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.css" afterPath="$PROJECT_DIR$/css/main.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database.js" afterPath="$PROJECT_DIR$/database.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/loadBags.js" afterPath="$PROJECT_DIR$/js/loadBags.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/laptop-torbe.html" afterPath="$PROJECT_DIR$/laptop-torbe.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -102,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="laptop-torbe.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="laptop-torbe.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/laptop-torbe.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="47" column="45" lean-forward="true" selection-start-line="47" selection-start-column="45" selection-end-line="47" selection-end-column="45" />
+            <state relative-caret-position="417">
+              <caret line="67" column="60" lean-forward="false" selection-start-line="67" selection-start-column="60" selection-end-line="67" selection-end-column="60" />
               <folding>
                 <element signature="e#2674#2680#0" expanded="true" />
                 <element signature="e#2680#2686#0" expanded="true" />
@@ -187,11 +127,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="database.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="database.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/database.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="177" column="38" lean-forward="false" selection-start-line="177" selection-start-column="38" selection-end-line="177" selection-end-column="38" />
+            <state relative-caret-position="345">
+              <caret line="39" column="29" lean-forward="false" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -220,8 +160,8 @@
         <option value="$PROJECT_DIR$/css/main.css" />
         <option value="$PROJECT_DIR$/sitemap.xml" />
         <option value="$PROJECT_DIR$/js/loadBags.js" />
-        <option value="$PROJECT_DIR$/database.js" />
         <option value="$PROJECT_DIR$/laptop-torbe.html" />
+        <option value="$PROJECT_DIR$/database.js" />
       </list>
     </option>
   </component>
@@ -316,12 +256,12 @@
       <workItem from="1510511650590" duration="3199000" />
       <workItem from="1510665121768" duration="1204000" />
       <workItem from="1510668918559" duration="22470000" />
-      <workItem from="1510748151191" duration="13461000" />
+      <workItem from="1510748151191" duration="13784000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91502000" />
+    <option name="totallyTimeSpent" value="91825000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -857,14 +797,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="177" column="38" lean-forward="false" selection-start-line="177" selection-start-column="38" selection-end-line="177" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/loadBags.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="392">
@@ -875,8 +807,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/laptop-torbe.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="47" column="45" lean-forward="true" selection-start-line="47" selection-start-column="45" selection-end-line="47" selection-end-column="45" />
+        <state relative-caret-position="417">
+          <caret line="67" column="60" lean-forward="false" selection-start-line="67" selection-start-column="60" selection-end-line="67" selection-end-column="60" />
           <folding>
             <element signature="e#2674#2680#0" expanded="true" />
             <element signature="e#2680#2686#0" expanded="true" />
@@ -893,6 +825,14 @@
             <element signature="n#style#0;n#h4#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h4#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="39" column="29" lean-forward="false" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>

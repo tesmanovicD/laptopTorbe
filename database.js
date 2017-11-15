@@ -29,7 +29,7 @@ hamaNiz = [
     link: "https://www.gigatron.rs/rancevi/hama_ranac_tortuga_za_laptop_do_173_crna__101525-106323"
   },
   {
-    naziv: "HAMA Phuket ranac za notebook - 101082",
+    naziv: "HAMA Phuket - 101082",
     opis: "Do 15.6''",
     cena: 3690,
     slika: "img/hama_phuket.jpg",
@@ -37,7 +37,7 @@ hamaNiz = [
     link: "https://www.gigatron.rs/rancevi/hama_phuket_ranac_za_notebook_do_156__101082-30449"
   },
   {
-    naziv: "HAMA Ranac Dublin za laptop - 101274",
+    naziv: "HAMA Ranac Dublin - 101274",
     opis: "Do 17.3''",
     cena: 4290,
     slika: "img/hama_dublin.png",
