@@ -8,14 +8,14 @@ asusNiz = [
     alt: "Asus Ranac ROG Ranger za laptop do 17 inca",
     link: "https://www.gigatron.rs/rancevi/asus_ranac_rog_ranger_za_laptop_do_17_crna__not09743-98059"
   },
-    {
-        naziv: "ASUS Torba ROG Ranger",
-        opis: "Do 15.6''",
-        cena: 9990,
-        slika: "img/asus_laptop_torba_rog_ranger.png",
-        alt: "ASUS laptop torba ROG Ranger Messenger do 15.6 inca",
-        link: "https://www.gigatron.rs/torbe/asus_laptop_torba_rog_ranger_messenger-74031"
-    }
+  {
+    naziv: "ASUS Torba ROG Ranger",
+    opis: "Do 15.6''",
+    cena: 9990,
+    slika: "img/asus_laptop_torba_rog_ranger.png",
+    alt: "ASUS laptop torba ROG Ranger Messenger do 15.6 inca",
+    link: "https://www.gigatron.rs/torbe/asus_laptop_torba_rog_ranger_messenger-74031"
+  }
 ];
 
 // HAMA ARRAY DATABASE
@@ -95,39 +95,38 @@ lenovoNiz = [
     alt: "LENOVO YC600-WW Ranac za laptop do 15.6 inca",
     link: "https://www.gigatron.rs/rancevi/lenovo_yc600ww-115311"
   },
-    {
-        naziv: "LENOVO Y Gaming Armored - GX40L16533 Ranac za laptop",
-        opis: "Do 17''",
-        cena: 8990,
-        slika: "img/lenovo_y_gaming_armored.png",
-        alt: "LENOVO Y Gaming Armored - GX40L16533 Ranac za laptop, do 17 inca, Crna",
-        link: "https://www.gigatron.rs/rancevi/lenovo_y_gaming_armored__gx40l16533-115301"
-    }
-    ,
-    {
-        naziv: "LENOVO Ranac ThinkPad Professional Backpack",
-        opis: "Do 15.6''",
-        cena: 10990,
-        slika: "img/lenovo_thinkpad.png",
-        alt: "LENOVO Ranac ThinkPad Professional Backpack za laptop do 15.6 inca",
-        link: "https://www.gigatron.rs/rancevi/lenovo_ranac_thinkpad_professional_backpack_za_laptop_do_156-66213"
-    },
-    {
-        naziv: "LENOVO Torba Simple Toploader T1050",
-        opis: "Do 15.6''",
-        cena: 1090,
-        slika: "img/lenovo_simple_toploader.png",
-        alt: "LENOVO Torba Simple Toploader T1050 za laptop do 15.6 inca",
-        link: "https://www.gigatron.rs/torbe/lenovo_torba_simple_toploader_t1050_za_laptop_do_156__888015205-77311"
-    },
-    {
-        naziv: "LENOVO Torba T500 Top Loader- GX40J46741",
-        opis: "Do 15.6''",
-        cena: 3990,
-        slika: "img/lenovo_toploader.png",
-        alt: "LENOVO Torba za laptop do 15.6 inca T500 Top Loader (Crna) - GX40J46741",
-        link: "https://www.gigatron.rs/torbe/lenovo_torba_za_laptop_do_156_t500_top_loader_crna__gx40j46741-103541"
-    }
+  {
+    naziv: "LENOVO Y Gaming Armored - GX40L16533 Ranac za laptop",
+    opis: "Do 17''",
+    cena: 8990,
+    slika: "img/lenovo_y_gaming_armored.png",
+    alt: "LENOVO Y Gaming Armored - GX40L16533 Ranac za laptop, do 17 inca, Crna",
+    link: "https://www.gigatron.rs/rancevi/lenovo_y_gaming_armored__gx40l16533-115301"
+  },
+  {
+    naziv: "LENOVO Ranac ThinkPad Professional Backpack",
+    opis: "Do 15.6''",
+    cena: 10990,
+    slika: "img/lenovo_thinkpad.png",
+    alt: "LENOVO Ranac ThinkPad Professional Backpack za laptop do 15.6 inca",
+    link: "https://www.gigatron.rs/rancevi/lenovo_ranac_thinkpad_professional_backpack_za_laptop_do_156-66213"
+  },
+  {
+    naziv: "LENOVO Torba Simple Toploader T1050",
+    opis: "Do 15.6''",
+    cena: 1090,
+    slika: "img/lenovo_simple_toploader.png",
+    alt: "LENOVO Torba Simple Toploader T1050 za laptop do 15.6 inca",
+    link: "https://www.gigatron.rs/torbe/lenovo_torba_simple_toploader_t1050_za_laptop_do_156__888015205-77311"
+  },
+  {
+    naziv: "LENOVO Torba T500 Top Loader- GX40J46741",
+    opis: "Do 15.6''",
+    cena: 3990,
+    slika: "img/lenovo_toploader.png",
+    alt: "LENOVO Torba za laptop do 15.6 inca T500 Top Loader (Crna) - GX40J46741",
+    link: "https://www.gigatron.rs/torbe/lenovo_torba_za_laptop_do_156_t500_top_loader_crna__gx40j46741-103541"
+  }
 ];
 //SPIRIT ARRAY DATABASE
 spiritNiz = [
@@ -190,14 +189,14 @@ dellNiz = [
     alt: "DELL Ranac Alienware Vindicator za laptop do 17 inca",
     link: "https://www.gigatron.rs/rancevi/dell_ranac_alienware_vindicator_za_laptop_do_17_crna__not10242-96953"
   },
-    {
-        naziv: "DELL Torba Essential Topload - NOT10601 ",
-        opis: "Do 15.6''",
-        cena: 2190,
-        slika: "img/dell_torba_topload.png",
-        alt: "DELL Torba Essential Topload za laptop do 15.6 inca (Crna) - NOT10601",
-        link: "https://www.gigatron.rs/torbe/dell_torba_essential_topload_za_laptop_do_156_crna__not10601-98915"
-    }
+  {
+    naziv: "DELL Torba Essential Topload - NOT10601 ",
+    opis: "Do 15.6''",
+    cena: 2190,
+    slika: "img/dell_torba_topload.png",
+    alt: "DELL Torba Essential Topload za laptop do 15.6 inca (Crna) - NOT10601",
+    link: "https://www.gigatron.rs/torbe/dell_torba_essential_topload_za_laptop_do_156_crna__not10601-98915"
+  }
 ];
 
 //HP ARRAY DATABASE
@@ -249,40 +248,39 @@ hpNiz = [
     slika: "img/hp_elite.png",
     alt: "HP Torba Elite Top Load Colombian Leather za laptop do 14 inca - T9H72AA",
     link: "https://www.gigatron.rs/torbe/hp_torba_elite_top_load_colombian_leather_za_laptop_do_14__t9h72aa-92839"
+  },
+  {
+    naziv: "HP Torba Executive Topload - K0S30AA ",
+    opis: "Do 15.6''",
+    cena: 13990,
+    slika: "img/hp_executive_topload.png",
+    alt: "HP Torba Executive Topload za laptop do 15.6 inca - K0S30AA ",
+    link: "https://www.gigatron.rs/torbe/hp_torba_executive_topload_za_laptop_do_156__k0s30aa-71343"
+  },
+  {
+    naziv: "HP Torba Duotone Blue-Y4T19AA",
+    opis: "Do 15.6''",
+    cena: 2490,
+    slika: "img/hp_duotone_blue.png",
+    alt: "HP Torba Duotone Blue za laptop do 15.6 inca - Y4T19AA",
+    link: "https://www.gigatron.rs/torbe/hp_torba_duotone_blue_za_laptop_do_156__y4t19aa-90945"
+  },
+  {
+    naziv: "HP Torba Duotone Red - Y4T18AA ",
+    opis: "Do 15.6''",
+    cena: 2490,
+    slika: "img/hp_duotone_red.png",
+    alt: "HP Torba Duotone Red za laptop do 15.6 inca - Y4T18AA ",
+    link: "https://www.gigatron.rs/torbe/hp_torba_duotone_red_za_laptop_do_156__y4t18aa-90961"
+  },
+  {
+    naziv: "HP Torba Value Top Load Case - QB683AA",
+    opis: "Do 18''",
+    cena: 2990,
+    slika: "img/hp_value.png",
+    alt: "HP Torba Value Top Load Case za laptop do 18 inca - QB683AA",
+    link: "https://www.gigatron.rs/torbe/hp_torba_value_top_load_case_za_laptop_do_18__qb683aa-8379"
   }
-    ,
-    {
-        naziv: "HP Torba Executive Topload - K0S30AA ",
-        opis: "Do 15.6''",
-        cena: 13990,
-        slika: "img/hp_executive_topload.png",
-        alt: "HP Torba Executive Topload za laptop do 15.6 inca - K0S30AA ",
-        link: "https://www.gigatron.rs/torbe/hp_torba_executive_topload_za_laptop_do_156__k0s30aa-71343"
-    },
-    {
-        naziv: "HP Torba Duotone Blue-Y4T19AA",
-        opis: "Do 15.6''",
-        cena: 2490,
-        slika: "img/hp_duotone_blue.png",
-        alt: "HP Torba Duotone Blue za laptop do 15.6 inca - Y4T19AA",
-        link: "https://www.gigatron.rs/torbe/hp_torba_duotone_blue_za_laptop_do_156__y4t19aa-90945"
-    },
-    {
-        naziv: "HP Torba Duotone Red - Y4T18AA ",
-        opis: "Do 15.6''",
-        cena: 2490,
-        slika: "img/hp_duotone_red.png",
-        alt: "HP Torba Duotone Red za laptop do 15.6 inca - Y4T18AA ",
-        link: "https://www.gigatron.rs/torbe/hp_torba_duotone_red_za_laptop_do_156__y4t18aa-90961"
-    },
-    {
-        naziv: "HP Torba Value Top Load Case - QB683AA",
-        opis: "Do 18''",
-        cena: 2990,
-        slika: "img/hp_value.png",
-        alt: "HP Torba Value Top Load Case za laptop do 18 inca - QB683AA",
-        link: "https://www.gigatron.rs/torbe/hp_torba_value_top_load_case_za_laptop_do_18__qb683aa-8379"
-    }
 ];
 //Targus ARRAY DATABASE
 targusNiz = [
