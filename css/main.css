@@ -99,10 +99,11 @@ a.navbar-brand{
 	width: 90%;
 	margin-left: 5%;
 	border: 3px solid #007373;
-	background-color: #f6f6f6;
 	border-radius: 15px/15px;
 }
-
+#fewbags{
+	padding-top:15%;
+}
 #aboutUsTitle{
 	text-align: center;
 	font-family: 'Reenie Beanie', cursive;
