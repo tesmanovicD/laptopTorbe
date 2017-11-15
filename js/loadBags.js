@@ -22,12 +22,12 @@ $(document).ready( function() {
   if (brend) {
     if (brend === "asus") {
       brendNiz = asusNiz;
-    } else if (brend === "acer") {
-      brendNiz = acerNiz;
+    } else if (brend === "hama") {
+      brendNiz = hamaNiz;
     } else if (brend === "lenovo") {
       brendNiz = lenovoNiz;
-    } else if (brend === "toshiba") {
-      brendNiz = toshibaNiz;
+    } else if (brend === "spirit") {
+      brendNiz = spiritNiz;
     }else if (brend === "dell") {
       brendNiz = dellNiz;
     }else if (brend === "hp") {
@@ -44,7 +44,7 @@ $(document).ready( function() {
 
   $.each(brendNiz, function (index, value) {
     if (value.opis.length > 29) value.opis = value.opis.substring(0,20)+"...";
-      let brend = "<div class='card col-md-3'><img src='"+value.slika+"' alt='Card image1' class='card-img-top'><div class='card-block'><h4 class='card-title'>"+value.naziv+"</h4><p class='card-text'>"+value.opis+"</p></div><div class='card-footer'><p class='card-text'>Cena: "+value.cena+" RSD</p></div><a href='"+value.link+"' class='button'><span>Pogledaj proizvod</span></a></div>"
+      let brend = "<div class='card col-md-3'><img src='"+value.slika+"' alt='Card image1' class='card-img-top'><div class='card-block'><h4 class='card-title'>"+value.naziv+"</h4><p class='card-text'>"+value.opis+"</p></div><div class='card-footer'><p class='card-text'>Cena: "+value.cena+" RSD</p></div><a href='"+value.link+"' class='button'><span>VIDI DETALJE</span></a></div>"
   $('.main-right').append(brend);
   });
 
