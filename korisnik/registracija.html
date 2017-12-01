@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <form method="post" action="php/registracija.php">
+    <h3>Podaci za prijavu</h3>
+
+    <div class="form-group">
+      <label for="email">Korisnicko ime</label><em>*</em>
+      <div class="input-box">
+        <input type="text" name="korisnicko_ime" class="form-control">
+      </div>
+    </div><!-- end of form-group -->
+
+    <div class="form-group">
+      <label for="email">Email adresa</label><em>*</em>
+      <div class="input-box">
+        <input type="email" name="email" class="form-control">
+      </div>
+    </div><!-- end of form -->
+
+    <div class="form-group">
+      <label for="lozinka">Lozinka</label><em>*</em>
+      <div class="input-box">
+        <input type="password" name="lozinka" class="form-control">
+      </div>
+    </div><!-- end of form-group -->
+
+    <div class="form-group">
+      <label for="potvrda_lozinke">Potvrdite Lozinku</label><em>*</em>
+      <div class="input-box">
+        <input type="password" name="potvrda_lozinke" class="form-control">
+      </div>
+    </div><!-- end of form-group -->
+
+    <h3>Licni Podaci</h3>
+    <div class="form-group">
+      <label for="ime">Ime</label><em>*</em>
+      <div class="input-box">
+        <input type="text" name="ime" class="form-control">
+      </div>
+    </div><!-- end of form-group -->
+
+    <div class="form-group">
+      <label for="prezime">Prezime</label><em>*</em>
+      <div class="input-box">
+        <input type="text" name="prezime" class="form-control">
+      </div>
+    </div><!-- end of form-group -->
+
+  <!-- BEGIN OF NULL VALUES -->
+    <div class="null-values">
+      <div class="form-group">
+        <label for="datum_rodjenja">Datum rodjenja</label>
+        <div class="input-box">
+          <input type="text" name="datum_rodjenja" class="form-control">
+        </div>
+      </div><!-- end of form-group -->
+
+      <div class="form-group">
+        <label for="jmbg">JMBG</label>
+        <div class="input-box">
+          <input type="text" name="jmbg" class="form-control">
+        </div>
+      </div><!-- end of form-group -->
+
+      <div class="form-group">
+        <label for="mobilni">Mobilni</label>
+        <div class="input-box">
+          <input type="text" name="mobilni" class="form-control">
+        </div>
+      </div><!-- end of form-group -->
+
+      <div class="form-group">
+        <label for="adresa">Adresa</label>
+        <div class="input-box">
+          <input type="text" name="adresa" class="form-control">
+        </div>
+      </div><!-- end of form-group -->
+
+      <div class="form-group">
+        <label for="drzava">Drzava</label>
+        <div class="input-box">
+          <input type="text" name="drzava" class="form-control">
+        </div>
+      </div><!-- end of form-group -->
+
+      <div class="form-group">
+        <label for="grad">Grad</label>
+        <div class="input-box">
+          <input type="text" name="grad" class="form-control">
+        </div>
+      </div><!-- end of form-group -->
+
+      <div class="form-group">
+        <label for="postanski_broj">Postanski broj</label>
+        <div class="input-box">
+          <input type="text" name="postanski_broj" class="form-control">
+        </div>
+      </div><!-- end of form-group -->
+    </div>
+    <!-- END OF NULL VALUES-->
+
+    <button type="submit">Posalji</button>
+    <button type="reset">Otkazi</button>
+  </form>
+
+  </body>
+</html>
