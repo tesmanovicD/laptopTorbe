@@ -1,18 +1,5 @@
 <?php
 include("../../config/dbconfig.php");
-// $korisnicko_ime = $_POST['korisnicko_ime'];
-// $email = $_POST['email'];
-// $lozinka = $_POST['lozinka'];
-// $potvrda_lozinke = $_POST['potvrda_lozinke'];
-// $ime = $_POST['ime'];
-// $prezime = $_POST['prezime'];
-// $datum_rodjenja = $_POST['datum_rodjenja'];
-// $jmbg = $_POST['jmbg'];
-// $mobilni = $_POST['mobilni'];
-// $adresa = $_POST['adresa'];
-// $drzava = $_POST['drzava'];
-// $grad = $_POST['grad'];
-// $postanski_broj = $_POST['postanski_broj'];
 
 $p_podaci = ["korisnicko_ime" => $_POST['korisnicko_ime'], "email" => $_POST['email'], "lozinka" => $_POST['lozinka'], "potvrda_lozinke" => $_POST['potvrda_lozinke']];
 $l_podaci = ["ime" => $_POST['ime'], "prezime" => $_POST['prezime'], "datum_rodjenja" => $_POST['datum_rodjenja'], "jmbg" => $_POST['jmbg'], "mobilni" => $_POST['mobilni'], "adresa" => $_POST['adresa'],
@@ -29,17 +16,24 @@ function proveraPodataka($p_podaci) {
     }
   }
 
-  if (!proveriLozinke($p_podaci['lozinka'],$p_podaci['potvrda_lozinke'])) {
-    echo "Lozinke se ne podudaraju!";
+  if (strlen($p_podaci['korisnicko_ime']) < 5) {
+    echo "Korisnicko ime mora da sadrzi minimum 5 karaktera!";
   } else {
-    return true;
+    if (strlen($p_podaci['lozinka']) < 6) {
+      echo "Lozinka mora da sadrzi minimum 6 karaktera!";
+    } else {
+      if (!proveriLozinke($p_podaci['lozinka'],$p_podaci['potvrda_lozinke'])) {
+        echo "Lozinke se ne podudaraju!";
+      } else {
+        return true;
+      }
+    }
   }
-
 }
 
 function registrujKorisnika($p_podaci,$l_podaci,$connection) {
   if (!proveraPodataka($p_podaci)) {
-     header("refresh:2;url=../registracija.html");
+    header("refresh:2;url=../registracija.html");
   } else {
     if (proveriKorisnika($p_podaci['korisnicko_ime'], $connection))
     {
@@ -55,6 +49,7 @@ function registrujKorisnika($p_podaci,$l_podaci,$connection) {
     echo "Korisnicko ime ".$p_podaci['korisnicko_ime']." je vec reigstrovano!";
   }
   }
+
 }
 
 function proveriLozinke($lozinka, $potvrda_lozinke) {
