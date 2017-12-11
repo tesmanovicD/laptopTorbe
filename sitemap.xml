@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+<url>
+  <loc>https://laptop-torbe.me/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.9</priority>
+</url>
+<url>
+  <loc>https://laptop-torbe.me/index.html</loc>
+  <changefreq>daily</changefreq>
+  <priority>0.9</priority>
+</url>
+<url>
+  <loc>https://laptop-torbe.me/laptop-torbe.html</loc>
+  <changefreq>daily</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://laptop-torbe.me/kontakt.html</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://laptop-torbe.me/onama.html</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://laptop-torbe.me/laptop-torbe.html?brend=asus</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
+<url>
+  <loc>https://laptop-torbe.me/laptop-torbe.html?brend=hama</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
+<url>
+  <loc>https://laptop-torbe.me/laptop-torbe.html?brend=lenovo</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
+<url>
+  <loc>https://laptop-torbe.me/laptop-torbe.html?brend=spirit</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
+<url>
+  <loc>https://laptop-torbe.me/laptop-torbe.html?brend=dell</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
+<url>
+  <loc>https://laptop-torbe.me/laptop-torbe.html?brend=hp</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
+<url>
+  <loc>https://laptop-torbe.me/laptop-torbe.html?brend=targus</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
+</urlset>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://laptop-torbe.me/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://laptop-torbe.me/img/dell_torba_topload.png</image:loc>
+      <image:caption>DELL Torba Essential Topload - NOT10601a</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://laptop-torbe.me/img/asus_laptop_torba_rog_ranger.png</image:loc>
+      <image:caption>ASUS laptop torba ROG Ranger Messenger do 15.6 inca</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://laptop-torbe.me/img/lenovo_y_gaming_armored.png</image:loc>
+      <image:caption>LENOVO Y Gaming Armored - GX40L16533 Ranac za laptop, do 17 inca, Crna</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://laptop-torbe.me/img/dell_ranac_alienware_vindicator.png</image:loc>
+      <image:caption>DELL Ranac Alienware Vindicator za laptop do 17 inca</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://laptop-torbe.me/img/hama_tortuga.png</image:loc>
+      <image:caption>HAMA Ranac Tortuga za laptop do 17.3 inca (Crna) - 101525</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://laptop-torbe.me/img/targus_cn01.jpg</image:loc>
+      <image:caption>TARGUS Torba za notebook 16 inca - CN01</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://laptop-torbe.me/img/value_slider.png</image:loc>
+      <image:caption>HP Torba Value Top Load Case za laptop do 18 inca - QB683AA</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://laptop-torbe.me/img/odyssey_slider.png</image:loc>
+      <image:caption>HP 15.6 inca Odyssey Backpack (Crna) - L8J88AA</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://laptop-torbe.me/img/duotone_slider.png</image:loc>
+      <image:caption>HP Torba Duotone Red za laptop do 15.6 inca - Y4T18AA</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://laptop-torbe.me/img/avenue_slider.png</image:loc>
+      <image:caption>SPIRIT Ranac Avenue - TTS 404840 do 15.6 inca</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://laptop-torbe.me/img/laptop-torbe-asortiman-brendova.png</image:loc>
+      <image:caption>Laptop torbe asortiman dostupnih brendova</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://laptop-torbe.me/onama.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://laptop-torbe.me/img/milos-profilna-slika.jpg</image:loc>
+      <image:caption>Miloš Mijatović osnivač sajta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://laptop-torbe.me/img/daniel-profilna-slika.jpg</image:loc>
+      <image:caption>Daniel Tešmanović osnivač sajta</image:caption>
+    </image:image>
+  </url>
+</urlset>

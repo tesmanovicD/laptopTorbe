@@ -1,0 +1,7 @@
+ErrorDocument 500 /greska.html
+
+ErrorDocument 404 /greska.html
+
+ErrorDocument 401 /greska.html
+
+ErrorDocument 403 /greska.html

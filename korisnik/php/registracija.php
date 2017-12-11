@@ -1,5 +1,5 @@
 <?php
-include("../../config/dbconfig.php");
+include_once("../../config/dbconfig.php");
 
 $p_podaci = ["korisnicko_ime" => $_POST['korisnicko_ime'], "email" => $_POST['email'], "lozinka" => $_POST['lozinka'], "potvrda_lozinke" => $_POST['potvrda_lozinke']];
 $l_podaci = ["ime" => $_POST['ime'], "prezime" => $_POST['prezime'], "datum_rodjenja" => $_POST['datum_rodjenja'], "jmbg" => $_POST['jmbg'], "mobilni" => $_POST['mobilni'], "adresa" => $_POST['adresa'],
@@ -38,7 +38,7 @@ function registrujKorisnika($p_podaci,$l_podaci,$connection) {
     if (proveriKorisnika($p_podaci['korisnicko_ime'], $connection))
     {
     $sqlInsert = "INSERT INTO korisnici (Korisnicko_Ime, Lozinka, Email, Ime, Prezime, Datum_rodjenja, JMBG, Mobilni, Adresa, Postanski_broj, Grad, Drzava)
-                  VALUES ('".$p_podaci['korisnicko_ime']."', '".$p_podaci['lozinka']."', '".$p_podaci['email']."', '".$l_podaci['ime']."', '".$l_podaci['prezime']."', '".$l_podaci['datum_rodjenja']."',
+                  VALUES ('".$p_podaci['korisnicko_ime']."', '".md5($p_podaci['lozinka'])."', '".$p_podaci['email']."', '".$l_podaci['ime']."', '".$l_podaci['prezime']."', '".$l_podaci['datum_rodjenja']."',
                   '".$l_podaci['jmbg']."', '".$l_podaci['mobilni']."', '".$l_podaci['adresa']."', '".$l_podaci['postanski_broj']."', '".$l_podaci['grad']."', '".$l_podaci['drzava']."')";
     if (!mysqli_query($connection, $sqlInsert)) {
       echo "Greska";
