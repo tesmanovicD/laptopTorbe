@@ -17,10 +17,10 @@ function proveraPodataka($p_podaci) {
   }
 
   if (strlen($p_podaci['korisnicko_ime']) < 5) {
-    echo "Korisnicko ime mora da sadrzi minimum 5 karaktera!";
+    echo "Korisničko ime mora da sadrzi minimum 5 karaktera!";
   } else {
     if (strlen($p_podaci['lozinka']) < 6) {
-      echo "Lozinka mora da sadrzi minimum 6 karaktera!";
+      echo "Lozinka mora da sadrži minimum 6 karaktera!";
     } else {
       if (!proveriLozinke($p_podaci['lozinka'],$p_podaci['potvrda_lozinke'])) {
         echo "Lozinke se ne podudaraju!";

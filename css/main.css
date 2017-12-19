@@ -2,7 +2,6 @@ ul#itemscentered a{
 	font-family: 'Amatic SC', cursive;
 	font-size: 20pt;
 }
-
 a.navbar-brand{
 	font-family: 'Reenie Beanie', cursive;
 	font-size: 20pt;
@@ -509,4 +508,47 @@ a.navbar-brand{
 
 .site-banners {
 	margin-bottom: 20px;
+}
+
+
+#registerform{
+	border: 2px solid #008484;
+	margin-left: 35%;
+	margin-right: 35%;
+	border-radius: 20px/20px;
+	font-family:'Kalam', cursive;
+	font-size: 20px;
+	background-color: #f6f6f6;
+
+
+}
+#loginform{
+	border: 2px solid #008484;
+	margin-left: 35%;
+	margin-right: 35%;
+	margin-top: 6%;
+	border-radius: 20px/20px;
+	font-family:'Kalam', cursive;
+	font-size: 25px;
+	background-color: #f6f6f6;
+}
+
+.input-box{
+	width: 50%;
+	margin: auto;
+}
+
+.submitbutton{
+	margin-bottom:6%;
+	margin-top:3%;
+	border-radius: 15%;
+}
+
+.dodavanje{
+	width: 300px;
+	height: 50px;
+	font-size: 27px;
+	text-align: center;
+	font-weight: bold
+
 }

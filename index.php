@@ -1,6 +1,13 @@
 <?php
 session_start();
-echo $_SESSION["user_admin"];
+function sessionStarted() {
+  if (isset($_SESSION['user_admin'])) {
+    return true;
+  } else {
+    return false;
+  }
+}
+// echo $_SESSION["user_admin"];
 ?>
 <!DOCTYPE html>
 <html lang="sr">
@@ -82,19 +89,25 @@ echo $_SESSION["user_admin"];
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.html">Laptop-Torbe.rs</a>
+			<a class="navbar-brand" href="index.php">Laptop-Torbe.me</a>
 		</div><!--end of navbar-header-->
 
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav" id="itemscentered">
-				<li><a href="index.html">Početna stranica &nbsp;&nbsp;<span class=" glyphicon glyphicon-home"></span></a></li>
+				<li class="active"><a href="index.php">Početna stranica &nbsp;&nbsp;<span class=" glyphicon glyphicon-home"></span></a></li>
 				<li><a href="laptop-torbe.html">Naši proizvodi &nbsp;&nbsp;<span class=" glyphicon glyphicon-briefcase"></span></a></li>
 				<li><a href="kontakt.html">Kontakt &nbsp;&nbsp;<span class="  glyphicon glyphicon-phone-alt"></span></a></li>
 				<li><a href="onama.html">O nama &nbsp;&nbsp;<span class="  glyphicon glyphicon-education"></span></a></li>
+        <?php if(!sessionStarted()) { ?><li><a href="korisnik/registracija.html">Registracija &nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></a></li><?php } ?>
+        <?php if(!sessionStarted()) { ?><li><a href="korisnik/login.html">Prijava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li><?php } ?>
+				<?php if(sessionStarted()) { ?><li><a href="korisnik/php/logout.php">Odjava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li><?php } ?>
 			</ul><!--end of navbar items-->
 		</div><!--end of myNavbar-->
 	</div><!--end of container-fluid-->
 </nav><!--end of navbar-->
+
+
+
 
 <section class="section-white">
 	<div class="container">
