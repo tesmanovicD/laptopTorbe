@@ -29,8 +29,6 @@ function listanjeKategorija() {
    echo $enum;
 }
 
-function dodajBrend() {
 
-}
 
  ?>
