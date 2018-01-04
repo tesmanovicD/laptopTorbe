@@ -6,7 +6,7 @@ asusNiz = [
     cena: 18990,
     slika: "img/asus_ranac_rog_ranger.png",
     alt: "Asus Ranac ROG Ranger za laptop do 17 inca",
-    link: "https://www.gigatron.rs/rancevi/asus_ranac_rog_ranger_za_laptop_do_17_crna__not09743-98059"
+    link: "img/card.php"
   },
   {
     naziv: "ASUS Torba ROG Ranger",
