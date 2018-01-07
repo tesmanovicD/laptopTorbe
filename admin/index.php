@@ -55,8 +55,9 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_admin'] == 0 ) {
 
 <p style="font-size: 35px;">Broj registrovanih korisnika: <?php brojKorisnika() ?></p>
 <p style="font-size: 35px;">Broj laptop torbi u bazi: <?php brojLaptopTorbi() ?></p>
-<button onclick="document.getElementById('dodajTorbu').hidden = '';" class="btn btn-primary">Dodaj laptop torbu</button>
-<button type="button" name="izmeniTorbu" onclick="izmeniBazu('torba')" class="btn btn-primary">Izmeni torbu</button>
+<button id="prikaziTorbe" class="btn btn-primary">Dodaj laptop torbu</button>
+<button name="izmeniTorbu" onclick="izmeniBazu('torba')" class="btn btn-primary">Izmeni torbu</button>
+<button name="listaKorisnika" onclick="listaKorisnika()" class="btn btn-primary">Dodaj admina</button>
 
 <div class="container">
   <div id="dodajTorbu" hidden="hidden">
@@ -120,12 +121,27 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_admin'] == 0 ) {
        </tbody>
    </table>
 
+   <table id="korisnici" hidden="hidden" class="table table-bordered">
+       <thead class="thead-light">
+         <tr>
+            <th scope="col">&nbsp;ID&nbsp;</th>
+            <th scope="col">&nbsp;Korisnicko Ime&nbsp;</th>
+            <th scope="col">Email</th>
+            <th scope="col">Admin</th>
+          </tr>
+       </thead>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+
 </div><!--end of container-->
 
 
 <script type="text/javascript">
 
-var lista_torbi=[];
+var lista_torbi = [];
+var lista_korisnika = [];
 
   function dodajTorbu() {
     $.ajax({
@@ -182,14 +198,40 @@ var lista_torbi=[];
     })
   }
 
+  function listaKorisnika() {
+    $.ajax({
+      data: { ime: "korisnik" },
+      type: "POST",
+      url: "backend/izmeniBazu.php",
+      success: function(data) {
+            lista_korisnika = [];
+            tempKorisnici= JSON.parse(data);
+            for (var i = 0; i < tempKorisnici.length; i++) {
+              lista_korisnika.push({
+              ID: tempKorisnici[i].ID,
+              Korisnicko_ime: tempKorisnici[i].Korisnicko_ime,
+              Email: tempKorisnici[i].Email,
+              Admin: tempKorisnici[i].Admin,
+              });
+            }
+            console.log(lista_korisnika);
+            korisniciAppend();
+
+
+
+      }
+    })
+  }
+
   function torbeAppend() {
     document.getElementById("dodajTorbu").hidden = "hidden";
     document.getElementById("torbe").hidden = "";
+    document.getElementById("korisnici").hidden = "hidden";
     $("#torbe .dynamicWrite").empty();
     let tr;
     for (var i = 0; i < lista_torbi.length; i++) {
         tr = $('<tr class="dynamicWrite" scope="row"/>');
-        tr.append("<td class='tabledata'><a>" + lista_torbi[i].ID + "</a></td>");
+        tr.append("<td class='tabledata'><a href=\"index.php?opcija=izmenaTorbe&id="+lista_torbi[i].ID+"\">" + lista_torbi[i].ID + "</a></td>");
         tr.append("<td class='tabledata'>" + lista_torbi[i].Naziv + "</td>");
         tr.append("<td class='tabledata'>" + lista_torbi[i].Opis + "</td>");
         tr.append("<td class='tabledata'>" + lista_torbi[i].Cena + "</td>");
@@ -202,8 +244,82 @@ var lista_torbi=[];
     }
   }
 
+  function azurirajTorbu() {
+
+    $.ajax({
+        data: { tip_podatka: "izmena_torbe", id: $('#idTorbe').val(), naziv: $('#nazivTorbe').val(), opis: $('#opisTorbe').val(), cena: $('#cenaTorbe').val(), slika: $('#slika').val(),
+              alt: $('#alt').val(), link: $('#link').val(), kategorija: $('#kategorija').val(), kolicina: $('#kolicinaTorbe').val() },
+        type: "POST",
+        url: "backend/izmeniBazu.php",
+        success: function(data){
+          alert(data);
+        }
+    });
+  }
+
+  function azurirajKorisnika(id) {
+    id = id;
+    $.ajax({
+        data: { tip_podatka: "izmena_admina", id: id, emailKorisnika: $('#adminKorisnik').val() },
+        type: "POST",
+        url: "backend/izmeniBazu.php",
+        success: function(data){
+          alert(data);
+        }
+    });
+  }
+
+  function korisniciAppend() {
+    document.getElementById("dodajTorbu").hidden = "hidden";
+    document.getElementById("torbe").hidden = "hidden";
+    document.getElementById("korisnici").hidden = "";
+    $("#korisnici .dynamicWrite").empty();
+    let tr;
+    for (var i = 0; i < lista_korisnika.length; i++) {
+        tr = $('<tr class="dynamicWrite" scope="row"/>');
+        tr.append("<td class='tabledata' id='idKorisnika'><a onclick=\"azurirajKorisnika("+lista_korisnika[i].ID+")\">" + lista_korisnika[i].ID + "</a></td>");
+        tr.append("<td class='tabledata' id='korisnickoIme'>" + lista_korisnika[i].Korisnicko_ime + "</td>");
+        tr.append("<td class='tabledata' id='emailKorisnika'>" + lista_korisnika[i].Email + "</td>");
+        tr.append("<td class='tabledata' id='adminKorisnik'>" + lista_korisnika[i].Admin + "</td>");
+        $('#korisnici').append(tr);
+    }
+  }
+
+  $('#prikaziTorbe').on("click", function() {
+    document.getElementById("torbe").hidden = "hidden";
+    document.getElementById("korisnici").hidden = "hidden";
+    document.getElementById('dodajTorbu').hidden = '';
+
+  })
+
 </script>
   </body>
 </html>
 
-<?php } ?>
+<?php }
+
+if (isset($_GET['opcija']) && isset($_GET['id'])) {
+  $opcija = $_GET['opcija'];
+  $torbaID = $_GET['id'];
+
+  if ($opcija == 'izmenaTorbe') {
+    $sql_select = "SELECT * FROM `stavke_torbe` WHERE ID=".$torbaID."";
+    $result = mysqli_query($connection,$sql_select);
+
+    if (mysqli_num_rows($result) > 0) {
+      echo "<form style=\"color:#000;\">";
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            echo "<span style=\"display:none;\">ID: <input type=\"text\" value=\"". $row['ID']."\" id=\"idTorbe\" disabled/></span><br/>";
+            echo "Naziv: <input type=\"text\" value=\"". $row['Naziv']."\" id=\"nazivTorbe\" /><br/>";
+            // echo "<img src=\"./img/".$row['Slika']."\" alt=\"".$row['Alt']."\"><br/>";
+            echo "Opis: <input type=\"text\" value=\"". $row['Opis']."\" id=\"opisTorbe\" /><br/>";
+            echo "Cena: <input type=\"text\" value=\"". $row['Cena']."\" id=\"cenaTorbe\" />$<br/>";
+            echo "Dostupno: <input type=\"text\" value=\"". $row['Kolicina']."\" id=\"kolicinaTorbe\" />kom.<br/>";
+        }
+        echo "<button onclick=\"azurirajTorbu()\">Azuriraj </button>";
+        echo "</form>";
+    } else echo "Nema torbe sa tim ID-em u bazi";
+
+  }
+}
+ ?>
