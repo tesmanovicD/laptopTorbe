@@ -132,9 +132,11 @@ if (isset($_GET["action"])){
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav" id="itemscentered">
                 <li class="active"><a href="../index.php">Početna stranica &nbsp;&nbsp;<span class=" glyphicon glyphicon-home"></span></a></li>
-                <li><a href="../laptop-torbe.html">Naši proizvodi &nbsp;&nbsp;<span class=" glyphicon glyphicon-briefcase"></span></a></li>
-                <li><a href="../kontakt.html">Kontakt &nbsp;&nbsp;<span class="  glyphicon glyphicon-phone-alt"></span></a></li>
-                <li><a href="../onama.html">O nama &nbsp;&nbsp;<span class="  glyphicon glyphicon-education"></span></a></li>
+                <li><a href="../laptop-torbe.php">Naši proizvodi &nbsp;&nbsp;<span class=" glyphicon glyphicon-briefcase"></span></a></li>
+                <li><a href="../kontakt.php">Kontakt &nbsp;&nbsp;<span class="  glyphicon glyphicon-phone-alt"></span></a></li>
+                <li><a href="../onama.php">O nama &nbsp;&nbsp;<span class="  glyphicon glyphicon-education"></span></a></li>
+                <li><a href="../korisnik/php/logout.php">Odjava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li>
+
             </ul><!--end of navbar items-->
         </div><!--end of myNavbar-->
     </div><!--end of container-fluid-->
@@ -142,7 +144,7 @@ if (isset($_GET["action"])){
 
 
 <div class="container" style="width: 65%">
-    <h2 style="color:black;border: 1px solid black;border-radius: 12px;font-weight: bold;background-color: rgba(14,142,85,0.24)">Vaša korpa &nbsp;<i class="fa fa-shopping-cart" aria-hidden="true"></i></h2>
+    <h2 style="color:black;border: 1px solid black;border-radius: 12px;font-weight: bold;background-color: rgba(14,142,85,0.24);font-family: 'Amatic SC',cursive;font-size: 40px;">KORPA &nbsp;<i class="fa fa-shopping-cart" aria-hidden="true"></i></h2>
     <?php
     $query = "SELECT * FROM stavke_torbe ORDER BY ID ASC ";
     $result = mysqli_query($con,$query);
@@ -173,7 +175,7 @@ if (isset($_GET["action"])){
     ?>
 
     <div style="clear: both"></div>
-    <h3 class="title2" style="color:black;border: 1px solid black;border-radius: 12px;font-weight: bold;background-color: rgba(19,121,61,0.34)">Detalji korpe</h3>
+    <h3 class="title2" style="color:black;border: 1px solid black;border-radius: 12px;font-weight: bold;background-color: rgba(19,121,61,0.34);font-family: 'Amatic SC',cursive;font-size: 40px;">Detalji korpe</h3>
     <div class="table-responsive">
         <table class="table table-bordered">
             <tr>

@@ -1,3 +1,14 @@
+<?php
+session_start();
+function sessionStarted() {
+    if (isset($_SESSION['user_admin']) ||  isset($_SESSION['user_id']) ) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="sr">
   <head>
@@ -52,11 +63,12 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav" id="itemscentered">
           <li><a href="/">Početna stranica &nbsp;&nbsp;<span class=" glyphicon glyphicon-home"></span></a></li>
-          <li><a href="laptop-torbe.html">Naši proizvodi &nbsp;&nbsp;<span class=" glyphicon glyphicon-briefcase"></span></a></li>
-          <li><a href="kontakt.html">Kontakt &nbsp;&nbsp;<span class="  glyphicon glyphicon-phone-alt"></span></a></li>
-          <li class="active"><a href="onama.html">O nama &nbsp;&nbsp;<span class="  glyphicon glyphicon-education"></span></a></li>
-          <li><a href="korisnik/registracija.html">Registracija &nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></a></li>
-          <li><a href="korisnik/login.html">Prijava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li>
+          <li><a href="laptop-torbe.php">Naši proizvodi &nbsp;&nbsp;<span class=" glyphicon glyphicon-briefcase"></span></a></li>
+          <li><a href="kontakt.php">Kontakt &nbsp;&nbsp;<span class="  glyphicon glyphicon-phone-alt"></span></a></li>
+          <li class="active"><a href="onama.php">O nama &nbsp;&nbsp;<span class="  glyphicon glyphicon-education"></span></a></li>
+            <?php if(!sessionStarted()) { ?><li><a href="korisnik/registracija.html">Registracija &nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></a></li><?php } ?>
+            <?php if(!sessionStarted()) { ?><li><a href="korisnik/login.html">Prijava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li><?php } ?>
+            <?php if(sessionStarted()) { ?><li><a href="korisnik/php/logout.php">Odjava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li><?php } ?>
         </ul><!--end of navbar items-->
       </div><!--end of myNavbar-->
       </div><!--end of container-fluid-->

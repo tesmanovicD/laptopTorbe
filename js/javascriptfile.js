@@ -7,7 +7,7 @@ $(document).ready(function(ev){
 
 
 
-//ANIMATED TEXT ON page laptop-torbe.html
+//ANIMATED TEXT ON page laptop-torbe.php
 var TxtType = function(el, toRotate, period) {
     this.toRotate = toRotate;
     this.el = el;

@@ -7,7 +7,7 @@ function sessionStarted() {
     return false;
   }
 }
-// echo $_SESSION["user_admin"];
+
 ?>
 <!DOCTYPE html>
 <html lang="sr">
@@ -95,9 +95,9 @@ function sessionStarted() {
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav" id="itemscentered">
 				<li class="active"><a href="index.php">Početna stranica &nbsp;&nbsp;<span class=" glyphicon glyphicon-home"></span></a></li>
-				<li><a href="laptop-torbe.html">Naši proizvodi &nbsp;&nbsp;<span class=" glyphicon glyphicon-briefcase"></span></a></li>
-				<li><a href="kontakt.html">Kontakt &nbsp;&nbsp;<span class="  glyphicon glyphicon-phone-alt"></span></a></li>
-				<li><a href="onama.html">O nama &nbsp;&nbsp;<span class="  glyphicon glyphicon-education"></span></a></li>
+				<li><a href="laptop-torbe.php">Naši proizvodi &nbsp;&nbsp;<span class=" glyphicon glyphicon-briefcase"></span></a></li>
+				<li><a href="kontakt.php">Kontakt &nbsp;&nbsp;<span class="  glyphicon glyphicon-phone-alt"></span></a></li>
+				<li><a href="onama.php">O nama &nbsp;&nbsp;<span class="  glyphicon glyphicon-education"></span></a></li>
         <?php if(!sessionStarted()) { ?><li><a href="korisnik/registracija.html">Registracija &nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></a></li><?php } ?>
         <?php if(!sessionStarted()) { ?><li><a href="korisnik/login.html">Prijava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li><?php } ?>
 				<?php if(sessionStarted()) { ?><li><a href="korisnik/php/logout.php">Odjava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li><?php } ?>
@@ -176,7 +176,7 @@ function sessionStarted() {
 						<p class="aboutUsText">Uskoro naše poslovanje postaje i prekookeansko, jer smo uz pomoć naših partnera sa različitih kraja sveta uspeli da
 					tržište rasprostranimo i podignemo na još veći nivo.</p>
 					</p>
-					<p id="aboutUsLink"><a href="kontakt.html">Kliknite ovde ako želite da stupite u kontakt sa nama.</a></p>
+					<p id="aboutUsLink"><a href="kontakt.php">Kliknite ovde ako želite da stupite u kontakt sa nama.</a></p>
 				</div><!--end of aboutUs-right-->
 			</div><!--end of row-->
 		</div><!--end of container-->
@@ -198,7 +198,7 @@ function sessionStarted() {
 							<h2 class="ProductCarouselTitles">Asus torba</h2>
 							<p class="ProductCarouselDescription">Za laptopove do 15.6''</p>
 							<p class="ProductCarouselDescription">ROG Ranger Messenger</p>
-							<p class="ProductCarouselLink"><a href="laptop-torbe.html">Pogledajte sve proizvode</a> </p>
+							<p class="ProductCarouselLink"><a href="laptop-torbe.php">Pogledajte sve proizvode</a> </p>
 							<p class="ProductCarouselPrice">9,990 RSD</p>
 						</div>
 					</div><!--end of row-->
@@ -212,7 +212,7 @@ function sessionStarted() {
 							<h2 class="ProductCarouselTitles">Dell ranac</h2>
 							<p class="ProductCarouselDescription">Ranac za laptopove veličine 17''</p>
 							<p class="ProductCarouselDescription">Alienware Vindicator</p>
-							<p class="ProductCarouselLink"><a href="laptop-torbe.html">Pogledajte sve proizvode</a> </p>
+							<p class="ProductCarouselLink"><a href="laptop-torbe.php">Pogledajte sve proizvode</a> </p>
 							<p class="ProductCarouselPrice">17,990 RSD</p>
 						</div>
 					</div><!--end of row-->
@@ -226,7 +226,7 @@ function sessionStarted() {
 							<h2 class="ProductCarouselTitles">Lenovo ranac</h2>
 							<p class="ProductCarouselDescription">Ranac za laptopove veličine 17''</p>
 							<p class="ProductCarouselDescription">Y Gaming Armored</p>
-							<p class="ProductCarouselLink"><a href="laptop-torbe.html">Pogledajte sve proizvode</a> </p>
+							<p class="ProductCarouselLink"><a href="laptop-torbe.php">Pogledajte sve proizvode</a> </p>
 							<p class="ProductCarouselPrice">8,990 RSD</p>
 						</div>
 					</div><!--end of row-->
@@ -240,7 +240,7 @@ function sessionStarted() {
 							<h2 class="ProductCarouselTitles">Hama ranac</h2>
 							<p class="ProductCarouselDescription">Ranac za laptopove veličine 17.3''</p>
 							<p class="ProductCarouselDescription">Tortuga</p>
-							<p class="ProductCarouselLink"><a href="laptop-torbe.html">Pogledajte sve proizvode</a> </p>
+							<p class="ProductCarouselLink"><a href="laptop-torbe.php">Pogledajte sve proizvode</a> </p>
 							<p class="ProductCarouselPrice">3,190 RSD</p>
 						</div>
 					</div><!--end of row-->
@@ -255,7 +255,7 @@ function sessionStarted() {
 							<h2 class="ProductCarouselTitles">Dell torba</h2>
 							<p class="ProductCarouselDescription">Torba za laptopove veličine 15.6''</p>
 							<p class="ProductCarouselDescription">Essential Topload</p>
-							<p class="ProductCarouselLink"><a href="laptop-torbe.html">Pogledajte sve proizvode</a> </p>
+							<p class="ProductCarouselLink"><a href="laptop-torbe.php">Pogledajte sve proizvode</a> </p>
 							<p class="ProductCarouselPrice">2,190 RSD</p>
 						</div>
 					</div><!--end of row-->
@@ -269,7 +269,7 @@ function sessionStarted() {
 							<h2 class="ProductCarouselTitles">Targus torba</h2>
 							<p class="ProductCarouselDescription">Torba za laptopove veličine 16''</p>
 							<p class="ProductCarouselDescription">Torba za notebook</p>
-							<p class="ProductCarouselLink"><a href="laptop-torbe.html">Pogledajte sve proizvode</a> </p>
+							<p class="ProductCarouselLink"><a href="laptop-torbe.php">Pogledajte sve proizvode</a> </p>
 							<p class="ProductCarouselPrice">3,990 RSD</p>
 						</div>
 					</div><!--end of row-->

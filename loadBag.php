@@ -1,3 +1,56 @@
+<?php
+session_start();
+$user_input_new='';
+function sessionStarted() {
+    if (isset($_SESSION['user_admin']) ||  isset($_SESSION['user_id']) ) {
+
+        return true;
+    } else {
+
+        return false;
+    }
+}
+if(isset($_POST['submit'])){
+
+    if(sessionStarted()){
+
+        header("Location:./img/card.php");
+
+    }
+
+    else{
+        $message = "Niste prijavljeni! Prijavite se kako biste nastavili sa kupovinom";
+        echo "<script type='text/javascript''>alert('$message');</script>";
+        header("Location: ./korisnik/login.html" );
+        exit();
+    }
+}
+if(isset($_POST['komentarisi'])){
+
+    if(sessionStarted()){
+
+        header("Location: ./laptop-torbe.php" );
+        $messagecomment = "Uspešno ste postavili komentar.";
+        echo "<script type='text/javascript''>alert('$messagecomment');</script>";
+
+
+    }
+
+    else{
+
+        header("Location: ./korisnik/login.html" );
+        $messagecom = "Niste prijavljeni! Prijavite se kako biste nastavili sa komentarisanjem";
+        echo "<script type='text/javascript''>alert('$messagecom');</script>";
+        exit();
+
+    }
+}
+
+
+
+// echo $_SESSION["user_admin"];
+
+?>
 <html>
 <head>
   <title>Laptop Torbe - Online prodaja laptop torbi i rusaka | Katalog proizvoda</title>
@@ -14,7 +67,7 @@
   <meta property="og:image" content="img/banner_laptop_torbe.png" />
 
   <!-- FONT SCHOOLBELL-->
-  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Reenie+Beanie|Imprima|Schoolbell" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Reenie+Beanie|Imprima|Schoolbell|Oswald" rel="stylesheet">
   <!-- BOOTSTRAP CSS-->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
   <!-- FONT AWESOME FOR ICONS -->
@@ -37,7 +90,7 @@
   <!-- SCRIPT FOR LOADING FROM DATABASE-->
   <script src="js/loadBags.js"></script>
   <!-- PERSONAL SCRIPT FILE-->
-  <script src="js/javascriptfile.js"></script>
+  <script src="js/loadBags.js"></script>
 </head>
 
 <body>
@@ -56,16 +109,32 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav" id="itemscentered">
           <li><a href="/">Početna stranica &nbsp;&nbsp;<span class=" glyphicon glyphicon-home"></span></a></li>
-          <li class="active"><a href="laptop-torbe.html">Naši proizvodi &nbsp;&nbsp;<span class=" glyphicon glyphicon-briefcase"></span></a></li>
-          <li><a href="kontakt.html">Kontakt &nbsp;&nbsp;<span class="  glyphicon glyphicon-phone-alt"></span></a></li>
-          <li><a href="onama.html">O nama &nbsp;&nbsp;<span class="  glyphicon glyphicon-education"></span></a></li>
-        <li><a href="korisnik/registracija.html">Registracija &nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></a></li>
-        <li><a href="korisnik/login.html">Prijava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li>
+          <li class="active"><a href="laptop-torbe.php">Naši proizvodi &nbsp;&nbsp;<span class=" glyphicon glyphicon-briefcase"></span></a></li>
+          <li><a href="kontakt.php">Kontakt &nbsp;&nbsp;<span class="  glyphicon glyphicon-phone-alt"></span></a></li>
+          <li><a href="onama.php">O nama &nbsp;&nbsp;<span class="  glyphicon glyphicon-education"></span></a></li>
+            <?php if(!sessionStarted()) { ?><li><a href="korisnik/registracija.html">Registracija &nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></a></li><?php } ?>
+            <?php if(!sessionStarted()) { ?><li><a href="korisnik/login.html">Prijava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li><?php } ?>
+            <?php if(sessionStarted()) { ?><li><a href="korisnik/php/logout.php">Odjava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li><?php } ?>
+
         </ul><!--end of navbar items-->
       </div><!--end of myNavbar-->
     </div><!--end of container-fluid-->
   </nav><!--end of navbar-->
+  <div id="wrappercontainer" style=" overflow: hidden; ">
 
+      <div class="levo">
+
+
+          <form method="post" style="margin-top: -25%;">
+              <div style="height: auto;" class="kupidiv">
+              <a href="img/card.php" style="text-decoration: none;"> <input type="submit" name="submit" value="Kupite proizvode" class="kupi responsive-width"></a>
+          </form>
+          <a href='#' style="text-decoration: none;"><input type="button" name="detaljnije" value="Detaljnije o torbi" class="kupi responsive-width"></a>
+
+      </div>
+      </div>
+
+  <div class='desno' >
 <?php
 include_once("./config/dbconfig.php");
 
@@ -78,19 +147,74 @@ if(!isset($_GET['id'])) {
 
   if (mysqli_num_rows($result) > 0) {
       while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-          echo "Naziv ". $row['Naziv']."<br/>";
-          echo "<img src=\"./img/".$row['Slika']."\" alt=\"".$row['Alt']."\"><br/>";
-          echo "Opis: ".$row['Opis']."<br/>";
-          echo "Cena: ".$row['Cena']."<br/>";
-          echo "Dostupno: ".$row['Kolicina']."kom.<br/>";
+          echo "<div class='labela'>Naziv:&nbsp;</div><div class='sadrzaj'>". $row['Naziv']."</div><br/>";
+          echo "<div><div id='loadslikaproizvoda'><img class='img-responsive' src=\"./img/".$row['Slika']."\" alt=\"".$row['Alt']."\"></div></div><br/>";
+          echo "<div class='labela'>Opis:&nbsp;</div><div class='sadrzaj'> ".$row['Opis']."</div><br/>";
+          echo "<div class='labela'>Cena:&nbsp;</div><div class='sadrzaj'> ".$row['Cena']."</div><br/>";
+          echo "<div class='labela'>Dostupno: &nbsp;</div><div class='sadrzaj'>".$row['Kolicina']." kom.</div><br/>";
+
       }
   } else echo "Nema torbe sa tim ID-em u bazi";
 
 }
-
  ?>
 
- <div id="footer">
+  </div>
+  </div>
+
+  <div class="commentsection" >
+
+      <?php
+
+
+    if($_POST) {
+        $find = array('idiot', 'kreten', 'moron','retard','imbecil');
+        $replace =array('<b>*cenzurisano*</b>', '<b>*cenzurisano*</b>', '<b>*cenzurisano*</b>','<b>*cenzurisano*</b>','<b>*cenzurisano*</b>');
+
+        if (isset($_POST['user_input']) && !empty($_POST['user_input'])) {
+            $user_input = $_POST['user_input'];
+            $user_input_new = str_ireplace($find, $replace, $user_input);
+        }
+
+        $name = $_POST['name'];
+        $handle = fopen("comments.php", "a");
+        fwrite($handle, "<b><i>" . $name . "</b></i> je komentarisao:<br/>" . $user_input_new. "<br/><br/>");
+        fclose($handle);
+
+    }
+
+
+
+      ?>
+
+
+      <h1 style="text-align: center;padding-top: 4%">Postavite komentar</h1>
+
+      <form action="" method="post">
+
+          <input type="text" name="name" placeholder="Nadimak..." class="komentar" style="font-size: 30px;margin-top: 0%;font-family: Calibri;font-weight: inherit" required><br/>
+          <textarea name="user_input" cols="30" rows="3" placeholder="Upišite komentar..." class="komentar" style="font-size: 30px;margin-top: 0%;font-family: Calibri;font-weight: inherit" required></textarea><br/>
+          <input type="submit" name="komentarisi" value="Postavite komentar" style="font-size: 30px;margin-top: 0%;font-family: Calibri;font-weight: inherit" class="kupi responsive-width">
+
+      </form>
+
+      <hr style="border-bottom: 1px solid black;width: 70%;"/>
+      <h1 style="text-decoration: underline;padding-top: 2%">Komentari korisnika</h1>
+      <?php
+      include "comments.php";
+      ?>
+
+  </div>
+
+
+</div>
+</div>
+</div>
+
+
+
+
+  <div id="footer">
   <div class="text-center center-block">
     <h4 style="font-family: Reenie Beanie;font-size:20px;"> Laptop-Torbe.rs </h4>
   <h4 style="font-family: Amatic SC;font-size:25px;">ŠKOLSKI PROJEKAT</h4>
