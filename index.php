@@ -102,7 +102,7 @@ function sessionStarted() {
         <?php if(!sessionStarted()) { ?><li><a href="korisnik/registracija.html">Registracija &nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></a></li><?php } ?>
         <?php if(!sessionStarted()) { ?><li><a href="korisnik/login.html">Prijava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li><?php } ?>
 				<?php if(sessionStarted()) { ?><li><a href="korisnik/php/logout.php">Odjava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li><?php } ?>
-                <?php if(sessionStarted()) { ?><li><a href="#">Prijavljeni ste kao Milos &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></a></li><?php } ?>
+                <?php if(sessionStarted()) { ?><li><a href="#">Prijavljeni ste kao <?php echo $_SESSION["korisnicko_ime"] ?> &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></a></li><?php } ?>
 
             </ul><!--end of navbar items-->
 		</div><!--end of myNavbar-->

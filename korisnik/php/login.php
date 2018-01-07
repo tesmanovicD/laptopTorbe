@@ -46,6 +46,7 @@ function prijaviKorisnika($korisnicko_ime, $lozinka, $connection) {
   } else {
     if (!proveriKorisnika($korisnicko_ime, $lozinka, $connection))
     {
+      $_SESSION["korisnicko_ime"] = $korisnicko_ime;
       $_SESSION["user_id"] = md5($korisnicko_ime);
       $_SESSION['user_admin'] = proveriPrivilegije($korisnicko_ime, $lozinka, $connection);
       header("Location: ../../index.php");
