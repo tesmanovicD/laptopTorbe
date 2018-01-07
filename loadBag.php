@@ -15,6 +15,7 @@ if(isset($_POST['submit'])){
     if(sessionStarted()){
 
         header("Location:./img/card.php");
+        exit();
 
     }
 
@@ -115,6 +116,8 @@ if(isset($_POST['komentarisi'])){
             <?php if(!sessionStarted()) { ?><li><a href="korisnik/registracija.html">Registracija &nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></a></li><?php } ?>
             <?php if(!sessionStarted()) { ?><li><a href="korisnik/login.html">Prijava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li><?php } ?>
             <?php if(sessionStarted()) { ?><li><a href="korisnik/php/logout.php">Odjava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li><?php } ?>
+            <?php if(sessionStarted()) { ?><li><a href="#">Prijavljeni ste kao Milos &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></a></li><?php } ?>
+
 
         </ul><!--end of navbar items-->
       </div><!--end of myNavbar-->
@@ -129,7 +132,6 @@ if(isset($_POST['komentarisi'])){
               <div style="height: auto;" class="kupidiv">
               <a href="img/card.php" style="text-decoration: none;"> <input type="submit" name="submit" value="Kupite proizvode" class="kupi responsive-width"></a>
           </form>
-          <a href='#' style="text-decoration: none;"><input type="button" name="detaljnije" value="Detaljnije o torbi" class="kupi responsive-width"></a>
 
       </div>
       </div>

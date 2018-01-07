@@ -136,6 +136,8 @@ if (isset($_GET["action"])){
                 <li><a href="../kontakt.php">Kontakt &nbsp;&nbsp;<span class="  glyphicon glyphicon-phone-alt"></span></a></li>
                 <li><a href="../onama.php">O nama &nbsp;&nbsp;<span class="  glyphicon glyphicon-education"></span></a></li>
                 <li><a href="../korisnik/php/logout.php">Odjava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li>
+                <li><a href="#">Prijavljeni ste kao Milos &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></a></li>
+
 
             </ul><!--end of navbar items-->
         </div><!--end of myNavbar-->
