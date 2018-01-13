@@ -39,6 +39,19 @@ function proveriKorisnika($korisnicko_ime, $lozinka, $connection) {
   }
 }
 
+function proveriStatus($korisnicko_ime) {
+  global $connection;
+
+  $sqlSelect = "SELECT `status` FROM korisnici WHERE Korisnicko_Ime = '".$korisnicko_ime."' ";
+  $status = mysqli_fetch_row(mysqli_query($connection, $sqlSelect));
+
+  if ($status[0] == 'active') {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 
 function prijaviKorisnika($korisnicko_ime, $lozinka, $connection) {
   if (!proveraPodataka($korisnicko_ime, $lozinka)) {
@@ -46,10 +59,15 @@ function prijaviKorisnika($korisnicko_ime, $lozinka, $connection) {
   } else {
     if (!proveriKorisnika($korisnicko_ime, $lozinka, $connection))
     {
-      $_SESSION["korisnicko_ime"] = $korisnicko_ime;
-      $_SESSION["user_id"] = md5($korisnicko_ime);
-      $_SESSION['user_admin'] = proveriPrivilegije($korisnicko_ime, $lozinka, $connection);
-      header("Location: ../../index.php");
+      if (proveriStatus($korisnicko_ime)) {
+        $_SESSION["korisnicko_ime"] = $korisnicko_ime;
+        $_SESSION["user_id"] = md5($korisnicko_ime);
+        $_SESSION['user_admin'] = proveriPrivilegije($korisnicko_ime, $lozinka, $connection);
+        header("Location: ../../index.php");
+      } else {
+        echo "Vas nalog nije aktiviran, molimo potvrdite aktivacioni e-mail";
+        header("refresh:5; url=../login.html");
+      }
     } else {
       echo "Korisnicko ime ili lozinka nisu validni!";
       header("refresh:2;url=../login.html");

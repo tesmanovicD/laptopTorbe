@@ -4,6 +4,10 @@ session_start();
 $database_name = "laptop-torbe";
 $con = mysqli_connect("localhost","root","",$database_name);
 
+if(isset($_POST['mod'])) {
+  $_SESSION["cart"][0]["item_quantity"] = $_POST['changeQuantity'];
+}
+
 if (isset($_POST["add"])){
     if (isset($_SESSION["cart"])){
         $item_array_id = array_column($_SESSION["cart"],"product_id");
@@ -32,6 +36,7 @@ if (isset($_POST["add"])){
     }
 }
 
+
 if (isset($_GET["action"])){
     if ($_GET["action"] == "delete"){
         foreach ($_SESSION["cart"] as $keys => $value){
@@ -43,9 +48,10 @@ if (isset($_GET["action"])){
         }
     }
 }
+
 ?>
 
-<!doctype html>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -55,6 +61,8 @@ if (isset($_GET["action"])){
     <title>Korpa</title>
     <link rel="stylesheet" type="text/css" href="../css/main.css">
 
+    <!-- JQUERY SCRIPT-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <meta charset="utf-8">
@@ -113,6 +121,8 @@ if (isset($_GET["action"])){
             background-color: #efefef;
         }
     </style>
+
+
 </head>
 <body style="background-image: url('pozadina.jpg');background-attachment: fixed;">
 
@@ -157,7 +167,7 @@ if (isset($_GET["action"])){
             ?>
             <div class="col-md-3"  >
 
-                <form  method="post" action="card.php?action=add&id=<?php echo $row["ID"]; ?>">
+                <form id="cardForm" method="post" action="card.php?action=add&id=<?php echo $row["ID"]; ?>">
 
                     <div class="product" style="border: 1px solid black;margin-right: 25px;margin-bottom: 20px;border-radius: 2%;background-color:rgba(255,255,255,0.53);)">
                         <img src="<?php echo $row["Slika"]; ?>" class="img-responsive">
@@ -178,7 +188,7 @@ if (isset($_GET["action"])){
 
     <div style="clear: both"></div>
     <h3 class="title2" style="color:black;border: 1px solid black;border-radius: 12px;font-weight: bold;background-color: rgba(19,121,61,0.34);font-family: 'Amatic SC',cursive;font-size: 40px;">Detalji korpe</h3>
-    <div class="table-responsive">
+    <div class="table-responsive" id="cardTable">
         <table class="table table-bordered">
             <tr>
                 <th width="30%" style="font-size: 18px;">Ime proizvoda</th>
@@ -195,7 +205,7 @@ if (isset($_GET["action"])){
                     ?>
                     <tr>
                         <td style="background-color:white;font-size: 18px;"><?php echo $value["item_name"]; ?></td>
-                        <td style="background-color:white;font-size: 18px;"><?php echo $value["item_quantity"]; ?></td>
+                        <td style="background-color:white;font-size: 18px;"><input type="text" id="quantity" value="<?php echo $value['item_quantity']?>"</td>
                         <td style="background-color:white;font-size: 18px;"><?php echo $value["product_price"]; ?> RSD </td>
                         <td style="background-color:white;font-size: 18px;">
                           <?php echo number_format($value["item_quantity"] * $value["product_price"], 2); ?>  RSD </td>
@@ -230,6 +240,22 @@ if (isset($_GET["action"])){
         <a href="https://instagram.com"><i class="fa fa-instagram fa-3x social"></i></a>
     </div>
 </div><!--end of footer-->
+
+<script>
+$("#quantity").change(function() {
+  var changeQuantity = $("#quantity").val();
+  $.ajax({
+       url: "card.php",
+       type: "post",
+       data: { mod: "changeQuantity", changeQuantity: changeQuantity},
+       success: function (response) {
+          window.location="card.php";
+       }
+   });
+});
+
+
+</script>
 
 </body>
 </html>

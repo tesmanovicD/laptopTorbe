@@ -20,7 +20,7 @@
     <!-- FONT AWESOME FOR ICONS -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- NORMALIZE.CSS GLITCH FIX -->
-    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../css/normalize.css">
     <!-- PERSONAL - LOCAL CSS -->
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <!-- BOOTSTRAP CSS-->
@@ -35,7 +35,34 @@
     <!-- BOOTSTRAP SCRIPT-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <!-- PERSONAL SCRIPT FILE-->
-    <script src="js/javascriptfile.js"></script>
+    <script src="../js/javascriptfile.js"></script>
+
+    <script>
+
+    function checkForm(form) {
+      let korisnicko_ime = form.korisnicko_ime.value;
+      let email = form.email.value;
+      let lozinka = form.lozinka.value;
+      let potvrda_lozinke = form.potvrda_lozinke.value;
+      let captcha = form.captcha.value;
+
+      if (korisnicko_ime < 3) {
+        alert("Koris ime mora imati bar 3 karaktera");
+        return false;
+      }
+
+      if(!captcha.match(/^\d{5}$/)) {
+        alert('Please enter the CAPTCHA digits in the box provided');
+        form.captcha.focus();
+        return false;
+      }
+
+      return true;
+
+      // php/registracija.php
+    }
+
+    </script>
   </head>
   <body style="text-align: center;background-color: #fff;">
 
@@ -64,7 +91,7 @@
     </div><!--end of container-fluid-->
   </nav><!--end of navbar-->
 
-  <form method="post" action="php/registracija.php" id="registerform"  >
+  <form method="post" onsubmit="return checkForm(this)" id="registerform" action="php/registracija.php"  >
     <h3 style="color: #008484;font-weight: bold;">Podaci za prijavu</h3>
     <hr style="border-color: #c3c3c3"/>
 
@@ -164,6 +191,10 @@
       </div><!-- end of form-group -->
     </div>
     <!-- END OF NULL VALUES-->
+
+    <p><img src="../captcha.php" width="120" height="30" border="1" alt="CAPTCHA"></p>
+    <p><input type="text" size="6" maxlength="5" name="captcha" value=""><br>
+    <small>copy the digits from the image into this box</small></p>
 
     <button type="submit" class="submitbutton">Pošalji</button>
     <button type="reset" class="submitbutton">Otkaži</button>
