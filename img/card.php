@@ -1,6 +1,13 @@
 
 <?php
 session_start();
+function sessionStarted() {
+  if (isset($_SESSION['user_admin'])) {
+    return true;
+  } else {
+    return false;
+  }
+}
 $database_name = "laptop-torbe";
 $con = mysqli_connect("localhost","root","",$database_name);
 
@@ -63,6 +70,8 @@ if (isset($_GET["action"])){
 
     <!-- JQUERY SCRIPT-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!--JQUERY MD5 SCRIPT-->
+    <script src="../js/jQuery-MD5.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <meta charset="utf-8">
@@ -145,10 +154,10 @@ if (isset($_GET["action"])){
                 <li><a href="../laptop-torbe.php">Naši proizvodi &nbsp;&nbsp;<span class=" glyphicon glyphicon-briefcase"></span></a></li>
                 <li><a href="../kontakt.php">Kontakt &nbsp;&nbsp;<span class="  glyphicon glyphicon-phone-alt"></span></a></li>
                 <li><a href="../onama.php">O nama &nbsp;&nbsp;<span class="  glyphicon glyphicon-education"></span></a></li>
-                <li><a href="../korisnik/php/logout.php">Odjava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li>
-                <li><a href="#">Prijavljeni ste kao Milos &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></a></li>
-
-
+                <?php if(!sessionStarted()) { ?><li><a href="korisnik/registracija.html">Registracija &nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></a></li><?php } ?>
+                <?php if(!sessionStarted()) { ?><li><a href="korisnik/login.html">Prijava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li><?php } ?>
+        				<?php if(sessionStarted()) { ?><li><a href="korisnik/php/logout.php">Odjava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li><?php } ?>
+                <?php if(sessionStarted()) { ?><li><a href="#">Prijavljeni ste kao <span id="korisnicko_ime"><?php echo $_SESSION["korisnicko_ime"] ?></span> &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></a></li><?php } ?>
             </ul><!--end of navbar items-->
         </div><!--end of myNavbar-->
     </div><!--end of container-fluid-->
@@ -203,10 +212,10 @@ if (isset($_GET["action"])){
                 $total = 0;
                 foreach ($_SESSION["cart"] as $key => $value) {
                     ?>
-                    <tr>
-                        <td style="background-color:white;font-size: 18px;"><?php echo $value["item_name"]; ?></td>
-                        <td style="background-color:white;font-size: 18px;"><input type="text" id="quantity" value="<?php echo $value['item_quantity']?>"</td>
-                        <td style="background-color:white;font-size: 18px;"><?php echo $value["product_price"]; ?> RSD </td>
+                    <tr class="item_details">
+                        <td style="background-color:white;font-size: 18px;" id="item_name"><?php echo $value["item_name"]; ?></td>
+                        <td style="background-color:white;font-size: 18px;"><input type="text" class="quantity" value="<?php echo $value['item_quantity']?>"> <span  class="product_id"><?php echo $value["product_id"]; ?></span> </td>
+                        <td style="background-color:white;font-size: 18px;" id="product_price"><?php echo $value["product_price"]; ?> RSD </td>
                         <td style="background-color:white;font-size: 18px;">
                           <?php echo number_format($value["item_quantity"] * $value["product_price"], 2); ?>  RSD </td>
                         <td style="background-color:white"><a href="card.php?action=delete&id=<?php echo $value["product_id"]; ?>">
@@ -220,7 +229,11 @@ if (isset($_GET["action"])){
                 <tr>
                     <td colspan="3" align="right" style="background-color:white;font-size: 18px;font-weight: bold">Ukupan iznos korpe:</td>
                     <th align="right" style="font-size: 18px;"><?php echo number_format($total, 2); ?> RSD </th>
-                    <td style="background-color:white"></td>
+                    <td style="background-color:white">
+
+                        <input type="submit" name="izvrsi_narudzbinu" id="izvrsi_narudzbinu" class="btn btn-success" value="Izvrsi narudzbinu">
+
+                    </td>
                 </tr>
                 <?php
             }
@@ -242,8 +255,10 @@ if (isset($_GET["action"])){
 </div><!--end of footer-->
 
 <script>
-$("#quantity").change(function() {
-  var changeQuantity = $("#quantity").val();
+$(".quantity").change(function() {
+  var changeQuantity = $(this).val();
+  var product_id = $(this).parents().html();
+  alert(product_id);
   $.ajax({
        url: "card.php",
        type: "post",
@@ -253,6 +268,23 @@ $("#quantity").change(function() {
        }
    });
 });
+
+$("#izvrsi_narudzbinu").on("click", function() {
+//ajax poziv
+var korisnicko_ime = $("#korisnicko_ime").html();
+var secret = $.md5("VTS"+korisnicko_ime+"VTS");
+
+$.ajax({
+     url: "../cardInsert.php",
+     type: "post",
+     data: { secret: secret },
+     success: function (data) {
+        alert(data);
+        window.location.href = "http://localhost/LAPTOP-TORBE/img/card.php";
+     }
+ });
+
+})
 
 
 </script>
