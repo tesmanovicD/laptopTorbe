@@ -58,6 +58,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_admin'] == 0 ) {
 <button id="prikaziTorbe" class="btn btn-primary">Dodaj laptop torbu</button>
 <button name="izmeniTorbu" onclick="izmeniBazu('torba')" class="btn btn-primary">Izmeni torbu</button>
 <button name="listaKorisnika" onclick="listaKorisnika()" class="btn btn-primary">Dodaj admina</button>
+<button name="listaPorudzbina" onclick="listaPorudzbina()" class="btn btn-primary">Lista porudzbina</button>
 
 <div class="container">
   <div id="dodajTorbu" hidden="hidden">
@@ -135,6 +136,19 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_admin'] == 0 ) {
         </tbody>
     </table>
 
+    <table id="porudzbine" hidden="hidden" class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+             <th scope="col">&nbsp;ID&nbsp;</th>
+             <!-- <th scope="col">&nbsp;Status&nbsp;</th> -->
+             <th scope="col">Opcije</th>
+           </tr>
+        </thead>
+         <tbody id="tbody">
+
+         </tbody>
+     </table>
+
 </div><!--end of container-->
 
 
@@ -142,6 +156,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_admin'] == 0 ) {
 
 var lista_torbi = [];
 var lista_korisnika = [];
+var lista_porudzbina = [];
 
   function dodajTorbu() {
     $.ajax({
@@ -216,11 +231,35 @@ var lista_korisnika = [];
             }
             console.log(lista_korisnika);
             korisniciAppend();
-
-
-
       }
     })
+  }
+
+  function listaPorudzbina() {
+    $.ajax({
+      data: { ime: "porudzbine" },
+      type: "POST",
+      url: "backend/izmeniBazu.php",
+      success: function(data) {
+        lista_porudzbina = [];
+        tempPorudzbine = JSON.parse(data);
+        for (var i = 0; i<tempPorudzbine.length; i++) {
+          lista_porudzbina.push({
+            ID: tempPorudzbine[i].ID_Porudzbine,
+            // Status: tempPorudzbine[i].Poslato
+            // ID_Torbe: tempPorudzbine[i].ID_Korisnika,
+            // Ime_Korisnika: tempPorudzbine[i].Ime,
+            // Prezime_Korisnika: tempPorudzbine[i].Prezime,
+            // JMBG: tempPorudzbine[i].JMBG,
+            // Broj_Mobilnog: tempPorudzbine[i].Broj_Mobilnog,
+            // Adresa: tempPorudzbine[i].Adresa,
+            // Cena: tempPorudzbine[i].Cena
+          });
+        }
+        console.log(lista_porudzbina);
+        porudzbineAppend();
+      }
+    });
   }
 
   function torbeAppend() {
@@ -235,7 +274,7 @@ var lista_korisnika = [];
         tr.append("<td class='tabledata'>" + lista_torbi[i].Naziv + "</td>");
         tr.append("<td class='tabledata'>" + lista_torbi[i].Opis + "</td>");
         tr.append("<td class='tabledata'>" + lista_torbi[i].Cena + "</td>");
-        tr.append("<td class='tabledata'>" + lista_torbi[i].Slika + "</td>");
+        tr.append("<td class='tabledata'><img height=\"100\" width=\"auto\" src=\"../img/" + lista_torbi[i].Slika + "\"></td>");
         tr.append("<td class='tabledata'>" + lista_torbi[i].Kategorija + "</td>");
         tr.append("<td class='tabledata'>" + lista_torbi[i].Kolicina + "</td>");
         tr.append("<td class='tabledata'>" + lista_torbi[i].Link + "</td>");
@@ -282,6 +321,22 @@ var lista_korisnika = [];
         tr.append("<td class='tabledata' id='emailKorisnika'>" + lista_korisnika[i].Email + "</td>");
         tr.append("<td class='tabledata' id='adminKorisnik'>" + lista_korisnika[i].Admin + "</td>");
         $('#korisnici').append(tr);
+    }
+  }
+
+  function porudzbineAppend() {
+    document.getElementById("dodajTorbu").hidden = "hidden";
+    document.getElementById("torbe").hidden = "hidden";
+    document.getElementById("porudzbine").hidden = "";
+
+    $("#porudzbine .dynamicWrite").empty();
+    let tr;
+    for (var i = 0; i < lista_porudzbina.length; i++) {
+        tr = $('<tr class="dynamicWrite" scope="row"/>');
+        tr.append("<td class='tabledata' id='porudzbinaID'>" + lista_porudzbina[i].ID + "</td>");
+        // tr.append("<td class='tabledata' id='porudzbinaStatus'>" + lista_porudzbina[i].Status + "</td>");
+        tr.append("<td class='tabledata' id='promeniStatus'><a href=\"backend/porudzbine.php?id="+ lista_porudzbina[i].ID + "\">DETALJNIJE</a></td>");
+        $('#porudzbine').append(tr);
     }
   }
 

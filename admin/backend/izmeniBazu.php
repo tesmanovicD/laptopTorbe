@@ -60,6 +60,10 @@
 
     } else if ($_POST['ime'] == 'korisnik') {
       echo json_encode(lista_korisnika());
+    } else if ($_POST['ime'] == 'porudzbine') {
+      echo json_encode(lista_porudzbina());
+    } else if ($_POST['ime'] == 'promeniStatus') {
+      echo promeniStatus();
     } else {
       echo "Nepostojece!";
     }
@@ -93,6 +97,24 @@
       } else return $korisnici[] = "Nema korisnika u bazi";
   }
 
+  function lista_porudzbina() {
+    global $connection;
+    $sql_select = "SELECT DISTINCT`ID_Porudzbine`, `Poslato` FROM porudzbine GROUP BY `ID_Porudzbine`";
+    $result = mysqli_query($connection, $sql_select);
 
+    if (mysqli_num_rows($result) > 0) {
+      while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        $porudzbine[] = $row;
+      }
+      return $porudzbine;
+    } else return $porudzbine[] = "Nema porudzbina u bazi koje nisu obradjene";
+  }
+
+  function promeniStatus($a,$b = "undefined") {
+    if ($b == "undefined") {
+      $sql_update = "UPDATE `porudzbine` SET `Poslato` = 1 WHERE `ID_Porudzbine` = $a";
+      var_dump($sql_update);
+    }
+  }
 
  ?>

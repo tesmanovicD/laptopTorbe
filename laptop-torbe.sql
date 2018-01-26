@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Jan 04, 2018 at 02:17 PM
--- Server version: 5.7.19
--- PHP Version: 5.6.31
+-- Host: 127.0.0.1
+-- Generation Time: Jan 26, 2018 at 11:45 PM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -21,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `laptop-torbe`
 --
+CREATE DATABASE IF NOT EXISTS `laptop-torbe` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `laptop-torbe`;
 
 -- --------------------------------------------------------
 
@@ -28,9 +28,8 @@ SET time_zone = "+00:00";
 -- Table structure for table `korisnici`
 --
 
-DROP TABLE IF EXISTS `korisnici`;
-CREATE TABLE IF NOT EXISTS `korisnici` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `korisnici` (
+  `ID` int(11) NOT NULL,
   `Korisnicko_ime` varchar(30) NOT NULL,
   `Lozinka` varchar(35) NOT NULL,
   `Email` varchar(35) NOT NULL,
@@ -44,21 +43,57 @@ CREATE TABLE IF NOT EXISTS `korisnici` (
   `Grad` varchar(20) DEFAULT NULL,
   `Drzava` varchar(20) DEFAULT NULL,
   `Admin` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+  `Status` varchar(10) NOT NULL DEFAULT 'inactive'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `korisnici`
 --
 
-INSERT INTO `korisnici` (`ID`, `Korisnicko_ime`, `Lozinka`, `Email`, `Ime`, `Prezime`, `Datum_rodjenja`, `JMBG`, `Mobilni`, `Adresa`, `Postanski_broj`, `Grad`, `Drzava`, `Admin`) VALUES
-(1, 'test', '123', 'danites007@gmail.com', '', 'Tesmanovic', '0000-00-00', '', '', 'Stevana Filipovica 60/11', '24000', 'Subotica', 'Serbia', 0),
-(2, 'danites', '123123', 'danites007@gmail.com', '', 'Tesmanovic', '0000-00-00', '', '', 'Stevana Filipovica 60/11', '24000', 'Subotica', 'Serbia', 0),
-(3, 'rwe', '123', 'edincedin@gmail.com', '', 'Tesmanovic', '0000-00-00', '', '', 'Stevana Filipovica 60/11', '24000', 'Subotica', 'Serbia', 0),
-(4, 'ertgert', '123', 'edincedin@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0),
-(5, 'testte', '123123123', '12115231@vts.su.ac.rs', '', '', '0000-00-00', '', '', '', '', '', '', 0),
-(6, 'kriptovani', '4297f44b13955235245b2497399d7a93', 'kript@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 1),
-(7, 'obican', '4297f44b13955235245b2497399d7a93', 'dadijawid@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0);
+INSERT INTO `korisnici` (`ID`, `Korisnicko_ime`, `Lozinka`, `Email`, `Ime`, `Prezime`, `Datum_rodjenja`, `JMBG`, `Mobilni`, `Adresa`, `Postanski_broj`, `Grad`, `Drzava`, `Admin`, `Status`) VALUES
+(1, 'test', '123', 'danites007@gmail.com', '', 'Tesmanovic', '0000-00-00', '', '', 'Stevana Filipovica 60/11', '24000', 'Subotica', 'Serbia', 0, 'inactive'),
+(2, 'danites', '123123', 'danites007@gmail.com', '', 'Tesmanovic', '0000-00-00', '', '', 'Stevana Filipovica 60/11', '24000', 'Subotica', 'Serbia', 0, 'inactive'),
+(5, 'testte', '123123123', '12115231@vts.su.ac.rs', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'inactive'),
+(6, 'kriptovani', '4297f44b13955235245b2497399d7a93', 'kript@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 1, 'active'),
+(7, 'obican', '4297f44b13955235245b2497399d7a93', 'dadijawid@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'active'),
+(8, 'test111', '4297f44b13955235245b2497399d7a93', 'testt111@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'inactive'),
+(9, '31414', '4297f44b13955235245b2497399d7a93', 'danites1007@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'inactive'),
+(12, 'test1', '4297f44b13955235245b2497399d7a93', 'edincedin@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'inactive'),
+(19, 'uspehuspeh', '4297f44b13955235245b2497399d7a93', 'uspehuspeh@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'inactive');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `porudzbine`
+--
+
+CREATE TABLE `porudzbine` (
+  `ID` int(11) NOT NULL,
+  `ID_Korisnika` int(11) NOT NULL,
+  `ID_Torbe` int(11) NOT NULL,
+  `Datum_Kupovine` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Ime` varchar(55) NOT NULL,
+  `Prezime` varchar(55) NOT NULL,
+  `JMBG` varchar(13) NOT NULL,
+  `Broj_Mobilnog` varchar(55) NOT NULL,
+  `Adresa` varchar(55) NOT NULL,
+  `Drzava` varchar(55) NOT NULL,
+  `Grad` varchar(55) NOT NULL,
+  `Postanski_Broj` int(11) NOT NULL,
+  `Cena` int(11) NOT NULL,
+  `ID_Porudzbine` varchar(55) NOT NULL,
+  `Poslato` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `porudzbine`
+--
+
+INSERT INTO `porudzbine` (`ID`, `ID_Korisnika`, `ID_Torbe`, `Datum_Kupovine`, `Ime`, `Prezime`, `JMBG`, `Broj_Mobilnog`, `Adresa`, `Drzava`, `Grad`, `Postanski_Broj`, `Cena`, `ID_Porudzbine`, `Poslato`) VALUES
+(1, 7, 36, '2018-01-23 03:00:43', 'test', 'test', '123', '55', 'test', 'test', 'test', 5353, 2490, '23012', 0),
+(2, 7, 37, '2018-01-23 03:00:43', 'test', 'test', '123', '55', 'test', 'test', 'test', 5353, 3990, '23012', 0),
+(3, 7, 19, '2018-01-23 04:00:46', 'test', 'test', '123', '55', 'test', 'test', 'test', 5353, 2990, '230191', 1),
+(4, 7, 2, '2018-01-23 04:00:46', 'test', 'test', '123', '55', 'test', 'test', 'test', 5353, 9990, '230191', 0);
 
 -- --------------------------------------------------------
 
@@ -66,9 +101,8 @@ INSERT INTO `korisnici` (`ID`, `Korisnicko_ime`, `Lozinka`, `Email`, `Ime`, `Pre
 -- Table structure for table `stavke_torbe`
 --
 
-DROP TABLE IF EXISTS `stavke_torbe`;
-CREATE TABLE IF NOT EXISTS `stavke_torbe` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `stavke_torbe` (
+  `ID` int(11) NOT NULL,
   `Naziv` varchar(50) NOT NULL,
   `Opis` varchar(20) NOT NULL,
   `Cena` int(11) NOT NULL,
@@ -76,9 +110,8 @@ CREATE TABLE IF NOT EXISTS `stavke_torbe` (
   `Alt` varchar(80) NOT NULL,
   `Link` varchar(150) NOT NULL,
   `Kategorija` enum('Asus','Hama','Lenovo','Spirit','Dell','Hp','Targus') NOT NULL,
-  `Kolicina` int(11) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+  `Kolicina` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `stavke_torbe`
@@ -89,7 +122,7 @@ INSERT INTO `stavke_torbe` (`ID`, `Naziv`, `Opis`, `Cena`, `Slika`, `Alt`, `Link
 (2, 'ASUS Torba ROG Ranger', 'Do 15.6\'\'', 9990, 'asus_laptop_torba_rog_ranger.png', 'ASUS laptop torba ROG Ranger Messenger do 15.6 inca', 'https://www.gigatron.rs/torbe/asus_laptop_torba_rog_ranger_messenger-74031', 'Asus', 0),
 (3, 'HAMA Ranac Tortuga - 101525', 'Do 17.3\'\'', 3190, 'hama_tortuga.png', 'HAMA Ranac Tortuga za laptop do 17.3 inca (Crna) - 101525', 'https://www.gigatron.rs/rancevi/hama_ranac_tortuga_za_laptop_do_173_crna__101525-106323', 'Asus', 0),
 (4, 'HAMA Phuket - 101082', 'Do 15.6\'\'', 3690, 'hama_phuket.jpg', 'HAMA Phuket ranac za notebook do 15.6 inca - 101082', 'https://www.gigatron.rs/rancevi/hama_phuket_ranac_za_notebook_do_156__101082-30449', 'Asus', 0),
-(5, 'HAMA Ranac Dublin - 101274', 'Do 17.3\'', 4290, 'hama_dublin.png', 'HAMA Ranac Dublin za laptop do 17.3 inca (Crna) - 101274', 'https://www.gigatron.rs/rancevi/hama_ranac_dublin_za_laptop_do_173_crna__101274-106305', 'Asus', 0),
+(5, 'HAMA Ranac Dublin - 101274', 'Do 17.3\'', 4290, 'glupost', '', '', 'Asus', 0),
 (6, 'HAMA Phuket ranac za notebook - 101083', 'Do 17.3\'\'', 4590, 'hama_ranac_za_notebook.png', 'HAMA Phuket ranac za notebook do 17.3 inca - 101083', 'https://www.gigatron.rs/rancevi/hama_phuket_ranac_za_notebook_do_173__101083-49579', 'Asus', 0),
 (7, 'HAMA torba za laptop Florence II- 00101569', 'Do 15.6\'\'', 4190, 'hama_florence.png', 'HAMA torba za laptop Florence II (Siva/crna) - 00101569', 'https://www.gigatron.rs/torbe/hama_torba_za_laptop_florence_ii_sivacrna__00101569-111631', 'Asus', 0),
 (8, 'HAMA Torba Santorin za laptop - 101562', 'Do 13.3\'\'', 4490, 'hama_santorin.png', 'HAMA Torba Santorin za laptop do 13.3 inca(Braon) - 101562', 'https://www.gigatron.rs/torbe/hama_torba_santorin_za_laptop_do_133_braon__101562-106353', 'Asus', 0),
@@ -122,7 +155,60 @@ INSERT INTO `stavke_torbe` (`ID`, `Naziv`, `Opis`, `Cena`, `Slika`, `Alt`, `Link
 (35, 'TARGUS Torba za notebook- TAR300', 'Do 15.6\'\'', 2190, 'targus_torba_tar300.png', 'TARGUS Torba za notbook do 15.6 inca- TAR300', 'https://www.gigatron.rs/torbe/targus_torba_za_notbook_do_156_tar300-84953', 'Asus', 0),
 (36, 'TARGUS Torba za notebook - CN31', 'Do 16\'\'', 2490, 'targus_cn31.jpg', 'TARGUS Torba za notebook 16 inca - CN31', 'https://www.gigatron.rs/torbe/targus_torba_za_notebook_16__cn31-17241', 'Asus', 0),
 (37, 'TARGUS Torba za notebook - CN01', 'Do 16\'\'', 3990, 'targus_cn01.jpg', 'TARGUS Torba za notebook 16 inca - CN01', 'https://www.gigatron.rs/torbe/targus_torba_za_notebook_16__cn01-6142', 'Asus', 0);
-COMMIT;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `korisnici`
+--
+ALTER TABLE `korisnici`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `porudzbine`
+--
+ALTER TABLE `porudzbine`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `ID_Korisnika` (`ID_Korisnika`),
+  ADD KEY `ID_Torbe` (`ID_Torbe`);
+
+--
+-- Indexes for table `stavke_torbe`
+--
+ALTER TABLE `stavke_torbe`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `korisnici`
+--
+ALTER TABLE `korisnici`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT for table `porudzbine`
+--
+ALTER TABLE `porudzbine`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `stavke_torbe`
+--
+ALTER TABLE `stavke_torbe`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `porudzbine`
+--
+ALTER TABLE `porudzbine`
+  ADD CONSTRAINT `porudzbine_ibfk_1` FOREIGN KEY (`ID_Korisnika`) REFERENCES `korisnici` (`ID`),
+  ADD CONSTRAINT `porudzbine_ibfk_2` FOREIGN KEY (`ID_Torbe`) REFERENCES `stavke_torbe` (`ID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
