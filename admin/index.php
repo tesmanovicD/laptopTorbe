@@ -264,6 +264,7 @@ var lista_porudzbina = [];
 
   function torbeAppend() {
     document.getElementById("dodajTorbu").hidden = "hidden";
+    document.getElementById("porudzbine").hidden = "hidden";
     document.getElementById("torbe").hidden = "";
     document.getElementById("korisnici").hidden = "hidden";
     $("#torbe .dynamicWrite").empty();
@@ -304,6 +305,7 @@ var lista_porudzbina = [];
         url: "backend/izmeniBazu.php",
         success: function(data){
           alert(data);
+          location.reload();
         }
     });
   }
@@ -311,15 +313,22 @@ var lista_porudzbina = [];
   function korisniciAppend() {
     document.getElementById("dodajTorbu").hidden = "hidden";
     document.getElementById("torbe").hidden = "hidden";
+    document.getElementById("porudzbine").hidden = "hidden";
     document.getElementById("korisnici").hidden = "";
     $("#korisnici .dynamicWrite").empty();
     let tr;
+    let dugme;
     for (var i = 0; i < lista_korisnika.length; i++) {
+        if (lista_korisnika[i].Admin == 0) {
+          dugme = "glyphicon glyphicon-plus";
+        } else {
+          dugme = "glyphicon glyphicon-minus";
+        }
         tr = $('<tr class="dynamicWrite" scope="row"/>');
-        tr.append("<td class='tabledata' id='idKorisnika'><a onclick=\"azurirajKorisnika("+lista_korisnika[i].ID+")\">" + lista_korisnika[i].ID + "</a></td>");
+        tr.append("<td class='tabledata' id='idKorisnika'>" + lista_korisnika[i].ID + "</td>");
         tr.append("<td class='tabledata' id='korisnickoIme'>" + lista_korisnika[i].Korisnicko_ime + "</td>");
         tr.append("<td class='tabledata' id='emailKorisnika'>" + lista_korisnika[i].Email + "</td>");
-        tr.append("<td class='tabledata' id='adminKorisnik'>" + lista_korisnika[i].Admin + "</td>");
+        tr.append("<td class='tabledata' id='adminKorisnik'>" + lista_korisnika[i].Admin + "<span style=\"float:right;\" class=\""+ dugme +"\" onclick=\"azurirajKorisnika("+lista_korisnika[i].ID+")\"></span></td>");
         $('#korisnici').append(tr);
     }
   }
@@ -327,6 +336,7 @@ var lista_porudzbina = [];
   function porudzbineAppend() {
     document.getElementById("dodajTorbu").hidden = "hidden";
     document.getElementById("torbe").hidden = "hidden";
+    document.getElementById("korisnici").hidden = "hidden";
     document.getElementById("porudzbine").hidden = "";
 
     $("#porudzbine .dynamicWrite").empty();
@@ -343,6 +353,7 @@ var lista_porudzbina = [];
   $('#prikaziTorbe').on("click", function() {
     document.getElementById("torbe").hidden = "hidden";
     document.getElementById("korisnici").hidden = "hidden";
+    document.getElementById("porudzbine").hidden = "hidden";
     document.getElementById('dodajTorbu').hidden = '';
 
   })

@@ -63,7 +63,7 @@
     } else if ($_POST['ime'] == 'porudzbine') {
       echo json_encode(lista_porudzbina());
     } else if ($_POST['ime'] == 'promeniStatus') {
-      echo promeniStatus();
+      echo promeniStatus($_POST['status']);
     } else {
       echo "Nepostojece!";
     }
@@ -111,9 +111,17 @@
   }
 
   function promeniStatus($a,$b = "undefined") {
+    global $connection;
+
     if ($b == "undefined") {
-      $sql_update = "UPDATE `porudzbine` SET `Poslato` = 1 WHERE `ID_Porudzbine` = $a";
-      var_dump($sql_update);
+      $sql_update = "UPDATE `porudzbine` SET `Poslato` = 1 WHERE `ID` = $a";
+      $result = mysqli_query($connection, $sql_update);
+
+      if($result) {
+        echo "Uspesno promenjen status na 'Poslato' ";
+      } else {
+        echo "Doslo je do greske!";
+      }
     }
   }
 
