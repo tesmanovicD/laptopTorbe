@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="laptop-torbe@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="laptop-torbe">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="a"/>
+    <schema id="4" parent="1" name="ads"/>
+    <schema id="5" parent="1" name="cppapp"/>
+    <schema id="6" parent="1" name="galery"/>
+    <schema id="7" parent="1" name="gallery"/>
+    <schema id="8" parent="1" name="gallery2"/>
+    <schema id="9" parent="1" name="information_schema"/>
+    <schema id="10" parent="1" name="ipgdota2"/>
+    <schema id="11" parent="1" name="mobile"/>
+    <schema id="12" parent="1" name="mysql"/>
+    <schema id="13" parent="1" name="performance_schema"/>
+    <schema id="14" parent="1" name="sys"/>
+    <table id="15" parent="2" name="korisnici"/>
+    <table id="16" parent="2" name="porudzbine"/>
+    <table id="17" parent="2" name="promo_code"/>
+    <table id="18" parent="2" name="stavke_torbe"/>
+    <column id="19" parent="15" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="20" parent="15" name="Korisnicko_ime">
+      <Position>2</Position>
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="15" name="Lozinka">
+      <Position>3</Position>
+      <DataType>varchar(35)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="22" parent="15" name="Email">
+      <Position>4</Position>
+      <DataType>varchar(35)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="15" name="Ime">
+      <Position>5</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="24" parent="15" name="Prezime">
+      <Position>6</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="25" parent="15" name="Datum_rodjenja">
+      <Position>7</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="26" parent="15" name="JMBG">
+      <Position>8</Position>
+      <DataType>varchar(13)|0</DataType>
+    </column>
+    <column id="27" parent="15" name="Mobilni">
+      <Position>9</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="28" parent="15" name="Adresa">
+      <Position>10</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="29" parent="15" name="Postanski_broj">
+      <Position>11</Position>
+      <DataType>varchar(6)|0</DataType>
+    </column>
+    <column id="30" parent="15" name="Grad">
+      <Position>12</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="31" parent="15" name="Drzava">
+      <Position>13</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="32" parent="15" name="Admin">
+      <Position>14</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="33" parent="15" name="Status">
+      <Position>15</Position>
+      <DataType>varchar(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;inactive&apos;</DefaultExpression>
+    </column>
+    <key id="34" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="35" parent="16" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="36" parent="16" name="ID_Korisnika">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="37" parent="16" name="ID_Torbe">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="38" parent="16" name="Datum_Kupovine">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="39" parent="16" name="Ime">
+      <Position>5</Position>
+      <DataType>varchar(55)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="16" name="Prezime">
+      <Position>6</Position>
+      <DataType>varchar(55)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="16" name="JMBG">
+      <Position>7</Position>
+      <DataType>varchar(13)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="16" name="Broj_Mobilnog">
+      <Position>8</Position>
+      <DataType>varchar(55)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="43" parent="16" name="Adresa">
+      <Position>9</Position>
+      <DataType>varchar(55)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="44" parent="16" name="Drzava">
+      <Position>10</Position>
+      <DataType>varchar(55)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="45" parent="16" name="Grad">
+      <Position>11</Position>
+      <DataType>varchar(55)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="46" parent="16" name="Postanski_Broj">
+      <Position>12</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="16" name="Cena">
+      <Position>13</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="48" parent="16" name="ID_Porudzbine">
+      <Position>14</Position>
+      <DataType>varchar(55)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="16" name="Poslato">
+      <Position>15</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <index id="50" parent="16" name="ID_Korisnika">
+      <ColNames>ID_Korisnika</ColNames>
+    </index>
+    <index id="51" parent="16" name="ID_Torbe">
+      <ColNames>ID_Torbe</ColNames>
+    </index>
+    <key id="52" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="53" parent="16" name="porudzbine_ibfk_1">
+      <ColNames>ID_Korisnika</ColNames>
+      <RefSchemaName>laptop-torbe</RefSchemaName>
+      <RefTableName>korisnici</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <foreign-key id="54" parent="16" name="porudzbine_ibfk_2">
+      <ColNames>ID_Torbe</ColNames>
+      <RefSchemaName>laptop-torbe</RefSchemaName>
+      <RefTableName>stavke_torbe</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <column id="55" parent="17" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="56" parent="17" name="promo">
+      <Position>2</Position>
+      <DataType>int(6)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="57" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="58" parent="18" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="59" parent="18" name="Naziv">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="60" parent="18" name="Opis">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="61" parent="18" name="Cena">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="62" parent="18" name="Slika">
+      <Position>5</Position>
+      <DataType>varchar(80)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="63" parent="18" name="Alt">
+      <Position>6</Position>
+      <DataType>varchar(80)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="64" parent="18" name="Link">
+      <Position>7</Position>
+      <DataType>varchar(150)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="65" parent="18" name="Kategorija">
+      <Position>8</Position>
+      <DataType>enum(&apos;Asus&apos;, &apos;Hama&apos;, &apos;Lenovo&apos;, &apos;Spirit&apos;, &apos;Dell&apos;, &apos;Hp&apos;, &apos;Targus&apos;)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="66" parent="18" name="Kolicina">
+      <Position>9</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="67" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
