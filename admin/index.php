@@ -194,7 +194,6 @@ var lista_porudzbina = [];
               Kolicina: tempTorbe[i].Kolicina
               });
             }
-            console.log(lista_torbi);
             torbeAppend();
             break;
 
@@ -229,7 +228,6 @@ var lista_porudzbina = [];
               Admin: tempKorisnici[i].Admin,
               });
             }
-            console.log(lista_korisnika);
             korisniciAppend();
       }
     })
@@ -256,7 +254,6 @@ var lista_porudzbina = [];
             // Cena: tempPorudzbine[i].Cena
           });
         }
-        console.log(lista_porudzbina);
         porudzbineAppend();
       }
     });

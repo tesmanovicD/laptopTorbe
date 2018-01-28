@@ -8,11 +8,51 @@ function sessionStarted() {
     return false;
   }
 }
+if (!isset($_SESSION["discount"])) {
+  $_SESSION["discount"] = 0;
+}
+
+if (!isset($_SESSION['promo_code'])) {
+  $_SESSION['promo_code'] = "nema";
+}
 $database_name = "laptop-torbe";
+global $con;
 $con = mysqli_connect("localhost","root","",$database_name);
 
 if(isset($_POST['mod'])) {
-  $_SESSION["cart"][0]["item_quantity"] = $_POST['changeQuantity'];
+  if ($_POST['mod'] == 'changeQuantity') {
+    $_SESSION["cart"][0]["item_quantity"] = $_POST['changeQuantity'];
+    exit();
+  }
+  if ($_POST['mod'] == 'checkPromo') {
+    $promo = $_POST['promoCode'];
+    $sql_select = "SELECT * FROM `promo_code` WHERE `promo` ='".$promo."' AND `status` = 0";
+    $result = mysqli_query($con, $sql_select);
+
+    if (mysqli_num_rows($result) > 0) {
+      echo "Postoji";
+      $_SESSION["discount"] = 0.15;
+      $_SESSION['promo_code'] = $promo;
+      exit();
+    } else {
+      echo "Invalid";
+      exit();
+    }
+
+  }
+}
+
+function custom_echo($x, $length)
+{
+  if(strlen($x)<=$length)
+  {
+    echo $x;
+  }
+  else
+  {
+    $y=substr($x,0,$length) . '...';
+    echo $y;
+  }
 }
 
 if (isset($_POST["add"])){
@@ -24,7 +64,7 @@ if (isset($_POST["add"])){
                 'product_id' => $_GET["id"],
                 'item_name' => $_POST["hidden_name"],
                 'product_price' => $_POST["hidden_price"],
-                'item_quantity' => $_POST["quantity"],
+                'item_quantity' => $_POST["quantity"]
             );
             $_SESSION["cart"][$count] = $item_array;
             echo '<script>window.location="card.php"</script>';
@@ -150,8 +190,8 @@ if (isset($_GET["action"])){
 
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav" id="itemscentered">
-                <li class="active"><a href="../index.php">Početna stranica &nbsp;&nbsp;<span class=" glyphicon glyphicon-home"></span></a></li>
-                <li><a href="../laptop-torbe.php">Naši proizvodi &nbsp;&nbsp;<span class=" glyphicon glyphicon-briefcase"></span></a></li>
+                <li><a href="../index.php">Početna stranica &nbsp;&nbsp;<span class=" glyphicon glyphicon-home"></span></a></li>
+                <li class="active"><a href="../laptop-torbe.php">Naši proizvodi &nbsp;&nbsp;<span class=" glyphicon glyphicon-briefcase"></span></a></li>
                 <li><a href="../kontakt.php">Kontakt &nbsp;&nbsp;<span class="  glyphicon glyphicon-phone-alt"></span></a></li>
                 <li><a href="../onama.php">O nama &nbsp;&nbsp;<span class="  glyphicon glyphicon-education"></span></a></li>
                 <?php if(!sessionStarted()) { ?><li><a href="korisnik/registracija.html">Registracija &nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></a></li><?php } ?>
@@ -180,7 +220,7 @@ if (isset($_GET["action"])){
 
                     <div class="product" style="border: 1px solid black;margin-right: 25px;margin-bottom: 20px;border-radius: 2%;background-color:rgba(255,255,255,0.53);)">
                         <img src="<?php echo $row["Slika"]; ?>" class="img-responsive">
-                        <h5 class="text-info"><?php echo $row["Naziv"]; ?></h5>
+                        <h5 class="text-info"><?php custom_echo($row['Naziv'], 32); ?></h5>
                         <h5 class="text-danger"><?php echo $row["Cena"]; ?></h5>
                         <input type="text" name="quantity" class="form-control" value="1">
                         <input type="hidden" name="hidden_name" value="<?php echo $row["Naziv"]; ?>">
@@ -214,7 +254,7 @@ if (isset($_GET["action"])){
                     ?>
                     <tr class="item_details">
                         <td style="background-color:white;font-size: 18px;" id="item_name"><?php echo $value["item_name"]; ?></td>
-                        <td style="background-color:white;font-size: 18px;"><input type="text" class="quantity" value="<?php echo $value['item_quantity']?>"> <span  class="product_id"><?php echo $value["product_id"]; ?></span> </td>
+                        <td style="background-color:white;font-size: 18px;"><input type="text" class="quantity" value="<?php echo $value['item_quantity']?>"></td>
                         <td style="background-color:white;font-size: 18px;" id="product_price"><?php echo $value["product_price"]; ?> RSD </td>
                         <td style="background-color:white;font-size: 18px;">
                           <?php echo number_format($value["item_quantity"] * $value["product_price"], 2); ?>  RSD </td>
@@ -225,9 +265,14 @@ if (isset($_GET["action"])){
                     <?php
                     $total = $total + ($value["item_quantity"] * $value["product_price"]);
                 }
+                 $total = $total - ($total*$_SESSION["discount"]);
                 ?>
                 <tr>
-                    <td colspan="3" align="right" style="background-color:white;font-size: 18px;font-weight: bold">Ukupan iznos korpe:</td>
+                    <td style="background-color:white">
+                      Promo kod: <br/>
+                      <input type="text" name="promoCode" id="promoCode" maxlength="5"/>
+                    </td>
+                    <td colspan="2" align="right" style="background-color:white;font-size: 18px;font-weight: bold">Ukupan iznos korpe:</td>
                     <th align="right" style="font-size: 18px;"><?php echo number_format($total, 2); ?> RSD </th>
                     <td style="background-color:white">
 
@@ -268,6 +313,19 @@ $(".quantity").change(function() {
        }
    });
 });
+
+$("#promoCode").change(function() {
+  var promoCode = $(this).val();
+  $.ajax({
+    url: "card.php",
+    type: "post",
+    data: { mod: "checkPromo", promoCode: promoCode },
+    success: function(data) {
+      alert(data);
+      location.reload();
+    }
+  })
+})
 
 $("#izvrsi_narudzbinu").on("click", function() {
 //ajax poziv

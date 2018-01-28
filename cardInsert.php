@@ -19,18 +19,24 @@
   }
 $id_korisnika = getUserID($_SESSION["korisnicko_ime"]);
 $id_porudzbine = date("dm").mt_rand(1,99);
+$promo_code = $_SESSION["promo_code"];
+$discount = $_SESSION["discount"];
 
   foreach ($cartDetails as $cart) {
       $product_id = $cart["product_id"];
       $item_name = $cart["item_name"];
       $item_quantity = $cart["item_quantity"];
-      $product_price = $cart["product_price"];
+      $product_price = $cart["product_price"] - ($cart["product_price"]*$discount);
 
 
-      $sql_insert = "INSERT INTO porudzbine (`ID_Korisnika`, `ID_Torbe`, `Datum_Kupovine`, `Ime`, `Prezime`, `JMBG`, `Broj_Mobilnog`, `Adresa`, `Drzava`, `Grad`, `Postanski_Broj`, `Cena`, `ID_Porudzbine`) VALUES ( '".$id_korisnika."', '".$product_id."', '".date('Y-m-d h:i:s')."', 'test', 'test', 123, 055, 'test', 'test', 'test', 5353, ".$product_price." ,'".$id_porudzbine."')";
-      if(mysqli_query($connection,$sql_insert)) {
+      $sql_insert = "INSERT INTO porudzbine (`ID_Korisnika`, `ID_Torbe`, `Datum_Kupovine`, `Ime`, `Prezime`, `JMBG`, `Broj_Mobilnog`, `Adresa`, `Drzava`, `Grad`, `Postanski_Broj`, `Cena`, `Promo_Code`, `ID_Porudzbine`) VALUES ( '".$id_korisnika."', '".$product_id."', '".date('Y-m-d h:i:s')."', 'test', 'test', 123, 055, 'test', 'test', 'test', 5353, ".$product_price." , '".$promo_code."' ,'".$id_porudzbine."')";
+      $sql_update = "UPDATE `promo_code` SET `status` = 1 WHERE `promo` = '".$promo_code."'";
+
+      if(mysqli_query($connection,$sql_insert) && mysqli_query($connection,$sql_update)) {
         $status = true;
         unset($_SESSION["cart"]);
+        unset($_SESSION["discount"]);
+        unset($_SESSION["promo_code"]);
       } else {
         $status = false;
       }
