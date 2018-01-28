@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2018 at 11:45 PM
+-- Generation Time: Jan 28, 2018 at 03:12 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -81,6 +81,7 @@ CREATE TABLE `porudzbine` (
   `Grad` varchar(55) NOT NULL,
   `Postanski_Broj` int(11) NOT NULL,
   `Cena` int(11) NOT NULL,
+  `Promo_Code` varchar(6) NOT NULL DEFAULT 'nema',
   `ID_Porudzbine` varchar(55) NOT NULL,
   `Poslato` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -89,11 +90,31 @@ CREATE TABLE `porudzbine` (
 -- Dumping data for table `porudzbine`
 --
 
-INSERT INTO `porudzbine` (`ID`, `ID_Korisnika`, `ID_Torbe`, `Datum_Kupovine`, `Ime`, `Prezime`, `JMBG`, `Broj_Mobilnog`, `Adresa`, `Drzava`, `Grad`, `Postanski_Broj`, `Cena`, `ID_Porudzbine`, `Poslato`) VALUES
-(1, 7, 36, '2018-01-23 03:00:43', 'test', 'test', '123', '55', 'test', 'test', 'test', 5353, 2490, '23012', 0),
-(2, 7, 37, '2018-01-23 03:00:43', 'test', 'test', '123', '55', 'test', 'test', 'test', 5353, 3990, '23012', 0),
-(3, 7, 19, '2018-01-23 04:00:46', 'test', 'test', '123', '55', 'test', 'test', 'test', 5353, 2990, '230191', 1),
-(4, 7, 2, '2018-01-23 04:00:46', 'test', 'test', '123', '55', 'test', 'test', 'test', 5353, 9990, '230191', 0);
+INSERT INTO `porudzbine` (`ID`, `ID_Korisnika`, `ID_Torbe`, `Datum_Kupovine`, `Ime`, `Prezime`, `JMBG`, `Broj_Mobilnog`, `Adresa`, `Drzava`, `Grad`, `Postanski_Broj`, `Cena`, `Promo_Code`, `ID_Porudzbine`, `Poslato`) VALUES
+(11, 6, 34, '2018-01-28 01:00:12', 'test', 'test', '123', '55', 'test', 'test', 'test', 5353, 3817, '33333', '280151', 0),
+(12, 6, 4, '2018-01-28 01:00:12', 'test', 'test', '123', '55', 'test', 'test', 'test', 5353, 3137, '33333', '280151', 1),
+(13, 6, 4, '2018-01-28 01:00:53', 'test', 'test', '123', '55', 'test', 'test', 'test', 5353, 3690, 'nema', '280196', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `promo_code`
+--
+
+CREATE TABLE `promo_code` (
+  `id` int(11) NOT NULL,
+  `promo` varchar(6) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `promo_code`
+--
+
+INSERT INTO `promo_code` (`id`, `promo`, `status`) VALUES
+(1, '89020', 1),
+(4, '55555', 1),
+(5, '33333', 1);
 
 -- --------------------------------------------------------
 
@@ -122,7 +143,6 @@ INSERT INTO `stavke_torbe` (`ID`, `Naziv`, `Opis`, `Cena`, `Slika`, `Alt`, `Link
 (2, 'ASUS Torba ROG Ranger', 'Do 15.6\'\'', 9990, 'asus_laptop_torba_rog_ranger.png', 'ASUS laptop torba ROG Ranger Messenger do 15.6 inca', 'https://www.gigatron.rs/torbe/asus_laptop_torba_rog_ranger_messenger-74031', 'Asus', 0),
 (3, 'HAMA Ranac Tortuga - 101525', 'Do 17.3\'\'', 3190, 'hama_tortuga.png', 'HAMA Ranac Tortuga za laptop do 17.3 inca (Crna) - 101525', 'https://www.gigatron.rs/rancevi/hama_ranac_tortuga_za_laptop_do_173_crna__101525-106323', 'Asus', 0),
 (4, 'HAMA Phuket - 101082', 'Do 15.6\'\'', 3690, 'hama_phuket.jpg', 'HAMA Phuket ranac za notebook do 15.6 inca - 101082', 'https://www.gigatron.rs/rancevi/hama_phuket_ranac_za_notebook_do_156__101082-30449', 'Asus', 0),
-(5, 'HAMA Ranac Dublin - 101274', 'Do 17.3\'', 4290, 'glupost', '', '', 'Asus', 0),
 (6, 'HAMA Phuket ranac za notebook - 101083', 'Do 17.3\'\'', 4590, 'hama_ranac_za_notebook.png', 'HAMA Phuket ranac za notebook do 17.3 inca - 101083', 'https://www.gigatron.rs/rancevi/hama_phuket_ranac_za_notebook_do_173__101083-49579', 'Asus', 0),
 (7, 'HAMA torba za laptop Florence II- 00101569', 'Do 15.6\'\'', 4190, 'hama_florence.png', 'HAMA torba za laptop Florence II (Siva/crna) - 00101569', 'https://www.gigatron.rs/torbe/hama_torba_za_laptop_florence_ii_sivacrna__00101569-111631', 'Asus', 0),
 (8, 'HAMA Torba Santorin za laptop - 101562', 'Do 13.3\'\'', 4490, 'hama_santorin.png', 'HAMA Torba Santorin za laptop do 13.3 inca(Braon) - 101562', 'https://www.gigatron.rs/torbe/hama_torba_santorin_za_laptop_do_133_braon__101562-106353', 'Asus', 0),
@@ -175,6 +195,12 @@ ALTER TABLE `porudzbine`
   ADD KEY `ID_Torbe` (`ID_Torbe`);
 
 --
+-- Indexes for table `promo_code`
+--
+ALTER TABLE `promo_code`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `stavke_torbe`
 --
 ALTER TABLE `stavke_torbe`
@@ -193,7 +219,12 @@ ALTER TABLE `korisnici`
 -- AUTO_INCREMENT for table `porudzbine`
 --
 ALTER TABLE `porudzbine`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT for table `promo_code`
+--
+ALTER TABLE `promo_code`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `stavke_torbe`
 --
