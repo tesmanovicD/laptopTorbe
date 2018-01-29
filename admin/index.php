@@ -73,6 +73,8 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_admin'] == 0 ) {
     <input type="url" id="link" name="link" placeholder="Link" class="dodavanje"/>
       <br/>
 
+      <input type="file" name="slika" id="slika" />
+
     <input type="number" id="kolicina" name="kolicina" placeholder="Kolicina" class="dodavanje"/>
       <br/>
       <textarea name="opis" id="opis" rows="8" cols="80" placeholder="Opis" class="dodavanje"></textarea>
@@ -159,8 +161,9 @@ var lista_korisnika = [];
 var lista_porudzbina = [];
 
   function dodajTorbu() {
+    var slika = $('#slika').val().replace(/C:\\fakepath\\/i, '');
     $.ajax({
-        data: { naziv: $('#naziv').val(), opis: $('#opis').val(), cena: $('#cena').val(), slika: $('#slika').val(),
+        data: { naziv: $('#naziv').val(), opis: $('#opis').val(), cena: $('#cena').val(), slika: slika,
               alt: $('#alt').val(), link: $('#link').val(), kategorija: $('#kategorija').val(), kolicina: $('#kolicina').val() },
         type: "POST",
         url: "backend/dodajTorbu.php",
@@ -262,13 +265,14 @@ var lista_porudzbina = [];
   function torbeAppend() {
     document.getElementById("dodajTorbu").hidden = "hidden";
     document.getElementById("porudzbine").hidden = "hidden";
+    document.getElementById("formaTorbe").hidden = "hidden";
     document.getElementById("torbe").hidden = "";
     document.getElementById("korisnici").hidden = "hidden";
     $("#torbe .dynamicWrite").empty();
     let tr;
     for (var i = 0; i < lista_torbi.length; i++) {
         tr = $('<tr class="dynamicWrite" scope="row"/>');
-        tr.append("<td class='tabledata'><a href=\"index.php?opcija=izmenaTorbe&id="+lista_torbi[i].ID+"\">" + lista_torbi[i].ID + "</a></td>");
+        tr.append("<td class='tabledata'>" + lista_torbi[i].ID + "</td>");
         tr.append("<td class='tabledata'>" + lista_torbi[i].Naziv + "</td>");
         tr.append("<td class='tabledata'>" + lista_torbi[i].Opis + "</td>");
         tr.append("<td class='tabledata'>" + lista_torbi[i].Cena + "</td>");
@@ -277,6 +281,7 @@ var lista_porudzbina = [];
         tr.append("<td class='tabledata'>" + lista_torbi[i].Kolicina + "</td>");
         tr.append("<td class='tabledata'>" + lista_torbi[i].Link + "</td>");
         tr.append("<td class='tabledata'>" + lista_torbi[i].Alt + "</td>");
+        tr.append("<td class='tabledata'><a href=\"index.php?opcija=izmenaTorbe&id="+lista_torbi[i].ID+"\"><button class=\"btn btn-warning\">Izmeni</button></a></td>");
         $('#torbe').append(tr);
     }
   }
@@ -311,6 +316,7 @@ var lista_porudzbina = [];
     document.getElementById("dodajTorbu").hidden = "hidden";
     document.getElementById("torbe").hidden = "hidden";
     document.getElementById("porudzbine").hidden = "hidden";
+    document.getElementById("formaTorbe").hidden = "hidden";
     document.getElementById("korisnici").hidden = "";
     $("#korisnici .dynamicWrite").empty();
     let tr;
@@ -332,6 +338,7 @@ var lista_porudzbina = [];
 
   function porudzbineAppend() {
     document.getElementById("dodajTorbu").hidden = "hidden";
+    document.getElementById("formaTorbe").hidden = "hidden";
     document.getElementById("torbe").hidden = "hidden";
     document.getElementById("korisnici").hidden = "hidden";
     document.getElementById("porudzbine").hidden = "";
@@ -348,6 +355,7 @@ var lista_porudzbina = [];
   }
 
   $('#prikaziTorbe').on("click", function() {
+    document.getElementById("formaTorbe").hidden = "hidden";
     document.getElementById("torbe").hidden = "hidden";
     document.getElementById("korisnici").hidden = "hidden";
     document.getElementById("porudzbine").hidden = "hidden";
@@ -370,11 +378,11 @@ if (isset($_GET['opcija']) && isset($_GET['id'])) {
     $result = mysqli_query($connection,$sql_select);
 
     if (mysqli_num_rows($result) > 0) {
-      echo "<form style=\"color:#000;\">";
+      echo "<form style=\"color:#000;\" id=\"formaTorbe\">";
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             echo "<span style=\"display:none;\">ID: <input type=\"text\" value=\"". $row['ID']."\" id=\"idTorbe\" disabled/></span><br/>";
+            echo "<img src=\"../img/".$row['Slika']."\" alt=\"".$row['Alt']."\" width=\"250px\" height=\"auto\" style=\"border:5px solid #fff; padding:10px;\"><br/>";
             echo "Naziv: <input type=\"text\" value=\"". $row['Naziv']."\" id=\"nazivTorbe\" /><br/>";
-            // echo "<img src=\"./img/".$row['Slika']."\" alt=\"".$row['Alt']."\"><br/>";
             echo "Opis: <input type=\"text\" value=\"". $row['Opis']."\" id=\"opisTorbe\" /><br/>";
             echo "Cena: <input type=\"text\" value=\"". $row['Cena']."\" id=\"cenaTorbe\" />$<br/>";
             echo "Dostupno: <input type=\"text\" value=\"". $row['Kolicina']."\" id=\"kolicinaTorbe\" />kom.<br/>";

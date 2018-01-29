@@ -3,8 +3,8 @@
   include_once("../../config/dbconfig.php");
 
   if(proveriPodatke()) {
-    var_dump($_FILES['file']['name']);
-    echo $_FILES['file']['name'];
+    // var_dump($_FILES['file']['name']);
+    // echo $_FILES['file']['name'];
     // uploadSlike();
     $sql_insert = "INSERT INTO stavke_torbe (`Naziv`, `Opis`, `Cena`, `Slika`, `Alt`, `Link`, `Kategorija`, `Kolicina`) VALUES ('".$_POST['naziv']."','".$_POST['opis']."','".$_POST['cena']."','test','".$_POST['alt']."','".$_POST['link']."','".$_POST['kategorija']."','".$_POST['kolicina']."')";
     mysqli_query($connection, $sql_insert);
