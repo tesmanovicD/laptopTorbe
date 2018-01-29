@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 29, 2018 at 05:47 PM
+-- Generation Time: Jan 29, 2018 at 11:39 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -43,7 +43,7 @@ INSERT INTO `komentari` (`id`, `ime`, `komentar`, `odobren`) VALUES
 (1, 'Milos', 'Odlicna torba!', 1),
 (2, 'Daniel', 'Super!', 1),
 (3, 'Janko', 'Torba je <b>*cenzurisano*</b>, kupio sam od <b>*cenzurisano*</b>.', 1),
-(4, 'Marko', 'top', 0),
+(4, 'Marko', 'top', 1),
 (5, 'Test', 'superrr', 0);
 
 -- --------------------------------------------------------
@@ -67,25 +67,26 @@ CREATE TABLE `korisnici` (
   `Grad` varchar(20) DEFAULT NULL,
   `Drzava` varchar(20) DEFAULT NULL,
   `Admin` tinyint(1) NOT NULL DEFAULT '0',
-  `Status` varchar(10) NOT NULL DEFAULT 'inactive'
+  `Status` varchar(10) NOT NULL DEFAULT 'inactive',
+  `Token` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `korisnici`
 --
 
-INSERT INTO `korisnici` (`ID`, `Korisnicko_ime`, `Lozinka`, `Email`, `Ime`, `Prezime`, `Datum_rodjenja`, `JMBG`, `Mobilni`, `Adresa`, `Postanski_broj`, `Grad`, `Drzava`, `Admin`, `Status`) VALUES
-(1, 'test', '123', 'danites007@gmail.com', '', 'Tesmanovic', '0000-00-00', '', '', 'Stevana Filipovica 60/11', '24000', 'Subotica', 'Serbia', 0, 'inactive'),
-(2, 'danites', '123123', 'danites007@gmail.com', '', 'Tesmanovic', '0000-00-00', '', '', 'Stevana Filipovica 60/11', '24000', 'Subotica', 'Serbia', 0, 'inactive'),
-(5, 'testte', '123123123', '12115231@vts.su.ac.rs', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'inactive'),
-(6, 'kriptovani', '4297f44b13955235245b2497399d7a93', 'kript@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 1, 'active'),
-(7, 'obican', '4297f44b13955235245b2497399d7a93', 'dadijawid@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'active'),
-(8, 'test111', '4297f44b13955235245b2497399d7a93', 'testt111@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'inactive'),
-(9, '31414', '4297f44b13955235245b2497399d7a93', 'danites1007@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'inactive'),
-(12, 'test1', '4297f44b13955235245b2497399d7a93', 'edincedin@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'inactive'),
-(19, 'uspehuspeh', '4297f44b13955235245b2497399d7a93', 'uspehuspeh@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'inactive'),
-(27, 'tesho', '4297f44b13955235245b2497399d7a93', 'chipmunksserbia@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'inactive'),
-(28, 'teshokor', '4297f44b13955235245b2497399d7a93', 'eedincedin@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'active');
+INSERT INTO `korisnici` (`ID`, `Korisnicko_ime`, `Lozinka`, `Email`, `Ime`, `Prezime`, `Datum_rodjenja`, `JMBG`, `Mobilni`, `Adresa`, `Postanski_broj`, `Grad`, `Drzava`, `Admin`, `Status`, `Token`) VALUES
+(1, 'test', '123', 'danites007@gmail.com', '', 'Tesmanovic', '0000-00-00', '', '', 'Stevana Filipovica 60/11', '24000', 'Subotica', 'Serbia', 0, 'inactive', ''),
+(2, 'danites', '123123', 'danites007@gmail.com', '', 'Tesmanovic', '0000-00-00', '', '', 'Stevana Filipovica 60/11', '24000', 'Subotica', 'Serbia', 0, 'inactive', ''),
+(5, 'testte', '123123123', '12115231@vts.su.ac.rs', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'inactive', ''),
+(6, 'kriptovani', '4297f44b13955235245b2497399d7a93', 'kript@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 1, 'active', ''),
+(7, 'obican', '4297f44b13955235245b2497399d7a93', 'dadijawid@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'active', ''),
+(8, 'test111', '4297f44b13955235245b2497399d7a93', 'testt111@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'inactive', ''),
+(9, '31414', '4297f44b13955235245b2497399d7a93', 'danites1007@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'inactive', ''),
+(12, 'test1', 'afe79eaa42f16d3f8f1a207372c0b8a9', 'edincedin@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'inactive', ''),
+(19, 'uspehuspeh', '4297f44b13955235245b2497399d7a93', 'uspehuspeh@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'inactive', ''),
+(27, 'tesho', '4297f44b13955235245b2497399d7a93', 'chipmunksserbia@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'inactive', ''),
+(28, 'teshokor', '4297f44b13955235245b2497399d7a93', 'eedincedin@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'active', '');
 
 -- --------------------------------------------------------
 
@@ -165,7 +166,6 @@ CREATE TABLE `stavke_torbe` (
 --
 
 INSERT INTO `stavke_torbe` (`ID`, `Naziv`, `Opis`, `Cena`, `Slika`, `Alt`, `Link`, `Kategorija`, `Kolicina`) VALUES
-(1, 'ASUS Ranac ROG Ranger', 'Do 17\'\'', 18990, 'asus_ranac_rog_ranger.png', 'Asus Ranac ROG Ranger za laptop do 17 inca', 'https://www.gigatron.rs/rancevi/asus_ranac_rog_ranger_za_laptop_do_17_crna__not09743-98059', 'Asus', 0),
 (2, 'ASUS Torba ROG Ranger', 'Do 15.6\'\'', 9990, 'asus_laptop_torba_rog_ranger.png', 'ASUS laptop torba ROG Ranger Messenger do 15.6 inca', 'https://www.gigatron.rs/torbe/asus_laptop_torba_rog_ranger_messenger-74031', 'Asus', 0),
 (3, 'HAMA Ranac Tortuga - 101525', 'Do 17.3\'\'', 3190, 'hama_tortuga.png', 'HAMA Ranac Tortuga za laptop do 17.3 inca (Crna) - 101525', 'https://www.gigatron.rs/rancevi/hama_ranac_tortuga_za_laptop_do_173_crna__101525-106323', 'Asus', 0),
 (4, 'HAMA Phuket - 101082', 'Do 15.6\'\'', 3690, 'hama_phuket.jpg', 'HAMA Phuket ranac za notebook do 15.6 inca - 101082', 'https://www.gigatron.rs/rancevi/hama_phuket_ranac_za_notebook_do_156__101082-30449', 'Asus', 0),
@@ -266,7 +266,7 @@ ALTER TABLE `promo_code`
 -- AUTO_INCREMENT for table `stavke_torbe`
 --
 ALTER TABLE `stavke_torbe`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- Constraints for dumped tables
 --
