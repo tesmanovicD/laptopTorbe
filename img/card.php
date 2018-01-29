@@ -197,7 +197,7 @@ if (isset($_GET["action"])){
                 <?php if(!sessionStarted()) { ?><li><a href="korisnik/registracija.html">Registracija &nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></a></li><?php } ?>
                 <?php if(!sessionStarted()) { ?><li><a href="korisnik/login.html">Prijava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li><?php } ?>
         				<?php if(sessionStarted()) { ?><li><a href="../korisnik/php/logout.php">Odjava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li><?php } ?>
-                <?php if(sessionStarted()) { ?><li><a href="#">Prijavljeni ste kao <span id="korisnicko_ime"><?php echo $_SESSION["korisnicko_ime"] ?></span> &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></a></li><?php } ?>
+                <?php if(sessionStarted()) { ?><li><a href="#">Prijavljeni ste kao <span id="korisnicko_ime" style="font-family: 'Amatic SC', cursive;"><?php echo $_SESSION["korisnicko_ime"] ?></span> &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></a></li><?php } ?>
             </ul><!--end of navbar items-->
         </div><!--end of myNavbar-->
     </div><!--end of container-fluid-->
@@ -338,7 +338,7 @@ $.ajax({
      data: { secret: secret },
      success: function (data) {
         alert(data);
-        window.location.href = "http://localhost/LAPTOP-TORBE/img/card.php";
+        window.location.href = "http://localhost/LaptopTorbe/img/card.php";
      }
  });
 

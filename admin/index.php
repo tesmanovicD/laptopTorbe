@@ -100,7 +100,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_admin'] == 0 ) {
 
    ?>
 
-  <button onClick="dodajTorbu()">TEST</button>
+  <button onClick="dodajTorbu()">Dodaj Torbu</button>
   <input type="reset" name="otkazi" value="Otkazi">
 
   </div><!--end of dodaj_torbu-->
