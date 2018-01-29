@@ -1,4 +1,6 @@
 <?php
+include 'config/dbconfig.php';
+
 session_start();
 $user_input_new='';
 function sessionStarted() {
@@ -30,8 +32,7 @@ if(isset($_POST['komentarisi'])){
 
     if(sessionStarted()){
 
-        header("Location: ./laptop-torbe.php" );
-        $messagecomment = "Uspešno ste postavili komentar.";
+        $messagecomment = "Uspešno ste poslali komentar. Sačekajte da administratori odobre vaš komentar.";
         echo "<script type='text/javascript''>alert('$messagecomment');</script>";
 
 
@@ -116,7 +117,7 @@ if(isset($_POST['komentarisi'])){
             <?php if(!sessionStarted()) { ?><li><a href="korisnik/registracija.html">Registracija &nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></a></li><?php } ?>
             <?php if(!sessionStarted()) { ?><li><a href="korisnik/login.html">Prijava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li><?php } ?>
             <?php if(sessionStarted()) { ?><li><a href="korisnik/php/logout.php">Odjava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li><?php } ?>
-            <?php if(sessionStarted()) { ?><li><a href="#">Prijavljeni ste kao Milos &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></a></li><?php } ?>
+            <?php if(sessionStarted()) { ?><li><a href="#">Prijavljeni ste kao <?php echo $_SESSION["korisnicko_ime"] ?> <span class="glyphicon glyphicon-user"></span></a></li><?php } ?>
 
 
         </ul><!--end of navbar items-->
@@ -179,9 +180,8 @@ if(!isset($_GET['id'])) {
         }
 
         $name = $_POST['name'];
-        $handle = fopen("comments.php", "a");
-        fwrite($handle, "<b><i>" . $name . "</b></i> je komentarisao:<br/>" . $user_input_new. "<br/><br/>");
-        fclose($handle);
+        $sql_insert = "INSERT INTO komentari (ime, komentar) VALUES ( '".$name."' ,'".$user_input_new."')";
+        mysqli_query($connection,$sql_insert);
 
     }
 
@@ -195,7 +195,9 @@ if(!isset($_GET['id'])) {
       <form action="" method="post">
 
           <input type="text" name="name" placeholder="Nadimak..." class="komentar" style="font-size: 30px;margin-top: 0%;font-family: Calibri;font-weight: inherit" required><br/>
-          <textarea name="user_input" cols="30" rows="3" placeholder="Upišite komentar..." class="komentar" style="font-size: 30px;margin-top: 0%;font-family: Calibri;font-weight: inherit" required></textarea><br/>
+          <p style="margin-top: -1%;margin-bottom: 2%">Max. 50 karaktera</p>
+          <textarea name="user_input" cols="30" rows="3" placeholder="Upišite komentar..." maxlength="250" class="komentar" style="font-size: 30px;margin-top: 0%;font-family: Calibri;font-weight: inherit" required></textarea><br/>
+          <p style="margin-top: -1%;margin-bottom: 2%">Max. 250 karaktera</p>
           <input type="submit" name="komentarisi" value="Postavite komentar" style="font-size: 30px;margin-top: 0%;font-family: Calibri;font-weight: inherit" class="kupi responsive-width">
 
       </form>
@@ -203,7 +205,29 @@ if(!isset($_GET['id'])) {
       <hr style="border-bottom: 1px solid black;width: 70%;"/>
       <h1 style="text-decoration: underline;padding-top: 2%">Komentari korisnika</h1>
       <?php
-      include "comments.php";
+
+      $sql="SELECT * FROM komentari WHERE odobren=1";
+      $result=mysqli_query($connection,$sql)or die(mysqli_error($connection));
+      if(mysqli_num_rows($result)>0){
+
+          while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+
+              $id=$row['id'];
+              $ime=$row['ime'];
+              $komentar=$row['komentar'];
+              $odobren=$row['odobren'];
+              echo "<span class='col-lg-6' style='font-family: Calibri;font-size: 20px;width: 100%;'><b>$ime</b> je komentarisao/la: <b>$komentar</b>
+
+</span> 
+                  
+                 
+                  <br/><br/>
+        ";
+              echo "<br/>";
+          }
+
+      }
+
       ?>
 
   </div>

@@ -59,6 +59,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_admin'] == 0 ) {
 <button name="izmeniTorbu" onclick="izmeniBazu('torba')" class="btn btn-primary">Izmeni torbu</button>
 <button name="listaKorisnika" onclick="listaKorisnika()" class="btn btn-primary">Dodaj admina</button>
 <button name="listaPorudzbina" onclick="listaPorudzbina()" class="btn btn-primary">Lista porudzbina</button>
+   <button name="listaKomentara" onclick="location.href='komentari.php'" class="btn btn-primary">Lista komentara</button>
 
 <div class="container">
   <div id="dodajTorbu" hidden="hidden">
@@ -235,6 +236,7 @@ var lista_porudzbina = [];
       }
     })
   }
+
 
   function listaPorudzbina() {
     $.ajax({
