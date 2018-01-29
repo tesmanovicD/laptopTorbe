@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="dataSourceStorageLocal">
-    <data-source name="laptop-torbe@localhost" uuid="56f7cc6d-150d-4d2a-babc-39021845f7de">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
-      <introspection-schemas>*:laptop-torbe</introspection-schemas>
-    </data-source>
-  </component>
-</project>

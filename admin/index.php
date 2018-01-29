@@ -49,7 +49,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_admin'] == 0 ) {
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
       <script src="../js/javascriptfile.js"></script>
   </head>
-  <body style="text-align: center; font-family:'Amatic SC';background-color: #3c4348;color: white">
+  <body style="text-align: center; font-family:'calibri SC';background-color: #3c4348;color: white">
   <h1>Admin panel</h1>
 <hr/>
 
@@ -61,7 +61,6 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_admin'] == 0 ) {
 <button name="listaPorudzbina" onclick="listaPorudzbina()" class="btn btn-primary">Lista porudzbina</button>
    <button name="listaKomentara" onclick="location.href='komentari.php'" class="btn btn-primary">Lista komentara</button>
 
-<div class="container">
   <div id="dodajTorbu" hidden="hidden">
     <input type="text" id="naziv" name="naziv" placeholder="Naziv" class="dodavanje" />
 
@@ -106,7 +105,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_admin'] == 0 ) {
 
   </div><!--end of dodaj_torbu-->
 
-  <table id="torbe" hidden="hidden" class="table table-bordered">
+  <table id="torbe" hidden="hidden" class="table table-bordered" style="max-width: 80%; margin: 20px;">
       <thead class="thead-light">
         <tr>
            <th scope="col">&nbsp;ID&nbsp;</th>
@@ -125,7 +124,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_admin'] == 0 ) {
        </tbody>
    </table>
 
-   <table id="korisnici" hidden="hidden" class="table table-bordered">
+   <table id="korisnici" hidden="hidden" class="table table-bordered" style="max-width: 80%; margin: 20px;">
        <thead class="thead-light">
          <tr>
             <th scope="col">&nbsp;ID&nbsp;</th>
@@ -139,7 +138,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_admin'] == 0 ) {
         </tbody>
     </table>
 
-    <table id="porudzbine" hidden="hidden" class="table table-bordered">
+    <table id="porudzbine" hidden="hidden" class="table table-bordered" style="max-width: 80%; margin: 20px;">
         <thead class="thead-light">
           <tr>
              <th scope="col">&nbsp;ID&nbsp;</th>
@@ -152,7 +151,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_admin'] == 0 ) {
          </tbody>
      </table>
 
-</div><!--end of container-->
+
 
 
 <script type="text/javascript">
@@ -164,7 +163,7 @@ var lista_porudzbina = [];
   function dodajTorbu() {
     var slika = $('#slika').val().replace(/C:\\fakepath\\/i, '');
     $.ajax({
-        data: { naziv: $('#naziv').val(), opis: $('#opis').val(), cena: $('#cena').val(), slika: slika,
+        data: { naziv: $('#naziv').val(), opis: $('#opis').val(), cena: $('#cena').val(), slika: 'slika',
               alt: $('#alt').val(), link: $('#link').val(), kategorija: $('#kategorija').val(), kolicina: $('#kolicina').val() },
         type: "POST",
         url: "backend/dodajTorbu.php",
@@ -267,7 +266,7 @@ var lista_porudzbina = [];
   function torbeAppend() {
     document.getElementById("dodajTorbu").hidden = "hidden";
     document.getElementById("porudzbine").hidden = "hidden";
-    document.getElementById("formaTorbe").hidden = "hidden";
+    // document.getElementById("formaTorbe").hidden = "hidden";
     document.getElementById("torbe").hidden = "";
     document.getElementById("korisnici").hidden = "hidden";
     $("#torbe .dynamicWrite").empty();
@@ -318,7 +317,7 @@ var lista_porudzbina = [];
     document.getElementById("dodajTorbu").hidden = "hidden";
     document.getElementById("torbe").hidden = "hidden";
     document.getElementById("porudzbine").hidden = "hidden";
-    document.getElementById("formaTorbe").hidden = "hidden";
+    // document.getElementById("formaTorbe").hidden = "hidden";
     document.getElementById("korisnici").hidden = "";
     $("#korisnici .dynamicWrite").empty();
     let tr;
@@ -340,7 +339,7 @@ var lista_porudzbina = [];
 
   function porudzbineAppend() {
     document.getElementById("dodajTorbu").hidden = "hidden";
-    document.getElementById("formaTorbe").hidden = "hidden";
+    // document.getElementById("formaTorbe").hidden = "hidden";
     document.getElementById("torbe").hidden = "hidden";
     document.getElementById("korisnici").hidden = "hidden";
     document.getElementById("porudzbine").hidden = "";
@@ -357,7 +356,7 @@ var lista_porudzbina = [];
   }
 
   $('#prikaziTorbe').on("click", function() {
-    document.getElementById("formaTorbe").hidden = "hidden";
+    // document.getElementById("formaTorbe").hidden = "hidden";
     document.getElementById("torbe").hidden = "hidden";
     document.getElementById("korisnici").hidden = "hidden";
     document.getElementById("porudzbine").hidden = "hidden";

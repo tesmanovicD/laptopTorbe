@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2018 at 03:12 PM
+-- Generation Time: Jan 29, 2018 at 05:47 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -21,6 +21,30 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `laptop-torbe` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `laptop-torbe`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `komentari`
+--
+
+CREATE TABLE `komentari` (
+  `id` int(11) NOT NULL,
+  `ime` varchar(50) NOT NULL,
+  `komentar` varchar(250) NOT NULL,
+  `odobren` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `komentari`
+--
+
+INSERT INTO `komentari` (`id`, `ime`, `komentar`, `odobren`) VALUES
+(1, 'Milos', 'Odlicna torba!', 1),
+(2, 'Daniel', 'Super!', 1),
+(3, 'Janko', 'Torba je <b>*cenzurisano*</b>, kupio sam od <b>*cenzurisano*</b>.', 1),
+(4, 'Marko', 'top', 0),
+(5, 'Test', 'superrr', 0);
 
 -- --------------------------------------------------------
 
@@ -59,7 +83,9 @@ INSERT INTO `korisnici` (`ID`, `Korisnicko_ime`, `Lozinka`, `Email`, `Ime`, `Pre
 (8, 'test111', '4297f44b13955235245b2497399d7a93', 'testt111@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'inactive'),
 (9, '31414', '4297f44b13955235245b2497399d7a93', 'danites1007@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'inactive'),
 (12, 'test1', '4297f44b13955235245b2497399d7a93', 'edincedin@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'inactive'),
-(19, 'uspehuspeh', '4297f44b13955235245b2497399d7a93', 'uspehuspeh@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'inactive');
+(19, 'uspehuspeh', '4297f44b13955235245b2497399d7a93', 'uspehuspeh@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'inactive'),
+(27, 'tesho', '4297f44b13955235245b2497399d7a93', 'chipmunksserbia@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'inactive'),
+(28, 'teshokor', '4297f44b13955235245b2497399d7a93', 'eedincedin@gmail.com', '', '', '0000-00-00', '', '', '', '', '', '', 0, 'active');
 
 -- --------------------------------------------------------
 
@@ -181,6 +207,12 @@ INSERT INTO `stavke_torbe` (`ID`, `Naziv`, `Opis`, `Cena`, `Slika`, `Alt`, `Link
 --
 
 --
+-- Indexes for table `komentari`
+--
+ALTER TABLE `komentari`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `korisnici`
 --
 ALTER TABLE `korisnici`
@@ -211,10 +243,15 @@ ALTER TABLE `stavke_torbe`
 --
 
 --
+-- AUTO_INCREMENT for table `komentari`
+--
+ALTER TABLE `komentari`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `korisnici`
 --
 ALTER TABLE `korisnici`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `porudzbine`
 --
@@ -229,7 +266,7 @@ ALTER TABLE `promo_code`
 -- AUTO_INCREMENT for table `stavke_torbe`
 --
 ALTER TABLE `stavke_torbe`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 --
 -- Constraints for dumped tables
 --
