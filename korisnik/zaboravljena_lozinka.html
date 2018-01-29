@@ -2,7 +2,7 @@
 <html lang="sr">
 <head>
   <meta charset="utf-8">
-  <title>Prijava</title>
+  <title>Povratak Lozinke</title>
   <meta charset="utf-8">
   <meta name="description" content="Laptop Torbe kontakt podaci za saradnju i sva tehnicka pitanja korisnika">
   <meta name="keywords" content="torbe za laptop,hp torbe za laptop,torbe laptop,ranac,laptop,jeftine torbe online,prodaja torbi povoljno,sve za laptop,ranac za laptop,rancevi prodaja">
@@ -64,28 +64,20 @@
   </div><!--end of container-fluid-->
 </nav><!--end of navbar-->
 
-<form method="post" action="php/login.php" id="loginform">
-    <h3 style="color: #008484;font-weight: bold;" >Podaci za prijavu</h3>
+<form method="post" action="php/forgotPassword.php" id="forgotPasswordForm">
+    <h3 style="color: #008484;font-weight: bold;" >Podaci za povrat lozinke</h3>
   <hr style="border-color: #c3c3c3"/>
 
     <div class="form-group">
-      <label for="email">Korisničko ime</label><em>*</em>
+      <label for="email">E-mail</label><em>*</em>
       <div class="input-box">
-        <input type="text" name="korisnicko_ime" class="form-control">
+        <input type="text" name="forgotPassword" id="forgotPassword" class="form-control">
       </div>
     </div><!-- end of form-group -->
 
-    <div class="form-group">
-      <label for="lozinka">Lozinka</label><em>*</em>
-      <div class="input-box">
-        <input type="password" name="lozinka" class="form-control">
-      </div>
-    </div><!-- end of form-group -->
-
-    <button type="submit" class="submitbutton">Prijava</button>
+    <button type="submit" class="submitbutton">Pošalji</button>
     <button type="reset" class="submitbutton">Otkaži</button>
-    <br/>
-    <a href="zaboravljena_lozinka.html" style="cursor: pointer;"><span>Zaboravljena lozinka?</span></a>
+
   </form>
 
 <br/>
@@ -103,6 +95,16 @@
   </div>
 </div><!--end of footer-->
 
+<script>
+
+  function forgotPassword() {
+    $.ajax({
+
+      data:
+    })
+  }
+
+</script>
 
 
 </body>

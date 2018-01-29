@@ -533,6 +533,17 @@ a.navbar-brand{
 	background-color: #f6f6f6;
 }
 
+#forgotPasswordForm{
+	border: 2px solid #008484;
+	margin-left: 35%;
+	margin-right: 35%;
+	margin-top: 6%;
+	border-radius: 20px/20px;
+	font-family:'Kalam', cursive;
+	font-size: 25px;
+	background-color: #f6f6f6;
+}
+
 .input-box{
 	width: 50%;
 	margin: auto;
