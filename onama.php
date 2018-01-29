@@ -127,7 +127,7 @@ function sessionStarted() {
     </div><!--end of panel-->
 
     <div class="row">
-    <img class="col-xs-12 col-sm-offset-5 col-sm-2" src="http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=https%3A%2F%2Fufile.io%2Fvxnug&amp;qzone=1&amp;margin=0&amp;size=400x400&amp;ecc=L" alt="qr code" />
+    <img class="col-xs-12 col-sm-offset-5 col-sm-2" src="http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=https%3A%2F%2Fufile.io%2F16l88&amp;qzone=1&amp;margin=0&amp;size=400x400&amp;ecc=L" alt="qr code" />
     </div>
     <div id="footer">
       <div class="text-center center-block">
