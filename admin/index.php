@@ -70,6 +70,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_admin'] == 0 ) {
    <button name="listaKomentara" onclick="location.href='komentari.php'" class="btn btn-primary">Lista komentara</button>
 
   <div id="dodajTorbu" hidden="hidden">
+    <br>
     <input type="text" id="naziv" name="naziv" placeholder="Naziv" class="dodavanje" />
 
       <br/>

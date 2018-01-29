@@ -99,7 +99,7 @@
 
   function lista_porudzbina() {
     global $connection;
-    $sql_select = "SELECT DISTINCT`ID_Porudzbine`, `Poslato` FROM porudzbine GROUP BY `ID_Porudzbine`";
+    $sql_select = "SELECT DISTINCT`ID_Porudzbine`, `Poslato` FROM porudzbine GROUP BY `ID_Porudzbine` ORDER BY Datum_Kupovine DESC";
     $result = mysqli_query($connection, $sql_select);
 
     if (mysqli_num_rows($result) > 0) {
