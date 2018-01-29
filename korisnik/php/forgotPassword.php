@@ -9,7 +9,7 @@ if (isset($_POST["forgotPassword"])) {
       $str = "03565emikmtroimfweo324o0-tkerkm235_214rffhgkl";
       $str = str_shuffle($str);
       $str = substr($str, 0,10);
-      $url = "http://localhost/LAPTOP-TORBE/korisnik/php/resetPassword.php?token=$str&email=$email";
+      $url = "http://localhost/LaptopTorbe/korisnik/php/resetPassword.php?token=$str&email=$email";
       mail($email, "Povrat Lozinke", "Za resetovanje Vase sifre, posetite sledeci link: $url", "From: admin@laptop-torbe.me\r\n");
       $sql_update = "UPDATE `korisnici` SET Token ='".$str."' WHERE Email = '".$email."'";
       mysqli_query($connection, $sql_update);
