@@ -220,7 +220,7 @@ if (isset($_GET["action"])){
 
                     <div class="product" style="border: 1px solid black;margin-right: 25px;margin-bottom: 20px;border-radius: 2%;background-color:rgba(255,255,255,0.53);)">
                         <img src="<?php echo $row["Slika"]; ?>" class="img-responsive">
-                        <h5 class="text-info"><?php custom_echo($row['Naziv'], 32); ?></h5>
+                        <h5 class="text-info" title="<?php echo $row['Naziv'] ?>"><?php custom_echo($row['Naziv'], 30); ?></h5>
                         <h5 class="text-danger"><?php echo $row["Cena"]; ?></h5>
                         <input type="text" name="quantity" class="form-control" value="1">
                         <input type="hidden" name="hidden_name" value="<?php echo $row["Naziv"]; ?>">
