@@ -30,12 +30,12 @@ if(isset($_POST['mod'])) {
     $result = mysqli_query($con, $sql_select);
 
     if (mysqli_num_rows($result) > 0) {
-      echo "Postoji";
+      echo "Vaš Promo kod je aktiviran!";
       $_SESSION["discount"] = 0.15;
       $_SESSION['promo_code'] = $promo;
       exit();
     } else {
-      echo "Invalid";
+      echo "Promo kod koji ste uneli nije važeći!";
       exit();
     }
 
@@ -303,7 +303,6 @@ if (isset($_GET["action"])){
 $(".quantity").change(function() {
   var changeQuantity = $(this).val();
   var product_id = $(this).parents().html();
-  alert(product_id);
   $.ajax({
        url: "card.php",
        type: "post",
