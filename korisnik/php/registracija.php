@@ -51,22 +51,25 @@ function registrujKorisnika($p_podaci,$l_podaci,$connection) {
       if (!$current_id) {
         echo "Greska";
       } else {
-        // $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"."activate.php?id=" . $current_id;
-      	// $toEmail = $p_podaci["email"];
-      	// $subject = "User Registration Activation Email";
-      	// $content = "Click this link to activate your account. <a href='" . $actual_link . "'>" . $actual_link . "</a>";
-      	// $mailHeaders = "From: Admin\r\n";
-        // $mail->Mailer = "smtp";
-        // $mail->Host = "ssl://smtp.gmail.com";
-        // $mail->Port = 465;
-        // $mail->SMTPAuth = true; // turn on SMTP authentication
-        // $mail->Username = "edincedin@gmail.com"; // SMTP username
-        // $mail->Password = "veomalako"; // SMTP password
-        // if(mail($toEmail, $subject, $content, $mailHeaders)) {
-		    //     $message = "You have registered and the activation mail is sent to your email. Click the activation link to activate you account.";
-	      // }
-        //
-        // echo $message;
+        $to      = $p_podaci["email"];
+        $subject = 'Registracija | Verifikacija';
+        $message = '
+
+        Hvala na registraciji!
+        Vas nalog je uspesno kreiran, mozete se ulogovati sa dole navedenim podacima nakon aktivacije naloga putem dole navedenog linka.
+
+        ------------------------
+        Korisnicko ime: '.$p_podaci["korisnicko_ime"].'
+        Lozinka: '.$p_podaci["lozinka"].'
+        ------------------------
+
+        Molimo Vas kliknite na link kako biste aktivirali Vas nalog:
+        http://localhost/LAPTOP-TORBE/korisnik/php/verify.php?email='.$p_podaci["email"].'&hash='.md5($p_podaci["lozinka"]).'
+
+        ';
+        echo 'http://localhost/korisnik/php/verify.php?email='.$p_podaci["email"].'&hash='.md5($p_podaci["lozinka"]).' <br>';
+        $headers = 'From:admin@laptop-torbe.me' . "\r\n";
+        mail($to, $subject, $message, $headers);
         echo "Uspesna registracija";
       }
     } else {
