@@ -337,7 +337,7 @@ $.ajax({
      data: { secret: secret },
      success: function (data) {
         alert(data);
-        window.location.href = "http://localhost/LAPTOP-TORBE/img/card.php";
+        window.location.href = "http://localhost/laptopTorbe/img/card.php";
      }
  });
 
