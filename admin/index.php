@@ -48,6 +48,14 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_admin'] == 0 ) {
       <!-- JQUERY SCRIPT-->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
       <script src="../js/javascriptfile.js"></script>
+      <style>
+      input {
+        color: #000;
+      }
+      textarea {
+        color: #000;
+      }
+      </style>
   </head>
   <body style="text-align: center; font-family:'calibri SC';background-color: #3c4348;color: white">
   <h1>Admin panel</h1>
@@ -73,7 +81,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_admin'] == 0 ) {
     <input type="url" id="link" name="link" placeholder="Link" class="dodavanje"/>
       <br/>
 
-      <input type="file" name="slika" id="slika" />
+      <!-- <input type="file" name="slika" id="slika" /> -->
 
     <input type="number" id="kolicina" name="kolicina" placeholder="Kolicina" class="dodavanje"/>
       <br/>
@@ -100,8 +108,8 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_admin'] == 0 ) {
 
    ?>
 
-  <button onClick="dodajTorbu()">Dodaj Torbu</button>
-  <input type="reset" name="otkazi" value="Otkazi">
+  <button onClick="dodajTorbu()" class="btn btn-success">Dodaj Torbu</button>
+  <input type="reset" name="otkazi" value="Otkazi" class="btn btn-danger">
 
   </div><!--end of dodaj_torbu-->
 
@@ -161,7 +169,7 @@ var lista_korisnika = [];
 var lista_porudzbina = [];
 
   function dodajTorbu() {
-    var slika = $('#slika').val().replace(/C:\\fakepath\\/i, '');
+    // var slika = $('#slika').val().replace(/C:\\fakepath\\/i, '');
     $.ajax({
         data: { naziv: $('#naziv').val(), opis: $('#opis').val(), cena: $('#cena').val(), slika: 'slika',
               alt: $('#alt').val(), link: $('#link').val(), kategorija: $('#kategorija').val(), kolicina: $('#kolicina').val() },
@@ -266,7 +274,7 @@ var lista_porudzbina = [];
   function torbeAppend() {
     document.getElementById("dodajTorbu").hidden = "hidden";
     document.getElementById("porudzbine").hidden = "hidden";
-    // document.getElementById("formaTorbe").hidden = "hidden";
+    document.getElementById("formaTorbe").hidden = "hidden";
     document.getElementById("torbe").hidden = "";
     document.getElementById("korisnici").hidden = "hidden";
     $("#torbe .dynamicWrite").empty();
@@ -317,7 +325,7 @@ var lista_porudzbina = [];
     document.getElementById("dodajTorbu").hidden = "hidden";
     document.getElementById("torbe").hidden = "hidden";
     document.getElementById("porudzbine").hidden = "hidden";
-    // document.getElementById("formaTorbe").hidden = "hidden";
+    document.getElementById("formaTorbe").hidden = "hidden";
     document.getElementById("korisnici").hidden = "";
     $("#korisnici .dynamicWrite").empty();
     let tr;
@@ -339,7 +347,7 @@ var lista_porudzbina = [];
 
   function porudzbineAppend() {
     document.getElementById("dodajTorbu").hidden = "hidden";
-    // document.getElementById("formaTorbe").hidden = "hidden";
+    document.getElementById("formaTorbe").hidden = "hidden";
     document.getElementById("torbe").hidden = "hidden";
     document.getElementById("korisnici").hidden = "hidden";
     document.getElementById("porudzbine").hidden = "";
@@ -356,7 +364,7 @@ var lista_porudzbina = [];
   }
 
   $('#prikaziTorbe').on("click", function() {
-    // document.getElementById("formaTorbe").hidden = "hidden";
+    document.getElementById("formaTorbe").hidden = "hidden";
     document.getElementById("torbe").hidden = "hidden";
     document.getElementById("korisnici").hidden = "hidden";
     document.getElementById("porudzbine").hidden = "hidden";
@@ -369,7 +377,7 @@ var lista_porudzbina = [];
 </html>
 
 <?php }
-
+echo "<form style=\"color:#000;\" id=\"formaTorbe\">";
 if (isset($_GET['opcija']) && isset($_GET['id'])) {
   $opcija = $_GET['opcija'];
   $torbaID = $_GET['id'];
@@ -379,7 +387,7 @@ if (isset($_GET['opcija']) && isset($_GET['id'])) {
     $result = mysqli_query($connection,$sql_select);
 
     if (mysqli_num_rows($result) > 0) {
-      echo "<form style=\"color:#000;\" id=\"formaTorbe\">";
+
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             echo "<span style=\"display:none;\">ID: <input type=\"text\" value=\"". $row['ID']."\" id=\"idTorbe\" disabled/></span><br/>";
             echo "<img src=\"../img/".$row['Slika']."\" alt=\"".$row['Alt']."\" width=\"250px\" height=\"auto\" style=\"border:5px solid #fff; padding:10px;\"><br/>";
@@ -389,9 +397,10 @@ if (isset($_GET['opcija']) && isset($_GET['id'])) {
             echo "Dostupno: <input type=\"text\" value=\"". $row['Kolicina']."\" id=\"kolicinaTorbe\" />kom.<br/>";
         }
         echo "<button onclick=\"azurirajTorbu()\">Azuriraj </button>";
-        echo "</form>";
+
     } else echo "Nema torbe sa tim ID-em u bazi";
 
   }
 }
+echo "</form>";
  ?>

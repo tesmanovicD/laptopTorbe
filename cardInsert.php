@@ -29,7 +29,7 @@ $discount = $_SESSION["discount"];
       $product_price = $cart["product_price"] - ($cart["product_price"]*$discount);
 
 
-      $sql_insert = "INSERT INTO porudzbine (`ID_Korisnika`, `ID_Torbe`, `Datum_Kupovine`, `Ime`, `Prezime`, `JMBG`, `Broj_Mobilnog`, `Adresa`, `Drzava`, `Grad`, `Postanski_Broj`, `Cena`, `Promo_Code`, `ID_Porudzbine`) VALUES ( '".$id_korisnika."', '".$product_id."', '".date('Y-m-d h:i:s')."', 'test', 'test', 123, 055, 'test', 'test', 'test', 5353, ".$product_price." , '".$promo_code."' ,'".$id_porudzbine."')";
+      $sql_insert = "INSERT INTO porudzbine (`ID_Korisnika`, `ID_Torbe`, `Datum_Kupovine`, `Ime`, `Prezime`, `JMBG`, `Broj_Mobilnog`, `Adresa`, `Drzava`, `Grad`, `Postanski_Broj`, `Cena`, `Promo_Code`, `ID_Porudzbine`) VALUES ( '".$id_korisnika."', '".$product_id."', '".date('Y-m-d h:i:s')."', 'Petar', 'Petrovic', 12344532, 066334123, 'Stevana Mokranjca', 'Srbija', 'Beograd', 11000, ".$product_price." , '".$promo_code."' ,'".$id_porudzbine."')";
       $sql_update = "UPDATE `promo_code` SET `status` = 1 WHERE `promo` = '".$promo_code."'";
 
       if(mysqli_query($connection,$sql_insert) && mysqli_query($connection,$sql_update)) {
