@@ -197,7 +197,7 @@ if (isset($_GET["action"])){
                 <?php if(!sessionStarted()) { ?><li><a href="korisnik/registracija.html">Registracija &nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></a></li><?php } ?>
                 <?php if(!sessionStarted()) { ?><li><a href="korisnik/login.html">Prijava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li><?php } ?>
         				<?php if(sessionStarted()) { ?><li><a href="../korisnik/php/logout.php">Odjava &nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></a></li><?php } ?>
-                <?php if(sessionStarted()) { ?><li><a href="#">Prijavljeni ste kao <?php echo $_SESSION["korisnicko_ime"] ?></span> &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></a></li><?php } ?>
+                <?php if(sessionStarted()) { ?><li><a href="#">Prijavljeni ste kao <span id="korisnicko_ime"><?php echo $_SESSION["korisnicko_ime"] ?></span> &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></a></li><?php } ?>
             </ul><!--end of navbar items-->
         </div><!--end of myNavbar-->
     </div><!--end of container-fluid-->
@@ -331,13 +331,14 @@ $("#izvrsi_narudzbinu").on("click", function() {
 var korisnicko_ime = $("#korisnicko_ime").html();
 var secret = $.md5("VTS"+korisnicko_ime+"VTS");
 
+
 $.ajax({
      url: "../cardInsert.php",
      type: "post",
      data: { secret: secret },
      success: function (data) {
         alert(data);
-        window.location.href = "http://localhost/laptopTorbe/img/card.php";
+        window.location.href = "http://localhost/LAPTOP-TORBE/img/card.php";
      }
  });
 
