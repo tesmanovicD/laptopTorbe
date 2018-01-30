@@ -21,8 +21,16 @@ $con = mysqli_connect("localhost","root","",$database_name);
 
 if(isset($_POST['mod'])) {
   if ($_POST['mod'] == 'changeQuantity') {
-    // var_dump($_SESSION["cart"]);
-    $_SESSION["cart"][0]["item_quantity"] = $_POST['changeQuantity'];
+    $actual_product_id = $_POST["product_id"];
+    $changeQuantity = $_POST['changeQuantity'];
+    $session_array = $_SESSION["cart"];
+    $session_length = sizeof($session_array);
+
+    for ($i=0; $i < $session_length; $i++) {
+      if ($_SESSION["cart"][$i]["product_id"] == $actual_product_id) {
+        $_SESSION["cart"][$i]["item_quantity"] = $changeQuantity;
+      }
+    }
     exit();
   }
   if ($_POST['mod'] == 'checkPromo') {
@@ -334,7 +342,7 @@ $(".quantity").change(function() {
          type: "post",
          data: { mod: "changeQuantity", changeQuantity: changeQuantity, product_id: product_id},
          success: function (response) {
-           // alert(response);
+           alert(response);
             window.location="card.php";
          }
      });
