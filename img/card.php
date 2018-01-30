@@ -21,6 +21,7 @@ $con = mysqli_connect("localhost","root","",$database_name);
 
 if(isset($_POST['mod'])) {
   if ($_POST['mod'] == 'changeQuantity') {
+    // var_dump($_SESSION["cart"]);
     $_SESSION["cart"][0]["item_quantity"] = $_POST['changeQuantity'];
     exit();
   }
@@ -30,7 +31,7 @@ if(isset($_POST['mod'])) {
     $result = mysqli_query($con, $sql_select);
 
     if (mysqli_num_rows($result) > 0) {
-      echo "Vaš Promo kod je aktiviran!";
+      echo "Vaš Promo kod je aktiviran, ostvarili ste 15% popusta!";
       $_SESSION["discount"] = 0.15;
       $_SESSION['promo_code'] = $promo;
       exit();
@@ -64,9 +65,11 @@ if (isset($_POST["add"])){
                 'product_id' => $_GET["id"],
                 'item_name' => $_POST["hidden_name"],
                 'product_price' => $_POST["hidden_price"],
-                'item_quantity' => $_POST["quantity"]
+                'item_quantity' => $_POST["quantity"],
+                'max_quantity' => $_POST['hidden_quantity']
             );
             $_SESSION["cart"][$count] = $item_array;
+
             echo '<script>window.location="card.php"</script>';
         }else{
             echo '<script>alert("Već ste dodali proizvod u korpu!")</script>';
@@ -78,6 +81,7 @@ if (isset($_POST["add"])){
             'item_name' => $_POST["hidden_name"],
             'product_price' => $_POST["hidden_price"],
             'item_quantity' => $_POST["quantity"],
+            'max_quantity' => $_POST['hidden_quantity']
         );
         $_SESSION["cart"][0] = $item_array;
     }
@@ -216,15 +220,18 @@ if (isset($_GET["action"])){
             ?>
             <div class="col-md-3"  >
 
-                <form id="cardForm" method="post" action="card.php?action=add&id=<?php echo $row["ID"]; ?>">
+                <form id="cardForm" method="post" action="card.php?action=add&id=<?php echo $row["ID"]; ?>" onsubmit="return checkForm(this)">
 
                     <div class="product" style="border: 1px solid black;margin-right: 25px;margin-bottom: 20px;border-radius: 2%;background-color:rgba(255,255,255,0.53);)">
                         <img src="<?php echo $row["Slika"]; ?>" class="img-responsive">
                         <h5 class="text-info" title="<?php echo $row['Naziv'] ?>"><?php custom_echo($row['Naziv'], 30); ?></h5>
                         <h5 class="text-danger"><?php echo $row["Cena"]; ?></h5>
-                        <input type="text" name="quantity" class="form-control" value="1">
+                        <div>
+                        <input type="number" name="quantity" class="form-control" value="0" style="display: inline-block; width: 80%;" onchange="checkKolicina(this)"> (<span class="kolicinaVal"><?php echo $row['Kolicina'] ?></span>)
+                      </div>
                         <input type="hidden" name="hidden_name" value="<?php echo $row["Naziv"]; ?>">
                         <input type="hidden" name="hidden_price" value="<?php echo $row["Cena"]; ?>">
+                        <input type="hidden" name="hidden_quantity" value = "<?php echo $row["Kolicina"]; ?>">
                         <input type="submit" name="add" style="margin-top: 5px;border: 1px solid black;" class="btn btn-success"
                                value="Dodaj u korpu">
                     </div>
@@ -253,8 +260,9 @@ if (isset($_GET["action"])){
                 foreach ($_SESSION["cart"] as $key => $value) {
                     ?>
                     <tr class="item_details">
+                        <td style="display: none; background-color:white;font-size: 18px;" id="product_id"><input type="text" name="product_id" value="<?php echo $value["product_id"] ?>" disabled /></td>
                         <td style="background-color:white;font-size: 18px;" id="item_name"><?php echo $value["item_name"]; ?></td>
-                        <td style="background-color:white;font-size: 18px;"><input type="text" class="quantity" value="<?php echo $value['item_quantity']?>"></td>
+                        <td style="background-color:white;font-size: 18px;"><input type="text" class="quantity" value="<?php echo $value['item_quantity']?>"><span style="display:none;">(<span class="max_quantity"><?php echo $value['max_quantity'] ?></span>) </span> </td>
                         <td style="background-color:white;font-size: 18px;" id="product_price"><?php echo $value["product_price"]; ?> RSD </td>
                         <td style="background-color:white;font-size: 18px;">
                           <?php echo number_format($value["item_quantity"] * $value["product_price"], 2); ?>  RSD </td>
@@ -300,17 +308,37 @@ if (isset($_GET["action"])){
 </div><!--end of footer-->
 
 <script>
+//Save quantity value before updating
+var quantityBefore;
+$('.quantity').on('focusin', function(){
+    quantityBefore = $(this).val();
+});
+
 $(".quantity").change(function() {
+  let status;
   var changeQuantity = $(this).val();
-  var product_id = $(this).parents().html();
-  $.ajax({
-       url: "card.php",
-       type: "post",
-       data: { mod: "changeQuantity", changeQuantity: changeQuantity},
-       success: function (response) {
-          window.location="card.php";
-       }
-   });
+  let maxQuantity = $(this).parent().find('.max_quantity').html();
+  var product_id = $(this).parent().parent().find("input[name=product_id]").val();
+  console.log(product_id);
+  if (changeQuantity > maxQuantity) {
+    alert("Nema toliko proizvoda dostupno, broj dostupnih proizvoda je: " +maxQuantity);
+    $(this).val(quantityBefore);
+    status = false;
+  } else {
+    status = true;
+  }
+
+  if (status == true) {
+    $.ajax({
+         url: "card.php",
+         type: "post",
+         data: { mod: "changeQuantity", changeQuantity: changeQuantity, product_id: product_id},
+         success: function (response) {
+           // alert(response);
+            window.location="card.php";
+         }
+     });
+   }
 });
 
 $("#promoCode").change(function() {
@@ -344,6 +372,37 @@ $.ajax({
 
 })
 
+function checkKolicina(insertQuant) {
+  let kolicinaVal = $(insertQuant).parent().find('.kolicinaVal').html();
+  let insertedVal = $(insertQuant).val();
+
+  if (insertedVal > kolicinaVal) {
+    alert("Nema toliko proizvoda dostupno, broj dostupnih proizvoda je: " +kolicinaVal);
+    $(insertQuant).val(kolicinaVal);
+    return false;
+  } else return true;
+}
+
+
+function checkForm(form) {
+  let quantityVal = form.quantity.value;
+  let maxQuantity = $(form).parent().find('.kolicinaVal').html();
+
+  if ($.isNumeric(quantityVal)) {
+    if (maxQuantity == 0) {
+      alert("Trenutno nemamo izabranu torbu na lageru!");
+      return false;
+    }
+    if (quantityVal <= 0) {
+      alert("Uneli ste nevazecu vrednost(kolicina mora biti iznad 0) !");
+      return false;
+    }
+    return true;
+  } else {
+    alert("Kolicina proizvoda mora biti numericka vrednost!");
+    return false;
+  }
+}
 
 </script>
 
