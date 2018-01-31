@@ -49,8 +49,9 @@ function registrujKorisnika($p_podaci,$l_podaci,$connection) {
                     '".$l_podaci['jmbg']."', '".$l_podaci['mobilni']."', '".$l_podaci['adresa']."', '".$l_podaci['postanski_broj']."', '".$l_podaci['grad']."', '".$l_podaci['drzava']."')";
       $current_id = mysqli_query($connection, $sqlInsert);
       if (!$current_id) {
-        echo "Greska";
+        echo "Greska, molimo Vas unesite sve potrebne podatke!";
       } else {
+        $current_path = $_SERVER['SERVER_NAME'].trim($_SERVER['PHP_SELF'], "registracija.php");
         $to      = $p_podaci["email"];
         $subject = 'Registracija | Verifikacija';
         $message = '
@@ -64,10 +65,11 @@ function registrujKorisnika($p_podaci,$l_podaci,$connection) {
         ------------------------
 
         Molimo Vas kliknite na link kako biste aktivirali Vas nalog:
-        http://localhost/LAPTOP-TORBE/korisnik/php/verify.php?email='.$p_podaci["email"].'&hash='.md5($p_podaci["lozinka"]).'
+        http://'.$current_path. 'verify.php?email='.$p_podaci["email"].'&hash='.md5($p_podaci["lozinka"]).'
 
         ';
-        echo 'http://localhost/korisnik/php/verify.php?email='.$p_podaci["email"].'&hash='.md5($p_podaci["lozinka"]).' <br>';
+        echo 'http://'.$current_path. 'verify.php?email='.$p_podaci["email"].'&hash='.md5($p_podaci["lozinka"]).' <br>';
+
         $headers = 'From:admin@laptop-torbe.me' . "\r\n";
         mail($to, $subject, $message, $headers);
         echo "Uspesna registracija";
@@ -79,7 +81,6 @@ function registrujKorisnika($p_podaci,$l_podaci,$connection) {
     echo "Korisnicko ime ".$p_podaci['korisnicko_ime']." je vec reigstrovano!";
   }
   }
-
 }
 
 function proveriLozinke($lozinka, $potvrda_lozinke) {
