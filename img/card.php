@@ -1,6 +1,8 @@
 
 <?php
 session_start();
+echo $_SERVER["DOCUMENT_ROOT"];
+echo dirname(__FILE__);
 function sessionStarted() {
   if (isset($_SESSION['user_admin'])) {
     return true;
@@ -342,7 +344,6 @@ $(".quantity").change(function() {
          type: "post",
          data: { mod: "changeQuantity", changeQuantity: changeQuantity, product_id: product_id},
          success: function (response) {
-           alert(response);
             window.location="card.php";
          }
      });

@@ -32,8 +32,8 @@ $discount = $_SESSION["discount"];
       $sql_insert = "INSERT INTO porudzbine (`ID_Korisnika`, `ID_Torbe`, `Datum_Kupovine`, `Ime`, `Prezime`, `JMBG`, `Broj_Mobilnog`, `Adresa`, `Drzava`, `Grad`, `Postanski_Broj`, `Cena`, `Promo_Code`, `ID_Porudzbine`) VALUES ( '".$id_korisnika."', '".$product_id."', '".date('Y-m-d h:i:s')."', 'Petar', 'Petrovic', 12344532, 066334123, 'Stevana Mokranjca', 'Srbija', 'Beograd', 11000, ".$product_price." , '".$promo_code."' ,'".$id_porudzbine."')";
       $sql_update = "UPDATE `promo_code` SET `status` = 1 WHERE `promo` = '".$promo_code."'";
       $sql_update1 = "UPDATE `stavke_torbe` SET `Kolicina` = Kolicina - ".$item_quantity." WHERE ID = ".$product_id."";
-      var_dump($sql_update1);
-      if(mysqli_query($connection,$sql_insert) && mysqli_query($connection,$sql_update)) {
+
+      if(mysqli_query($connection,$sql_insert) && mysqli_query($connection,$sql_update) && mysqli_query($connection, $sql_update1)) {
         $status = true;
         unset($_SESSION["cart"]);
         unset($_SESSION["discount"]);
