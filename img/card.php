@@ -1,8 +1,7 @@
 
 <?php
 session_start();
-echo $_SERVER["DOCUMENT_ROOT"];
-echo dirname(__FILE__);
+
 function sessionStarted() {
   if (isset($_SESSION['user_admin'])) {
     return true;
