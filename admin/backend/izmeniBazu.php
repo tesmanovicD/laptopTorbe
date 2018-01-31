@@ -1,25 +1,40 @@
 <?php
   include_once("../../config/dbconfig.php");
 
-
   if(isset($_POST['tip_podatka'])) {
     $tip_podatka = $_POST['tip_podatka'];
 
     if ($tip_podatka == 'izmena_torbe') {
       if (empty($_POST['naziv']) || empty($_POST['cena']) || empty($_POST['alt']) || empty($_POST['link']) || empty($_POST['kolicina']) || empty($_POST['opis']) || empty($_POST['kategorija']))
       {
-        $sql_update = "UPDATE stavke_torbe SET
-        `Naziv` = \"".$_POST['naziv']."\",
-        `Opis` = \"".$_POST['opis']."\",
-        `Cena` = ".$_POST['cena'].",
-        `Slika` = \"glupost\",
-        `Alt` = \"".$_POST['alt']."\",
-        `Link` = \"".$_POST['link']."\",
-        `Kategorija` = \"".$_POST['kategorija']."\",
-        `Kolicina` = ".$_POST['kolicina']."
-        WHERE `ID` = ".$_POST['id']."";
+        $slika = $_FILES['slikaTorbe']['name'];
+        if ($slika != '') {
+          if(!uploadSlike()) {
+            exit();
+          }
+          $sql_update = "UPDATE stavke_torbe SET
+          `Naziv` = \"".$_POST['nazivTorbe']."\",
+          `Opis` = \"".$_POST['opisTorbe']."\",
+          `Cena` = ".$_POST['cenaTorbe'].",
+          `Slika` = \"".$slika."\",
+          `Alt` = \"".$_POST['altTorbe']."\",
+          `Link` = \"".$_POST['linkTorbe']."\",
+          `Kategorija` = \"".$_POST['kategorijaTorbe']."\",
+          `Kolicina` = ".$_POST['kolicinaTorbe']."
+          WHERE `ID` = ".$_POST['idTorbe']."";
+        } else {
+          $sql_update = "UPDATE stavke_torbe SET
+          `Naziv` = \"".$_POST['nazivTorbe']."\",
+          `Opis` = \"".$_POST['opisTorbe']."\",
+          `Cena` = ".$_POST['cenaTorbe'].",
+          `Alt` = \"".$_POST['altTorbe']."\",
+          `Link` = \"".$_POST['linkTorbe']."\",
+          `Kategorija` = \"".$_POST['kategorijaTorbe']."\",
+          `Kolicina` = ".$_POST['kolicinaTorbe']."
+          WHERE `ID` = ".$_POST['idTorbe']."";
+        }
         if(mysqli_query($connection, $sql_update)) {
-          echo "Uspesno ste izmenili torbu ID: ".$_POST['id'];
+          echo "Uspesno ste izmenili torbu ID: ".$_POST['idTorbe'];
         } else {
           echo "Greska";
         }
@@ -123,6 +138,35 @@
         echo "Doslo je do greske!";
       }
     }
+  }
+
+  function uploadSlike() {
+    $sourcePath = $_FILES['slikaTorbe']['tmp_name'];       // Storing source path of the file in a variable
+    $targetPath = "../../img/".$_FILES['slikaTorbe']['name']; // Target path where file is to be stored
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($targetPath,PATHINFO_EXTENSION));
+    // Check if image file is a actual image or fake image
+    if(isset($_POST["slikaTorbe"])) {
+        $check = getimagesize($_FILES["slikaTorbe"]["tmp_name"]);
+        if($check !== false) {
+            $uploadOk = 1;
+        } else {
+            echo "Fajl koji ste uploadali nije slika!.";
+            $uploadOk = 0;
+        }
+    }
+
+    // Check if file already exists
+    if (file_exists($targetPath)) {
+        echo "Slika sa ovim imenom vec postoji!";
+        $uploadOk = 0;
+    }
+
+    if ($uploadOk == 1) {
+      move_uploaded_file($sourcePath,$targetPath) ;    // Moving Uploaded file
+      return true;
+    } else return false;
+
   }
 
  ?>

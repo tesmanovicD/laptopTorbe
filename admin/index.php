@@ -69,7 +69,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_admin'] == 0 ) {
 <button name="listaPorudzbina" onclick="listaPorudzbina()" class="btn btn-primary">Lista porudzbina</button>
    <button name="listaKomentara" onclick="location.href='komentari.php'" class="btn btn-primary">Lista komentara</button>
 
-  <div id="dodajTorbu" hidden="hidden">
+  <form id="dodajTorbu" hidden="hidden" method="POST" enctype="multipart/form-data">
     <br>
     <input type="text" id="naziv" name="naziv" placeholder="Naziv" class="dodavanje" />
 
@@ -81,8 +81,6 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_admin'] == 0 ) {
       <br/>
     <input type="url" id="link" name="link" placeholder="Link" class="dodavanje"/>
       <br/>
-
-      <!-- <input type="file" name="slika" id="slika" /> -->
 
     <input type="number" id="kolicina" name="kolicina" placeholder="Kolicina" class="dodavanje"/>
       <br/>
@@ -109,10 +107,12 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_admin'] == 0 ) {
 
    ?>
 
-  <button onClick="dodajTorbu()" class="btn btn-success">Dodaj Torbu</button>
+       <br/>Slika:  <input type="file" name="file" id="file" required style="display:inline-block;" /><br/><br/>
+
+  <button type="submit" class="btn btn-success">Dodaj Torbu</button>
   <input type="reset" name="otkazi" value="Otkazi" class="btn btn-danger">
 
-  </div><!--end of dodaj_torbu-->
+  </form><!--end of dodaj_torbu-->
 
   <table id="torbe" hidden="hidden" class="table table-bordered" style="max-width: 80%; margin: 20px;">
       <thead class="thead-light">
@@ -169,18 +169,40 @@ var lista_torbi = [];
 var lista_korisnika = [];
 var lista_porudzbina = [];
 
-  function dodajTorbu() {
-    // var slika = $('#slika').val().replace(/C:\\fakepath\\/i, '');
+  $(document).ready(function (e) {
+    $("#dodajTorbu").on('submit',(function(e) {
+    e.preventDefault();
     $.ajax({
-        data: { naziv: $('#naziv').val(), opis: $('#opis').val(), cena: $('#cena').val(), slika: 'slika',
-              alt: $('#alt').val(), link: $('#link').val(), kategorija: $('#kategorija').val(), kolicina: $('#kolicina').val() },
-        type: "POST",
-        url: "backend/dodajTorbu.php",
-        success: function(data){
-          alert(data);
-        }
-    });
-  }
+      url: "backend/dodajTorbu.php",
+      type: "POST",
+      data: new FormData(this),
+      contentType: false,
+      cache: false,
+      processData:false,
+      success: function(data) {
+        alert(data);
+        location.reload();
+      }
+    })
+    }))
+
+    $("#formaTorbe").on('submit',(function(e) {
+    e.preventDefault();
+    $.ajax({
+      url: "backend/izmeniBazu.php",
+      type: "POST",
+      data: new FormData(this),
+      contentType: false,
+      cache: false,
+      processData:false,
+      success: function(data) {
+        alert(data);
+        location.reload();
+      }
+    })
+    }))
+
+  });
 
   function izmeniBazu(ime) {
     operacija = ime;
@@ -296,18 +318,18 @@ var lista_porudzbina = [];
     }
   }
 
-  function azurirajTorbu() {
-
-    $.ajax({
-        data: { tip_podatka: "izmena_torbe", id: $('#idTorbe').val(), naziv: $('#nazivTorbe').val(), opis: $('#opisTorbe').val(), cena: $('#cenaTorbe').val(), slika: $('#slika').val(),
-              alt: $('#alt').val(), link: $('#link').val(), kategorija: $('#kategorija').val(), kolicina: $('#kolicinaTorbe').val() },
-        type: "POST",
-        url: "backend/izmeniBazu.php",
-        success: function(data){
-          alert(data);
-        }
-    });
-  }
+  // function azurirajTorbu() {
+  //
+  //   $.ajax({
+  //       data: { tip_podatka: "izmena_torbe", id: $('#idTorbe').val(), naziv: $('#nazivTorbe').val(), opis: $('#opisTorbe').val(), cena: $('#cenaTorbe').val(), slika: $('#slika').val(),
+  //             alt: $('#alt').val(), link: $('#link').val(), kategorija: $('#kategorija').val(), kolicina: $('#kolicinaTorbe').val() },
+  //       type: "POST",
+  //       url: "backend/izmeniBazu.php",
+  //       success: function(data){
+  //         alert(data);
+  //       }
+  //   });
+  // }
 
   function azurirajKorisnika(id) {
     id = id;
@@ -378,7 +400,7 @@ var lista_porudzbina = [];
 </html>
 
 <?php }
-echo "<form style=\"color:#000;\" id=\"formaTorbe\">";
+echo "<form style=\"color:#000;\" id=\"formaTorbe\" enctype=\"multipart/form-data\" method=\"POST\">";
 if (isset($_GET['opcija']) && isset($_GET['id'])) {
   $opcija = $_GET['opcija'];
   $torbaID = $_GET['id'];
@@ -390,14 +412,22 @@ if (isset($_GET['opcija']) && isset($_GET['id'])) {
     if (mysqli_num_rows($result) > 0) {
 
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            echo "<span style=\"display:none;\">ID: <input type=\"text\" value=\"". $row['ID']."\" id=\"idTorbe\" disabled/></span><br/>";
+            echo "<span style=\"display:none;\">ID: <input type=\"text\" value=\"". $row['ID']."\" id=\"idTorbe\" name=\"idTorbe\" /></span><br/>";
             echo "<img src=\"../img/".$row['Slika']."\" alt=\"".$row['Alt']."\" width=\"250px\" height=\"auto\" style=\"border:5px solid #fff; padding:10px;\"><br/>";
-            echo "Naziv: <input type=\"text\" value=\"". $row['Naziv']."\" id=\"nazivTorbe\" /><br/>";
-            echo "Opis: <input type=\"text\" value=\"". $row['Opis']."\" id=\"opisTorbe\" /><br/>";
-            echo "Cena: <input type=\"text\" value=\"". $row['Cena']."\" id=\"cenaTorbe\" />$<br/>";
-            echo "Dostupno: <input type=\"text\" value=\"". $row['Kolicina']."\" id=\"kolicinaTorbe\" />kom.<br/>";
+            echo "Naziv: <input type=\"text\" value=\"". $row['Naziv']."\" id=\"nazivTorbe\" name=\"nazivTorbe\" /><br/>";
+            echo "Opis: <input type=\"text\" value=\"". $row['Opis']."\" id=\"opisTorbe\" name=\"opisTorbe\" /><br/>";
+            echo "Alt: <input type=\"text\" value=\"". $row['Alt']."\" id=\"altTorbe\" name=\"altTorbe\" /><br/>";
+            echo "Link: <input type=\"link\" value=\"". $row['Link']."\" id=\"linkTorbe\" name=\"linkTorbe\" /><br/>";
+            echo "Cena: <input type=\"text\" value=\"". $row['Cena']."\" id=\"cenaTorbe\" name=\"cenaTorbe\" />$<br/>";
+            echo "Dostupno: <input type=\"text\" value=\"". $row['Kolicina']."\" id=\"kolicinaTorbe\" name=\"kolicinaTorbe\"/>kom.<br/>";
+            echo "Kategorija: <select id=\"kategorijaTorbe\" name=\"kategorijaTorbe\" style='color: #626262';'>";
+            foreach($enumList as $value)
+                echo "<option value=\"$value\">$value</option >";
+            echo "</select><br/>";
+            echo "Upload slike: <input type=\"file\" name=\"slikaTorbe\" style=\"display:inline-block;\"/><br/><br/>";
+            echo "<input type=\"text\" name=\"tip_podatka\" value=\"izmena_torbe\" hidden=\"hidden\"/>";
         }
-        echo "<button onclick=\"azurirajTorbu()\">Azuriraj </button>";
+        echo "<button type=\"submit\" class=\"btn btn-success\">Azuriraj </button>";
 
     } else echo "Nema torbe sa tim ID-em u bazi";
 
