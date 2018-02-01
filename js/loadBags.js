@@ -42,6 +42,9 @@ $(document).ready( function() {
     brendNiz = asusNiz;
   }
 
+
+
+
   $.each(brendNiz, function (index, value) {
     if (value.opis.length > 29) value.opis = value.opis.substring(0,20)+"...";
       let brend = "<div class='card col-md-3'><img src='"+value.slika+"' alt='"+value.alt+"' class='card-img-top'><div class='card-block'><h4 class='card-title'>"+value.naziv+"</h4><p class='card-text'>"+value.opis+"</p></div><div class='card-footer'><p class='card-text'>Cena: "+value.cena+" RSD</p></div><a href='"+value.link+"' class='button'><span>VIDI DETALJE</span></a></div>"

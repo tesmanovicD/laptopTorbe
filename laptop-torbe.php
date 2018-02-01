@@ -1,4 +1,5 @@
 <?php
+include_once("./config/dbconfig.php");
 session_start();
 function sessionStarted() {
     if (isset($_SESSION['user_admin']) ||  isset($_SESSION['user_id']) ) {
@@ -99,6 +100,7 @@ function sessionStarted() {
   			  <div class="test" style="text-transform: capitalize;font-size: 17pt;margin-top: -6%"></div>
         </div>
   	  </div><!--end of main-left-->
+
       <div class="col-md-9 offset-1 main-right row">
         <!-- Dinamicki ispis iz lokalne "baze" podataka -->
       </div><!--end of main-right-->
@@ -120,3 +122,6 @@ function sessionStarted() {
     	</div><!--end of center-block-->
     </div><!--end of footer-->
   </body>
+
+</html>
+

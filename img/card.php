@@ -1,5 +1,6 @@
 
 <?php
+include '../config/dbconfig.php';
 session_start();
 
 function sessionStarted() {
@@ -216,11 +217,33 @@ if (isset($_GET["action"])){
     </div><!--end of container-fluid-->
 </nav><!--end of navbar-->
 
+<div style=" position: relative;  margin-right: auto; margin-left: auto;
+  width: 57%;color:black;border: 1px solid black;border-radius: 12px;font-weight: bold;background-color: rgba(14,142,85,0.24);font-family: 'Amatic SC',cursive;font-size: 40px;">
+<form action="" method="get" style="text-align: center;font-family: 'Calibri';font-size: 18px">
+    Unesite željenu veličinu torbe kako biste izlistali sve torbe sa tim ili manjim veličinama<br/>
+    <input type="number" name="filter" id="filter" style="width:7%" step="0.01"/><br/><br/>
+    <input type="submit" name="submit" value="Pretraži" class="btn btn-success"/><br/><br/>
+    Izlistajte sve veličine &nbsp;
+    <input type="button" name="filter1" id="filter1"  onclick="location.href='card.php'" class="btn btn-success" value="✔"/>
+</form>
+</div>
 
 <div class="container" style="width: 65%">
     <h2 style="color:black;border: 1px solid black;border-radius: 12px;font-weight: bold;background-color: rgba(14,142,85,0.24);font-family: 'Amatic SC',cursive;font-size: 40px;">KORPA &nbsp;<i class="fa fa-shopping-cart" aria-hidden="true"></i></h2>
     <?php
-    $query = "SELECT * FROM stavke_torbe ORDER BY ID ASC ";
+
+
+$filter=18;
+if( isset($_GET['submit']) )
+{
+    //be sure to validate and clean your variables
+    $filter = htmlentities($_GET['filter']);
+
+
+}
+
+
+    $query = "SELECT * FROM stavke_torbe WHERE opis<=$filter+0.1";
     $result = mysqli_query($con,$query);
     if(mysqli_num_rows($result) > 0) {
 
@@ -234,7 +257,8 @@ if (isset($_GET["action"])){
                     <div class="product" style="border: 1px solid black;margin-right: 25px;margin-bottom: 20px;border-radius: 2%;background-color:rgba(255,255,255,0.53);)">
                         <img src="<?php echo $row["Slika"]; ?>" class="img-responsive">
                         <h5 class="text-info" title="<?php echo $row['Naziv'] ?>"><?php custom_echo($row['Naziv'], 30); ?></h5>
-                        <h5 class="text-danger"><?php echo $row["Cena"]; ?></h5>
+                        <h5 class="text-danger"><?php echo $row["Cena"]; ?> RSD</h5>
+                        <h5 class="text-info"><?php echo $row["Opis"]; ?> inča</h5>
                         <div>
                         <input type="number" name="quantity" class="form-control" value="0" style="display: inline-block; width: 80%;" onchange="checkKolicina(this)"> (<span class="kolicinaVal"><?php echo $row['Kolicina'] ?></span>)
                       </div>
@@ -249,6 +273,8 @@ if (isset($_GET["action"])){
             <?php
         }
     }
+    else
+        echo "<p style='text-align: center;font-size: 40px;padding-top: 5%;padding-bottom: 5%'>Nema torbi sa tom veličinom ili manjom od nje</p>"
     ?>
 
     <div style="clear: both"></div>
